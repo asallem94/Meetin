@@ -28,6 +28,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --mode=development --watch"
   },
+  "engines": {
+    "node": "11.0.0",
+    "npm": "6.4.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/asallem94/Meetin.git"
