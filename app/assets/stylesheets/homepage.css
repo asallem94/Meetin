@@ -1,0 +1,36 @@
+/*  navigation style components */
+.navigation-container {
+  /* position: fixed; */
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px solid grey
+}
+
+.logo {
+  color: white;
+}
+
+.new-group-button {
+  border-right: 1px solid gray;
+  font-family: ;
+  font-weight: 400;
+  padding: ;
+
+}
+
+.auth-item {
+  font-family: ;
+  font-weight: 400;
+}
+
+/*  header style components */
+.homepage-header-container {
+
+}
+/*  footer style components */
+.footer {
+  background-color: black;
+
+}
