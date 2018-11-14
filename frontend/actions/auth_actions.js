@@ -26,17 +26,19 @@ export const receiveErrors = (errors) => {
 
 export const login = (user) => {
   return (dispatch) => {
-    return APIUtil.login(user).then( (res) => {
-      dispatch(receiveCurrentUser(res), receiveErrors(res));
-    });
+    return APIUtil.login(user).then(
+      (res) => dispatch(receiveCurrentUser(res)),
+      (err) => dispatch(receiveErrors(err))
+    );
   };
 };
 
 export const logout = () => {
   return (dispatch) => {
-    return APIUtil.logout().then( (res) => {
-      dispatch(logoutCurrentUser(), receiveErrors(res));
-    });
+    return APIUtil.logout().then(
+      (res) => dispatch(logoutCurrentUser(res)),
+      (err) => dispatch(receiveErrors(err))
+    );
   };
 };
 

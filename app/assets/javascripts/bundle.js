@@ -129,14 +129,18 @@ var receiveErrors = function receiveErrors(errors) {
 var login = function login(user) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["login"](user).then(function (res) {
-      dispatch(receiveCurrentUser(res), receiveErrors(res));
+      return dispatch(receiveCurrentUser(res));
+    }, function (err) {
+      return dispatch(receiveErrors(err));
     });
   };
 };
 var logout = function logout() {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["logout"]().then(function (res) {
-      dispatch(logoutCurrentUser(), receiveErrors(res));
+      return dispatch(logoutCurrentUser(res));
+    }, function (err) {
+      return dispatch(receiveErrors(err));
     });
   };
 };
@@ -280,7 +284,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    processForm: function processForm(user) {
+    login: function login(user) {
       return dispatch(Object(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
     }
   };
@@ -360,14 +364,24 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault;
-      this.props.processForm(this.state);
+      this.props.login(this.state);
     }
   }, {
     key: "demoLogin",
     value: function demoLogin() {
-      this.props.processForm({
-        email: 'demouser',
+      this.props.login({
+        email: 'test4@gmail.com',
         password: '123123'
+      });
+    }
+  }, {
+    key: "displayErrors",
+    value: function displayErrors() {
+      return this.props.errors.session.map(function (err, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "err-message",
+          key: idx
+        }, err);
       });
     }
   }, {
@@ -399,8 +413,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email address:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "input-field",
         type: "text",
-        onChange: this.update('username'),
-        value: this.state.username
+        onChange: this.update('email'),
+        value: this.state.email
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "form-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -408,7 +422,7 @@ function (_React$Component) {
         type: "password",
         onChange: this.update('password'),
         value: this.state.password
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.displayErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "submit-button-login",
         type: "submit",
         value: this.props.formType
@@ -452,6 +466,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     errors: state.errors,
@@ -463,6 +478,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     signup: function signup(user) {
       return dispatch(Object(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_3__["signup"])(user));
+    },
+    login: function login(user) {
+      return dispatch(Object(_actions_auth_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
     }
   };
 };
@@ -546,9 +564,19 @@ function (_React$Component) {
   }, {
     key: "demoLogin",
     value: function demoLogin() {
-      this.props.signup({
-        email: 'demouser',
+      this.props.login({
+        email: 'test4@gmail.com',
         password: '123123'
+      });
+    }
+  }, {
+    key: "displayErrors",
+    value: function displayErrors() {
+      return this.props.errors.session.map(function (err, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "err-message",
+          key: idx
+        }, err);
       });
     }
   }, {
@@ -571,14 +599,21 @@ function (_React$Component) {
         type: "submit"
       }, "Demo Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "form-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email address:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Your name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "input-field",
         type: "text",
-        onChange: this.update('username'),
-        value: this.state.username
+        onChange: this.update('email'),
+        value: this.state.email
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "form-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input-field",
+        type: "text",
+        onChange: this.update('email'),
+        value: this.state.email
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "form-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "input-field",
         type: "password",
         onChange: this.update('password'),
@@ -587,7 +622,7 @@ function (_React$Component) {
         className: "submitting-section"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "subtext"
-      }, "Your name is public. We'll use your email address to send you updates, and your location to find Meetups near you"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Your name is public. We'll use your email address to send you updates, and your location to find Meetups near you"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.displayErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "submit-button-signup",
         type: "submit",
         value: "Sign Up"

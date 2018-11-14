@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import UserForm from './user_form';
 import { signup } from '../../actions/auth_actions';
+import { login } from '../../actions/auth_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -12,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: (user)=>dispatch(signup(user))
+    signup: (user)=>dispatch(signup(user)),
+    login: (user)=>dispatch(login(user))
   }
 }
 
