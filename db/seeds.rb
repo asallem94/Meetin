@@ -90,3 +90,10 @@ User.create!(
   profile_img_url: "https://secure.gravatar.com/avatar/50b8ca5b7e2c9368f40d81f5aba0914a?secure=true&size=300",
   bio: "I love creating websites and have been specializing in frontend applications with javascript"
 )
+User.create!(
+  name: "Demo User",
+  password: "123123",
+  email: "test4@gmail.com",
+  profile_img_url: "https://pbs.twimg.com/profile_images/542526971373056000/rYcnP8zz_400x400.jpeg",
+  bio: "I am not real, but I am existant.  I am window watching the contents of this web application.  However I am enjoying this pleasant demo."
+)

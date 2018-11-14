@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
-class SessionForm extends React.Component {
+class UserForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {email: '', password: ''};
@@ -17,28 +17,20 @@ class SessionForm extends React.Component {
 
   handleSubmit(event){
     event.preventDefault;
-    this.props.processForm(this.state);
+    this.props.signup(this.state);
   }
 
   demoLogin(){
-    this.props.processForm({email: 'demouser', password: '123123'});
+    this.props.signup({email: 'demouser', password: '123123'});
   }
-
 
 
   render(){
     return (
       <div className="form-layout">
-        <div className="formInfo">
-          <header className="form-header">
-            <h1 className="form-title">Log in</h1>
-            <img className="lock-img" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/lock-icon.png"/>
-          </header>
-          <p className="not-yet-registered">
-            Not registered with us yet? <Link className="auth-link" to='/signup'>Sign up</Link>
-          </p>
-        </div>
-        <form className="auth-form" onSubmit={this.handleSubmit}>
+        <form className="user-form" onSubmit={this.handleSubmit}>
+          <h1 className="registering-form-title">Sign up</h1>
+          <button onClick={() => this.demoLogin()} className="submit-button-signup" type="submit">Demo Sign In</button>
           <section className="form-item">
             <label>
               Email address:
@@ -61,17 +53,25 @@ class SessionForm extends React.Component {
             value={this.state.password}
             />
           </section>
-          <input className="submit-button-login" type="submit" value={this.props.formType}/>
+          <div className="submitting-section">
+            <p className="subtext">
+              Your name is public. We'll use your email address to send you updates, and your location to find Meetups near you
+            </p>
+            <input className="submit-button-signup" type="submit" value="Sign Up"/>
+            <p className="subtext ending-subtext">
+              When you "Continue", you agree to Meetup's Terms of Service. We will manage information about you as described in our Privacy Policy, and Cookie Policy.
+            </p>
+            <div className="already-user">
+            Already a member? <Link className="auth-link" to="/login">Log in</Link>.
+            </div>
+          </div>
         </form>
-        <div className="alternative-auth">
-          <h2 className="or">OR</h2>
-          <button onClick={() => this.demoLogin()} className="submit-button-signup" type="submit">Demo Sign In</button>
-        </div>
+
       </div>
     )
   }
 }
 
-export default withRouter(SessionForm)
+export default withRouter(UserForm)
 
 // <input className="submit-button" type="submit" value={this.props.formType}/>

@@ -4,31 +4,31 @@ export const REQUEST_ALL_INTERESTS = "REQUEST_ALL_INTERESTS";
 export const REQUEST_FINDABLE_GROUPS = "REQUEST_FINDABLE_GROUPS";
 export const REQUEST_FINDABLE_EVENTS = "REQUEST_FINDABLE_EVENTS";
 
-export const requestFindableGroups = (groups) => {
+const requestFindableGroups = (groups) => {
   return {
     type: REQUEST_FINDABLE_GROUPS,
     groups
   }
 }
 
-export const requestAllInterests = (groups) => {
+const requestAllInterests = (interests) => {
   return {
     type: REQUEST_ALL_INTERESTS,
-    groups
+    interests
   }
 }
 
 export const fetchFindableGroups = (filters) => {
   return (dispatch) => {
-    return APIUtil.fetchFindableGroups().then((response)=>{
+    return APIUtil.fetchFindableGroups(filters).then((response)=>{
       return dispatch(requestFindableGroups(response))
     })
   }
 }
 
-export const fetchInterests = (filters) => {
+export const fetchInterests = () => {
   return (dispatch) => {
-    return APIUtil.fetchInterests(filters).then((response)=>{
+    return APIUtil.fetchInterests().then((response) => {
       return dispatch(requestAllInterests(response))
     })
   }
