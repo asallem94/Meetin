@@ -76,9 +76,8 @@ const msp = (state) => {
 const mdp = (dispatch) => {
   return {
     logout: () => dispatch(logout())
-
   };
 };
 
 const NavigationContainer = connect(msp, mdp)(Navigation);
-export default NavigationContainer
+export default NavigationContainer;

@@ -7,7 +7,7 @@ const LanguageSelector = () => {
       <option className="language-selector-item" value="Espanol">Espanol</option>
       <option className="language-selector-item" value="Arabic">Arabic</option>
     </select>
-  )
-}
+  );
+};
 
-export default LanguageSelector
+export default LanguageSelector;

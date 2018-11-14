@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LanguageSelector from './language-selector'
+import LanguageSelector from './language-selector';
 
 const Footer = () => {
   return (
@@ -48,7 +48,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

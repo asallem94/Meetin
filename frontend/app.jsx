@@ -5,8 +5,8 @@ import SignupFormContainer from './components/auth_components/signup_form_contai
 // import SessionForm from './components/auth_components/session_form';
 import { Route } from 'react-router-dom';
 import { AuthRoute } from './util/route_util';
-import Homepage from './components/homepage'
-import Footer from './components/footer/footer'
+import Homepage from './components/homepage';
+import Footer from './components/footer/footer';
 
 const App = () => (
   <div>

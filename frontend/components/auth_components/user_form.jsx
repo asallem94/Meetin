@@ -11,8 +11,8 @@ class UserForm extends React.Component {
 
   update(field){
     return (event) => {
-      this.setState({[field]: event.currentTarget.value})
-    }
+      this.setState({[field]: event.currentTarget.value});
+    };
   }
 
   handleSubmit(event){
@@ -35,13 +35,13 @@ class UserForm extends React.Component {
   render(){
     return (
       <div className="form-layout">
-        
+
 
       </div>
-    )
+    );
   }
 }
 
-export default withRouter(UserForm)
+export default withRouter(UserForm);
 
 // <input className="submit-button" type="submit" value={this.props.formType}/>

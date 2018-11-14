@@ -14,7 +14,7 @@ const Homepage = () => {
       <Interests/>
       <OnMobile/>
     </div>
-  )
+  );
 };
 
 

@@ -14,7 +14,7 @@ const Main = ({store}) => {
       </HashRouter>
     </Provider>
   )
-}
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;

@@ -2,14 +2,14 @@ import React from 'react';
 
 class Calendar extends React.Component{
   constructor(props){
-    super(props)
+    super(props);
     this.d = new Date();
     const mon = this.d.getMonth();
     const yr = this.d.getYear();
     const date = this.d.getDate();
     this.state = {month: mon, year: yr, day: date};
-    this.renderMonth = this.renderMonth.bind(this)
-    this.renderWeek = this.renderWeek.bind(this)
+    this.renderMonth = this.renderMonth.bind(this);
+    this.renderWeek = this.renderWeek.bind(this);
   }
   componentDidMount(){
 
@@ -17,8 +17,8 @@ class Calendar extends React.Component{
   populateDates(){
     const firstDay = new Date(this.state.year, this.state.month, 1);
     const lastDay = new Date(this.state.year, this.state.month + 1, 0);
-    const startDay = firstDay.getDay()
-    const endDay = lastDay.getDate()
+    const startDay = firstDay.getDay();
+    const endDay = lastDay.getDate();
     const cal = [];
     let i=1;
     let empty = 0;
@@ -41,10 +41,10 @@ class Calendar extends React.Component{
           }
         }
       }
-      cal.push(week)
+      cal.push(week);
     }
     // debugger
-    return cal
+    return cal;
   }
 
   renderWeek(week){
@@ -53,7 +53,7 @@ class Calendar extends React.Component{
           {day > -1 ? day : ""}
         </li>
       )
-    )
+    );
   }
 
   renderMonth(month){
@@ -93,8 +93,8 @@ class Calendar extends React.Component{
         </ul>
         {this.renderMonth(dates)}
       </div>
-    )
+    );
   }
 }
 
-export default Calendar
+export default Calendar;
