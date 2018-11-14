@@ -14,12 +14,12 @@
 }
 
 .interest-item {
-  margin: 20px;
+  margin: 8px;
 }
 
 .category-img {
   border-radius: 5px;
   object-fit: cover;
-  width: 400px;
-  height: 200px;
+  width: 160px;
+  height: 80px;
 }

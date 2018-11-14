@@ -17,14 +17,20 @@ class SessionForm extends React.Component {
 
   handleSubmit(event){
     event.preventDefault;
-    this.props.processForm(this.state);
+    this.props.login(this.state);
   }
 
   demoLogin(){
-    this.props.processForm({email: 'demouser', password: '123123'});
+    this.props.login({email: 'test4@gmail.com', password: '123123'});
   }
 
-
+  displayErrors(){
+    return this.props.errors.session.map((err, idx)=>(
+      <li className="err-message" key={idx}>
+        {err}
+      </li>
+    ));
+  }
 
   render(){
     return (
@@ -46,8 +52,8 @@ class SessionForm extends React.Component {
             <input
               className="input-field"
               type="text"
-              onChange={this.update('username')}
-              value={this.state.username}
+              onChange={this.update('email')}
+              value={this.state.email}
             />
           </section>
           <section className="form-item">
@@ -61,6 +67,9 @@ class SessionForm extends React.Component {
             value={this.state.password}
             />
           </section>
+          <ul>
+            {this.displayErrors()}
+          </ul>
           <input className="submit-button-login" type="submit" value={this.props.formType}/>
         </form>
         <div className="alternative-auth">

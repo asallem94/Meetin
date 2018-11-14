@@ -6,7 +6,6 @@
 .footer-content {
   width: 60%;
   margin: auto;
-  /* background-color: rgba(16, 23, 32, 1); */
 
 }
 
@@ -27,15 +26,15 @@
 .footer-topic {
   color: white;
   list-style: none;
-  padding: 20px;
-  font-size: 20px;
+  padding: 10px;
+  font-size: 15px;
   font-family: helvetica,arial,sans-serif;
 }
 
 .upper-footer-items {
   text-decoration: none;
   color: white;
-  font-size: 24px;
+  font-size: 15px;
   font-family: helvetica,arial,sans-serif;
 }
 
@@ -45,7 +44,7 @@
 
 .footer-follow-us {
   color: white;
-  font-size: 24px;
+  font-size: 15px;
   font-family: helvetica,arial,sans-serif;
   margin-bottom: 10px;
 }
@@ -63,7 +62,7 @@
   padding: 0 20px;
   color: white;
   list-style: none;
-  font-size: 30px;
+  font-size: 15px;
 }
 
 .language-selector {
