@@ -61,10 +61,10 @@ class UserForm extends React.Component {
             <p className="subtext ending-subtext">
               When you "Continue", you agree to Meetup's Terms of Service. We will manage information about you as described in our Privacy Policy, and Cookie Policy.
             </p>
+            <div className="already-user">
+            Already a member? <Link className="auth-link" to="/login">Log in</Link>.
+            </div>
           </div>
-          <section className="already-user">
-            Already a member? <Link to="/signin">Log in</Link>.
-          </section>
         </form>
 
       </div>

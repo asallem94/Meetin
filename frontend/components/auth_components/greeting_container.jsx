@@ -14,7 +14,7 @@ class Greeting extends React.Component{
      return(
        <nav>
         <h1>Hello {currentUser.email}!</h1>
-        <button onClick={logout}>Logout</button>
+        <button onClick={this.logout}>Logout</button>
        </nav>
      )
    }else{

@@ -1,5 +1,5 @@
 import React from 'react';
-import GreetingContainer from './components/auth_components/greeting_container';
+import NavigationContainer from './components/navigation_container';
 import LoginFormContainer from './components/auth_components/login_form_container';
 import SignupFormContainer from './components/auth_components/signup_form_container';
 // import SessionForm from './components/auth_components/session_form';
@@ -11,7 +11,7 @@ import Footer from './components/footer/footer'
 const App = () => (
   <div>
     <header>
-      <GreetingContainer/>
+      <NavigationContainer/>
       <Route exact path="/" component={Homepage}/>
       <AuthRoute exact path="/login" component={LoginFormContainer}/>
       <AuthRoute exact path="/signup" component={SignupFormContainer} />

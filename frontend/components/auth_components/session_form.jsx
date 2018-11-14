@@ -31,7 +31,7 @@ class SessionForm extends React.Component {
       <div className="form-layout">
         <div className="formInfo">
           <header className="form-header">
-            <h1 className="form-title">{this.props.formType === "login" ? "Log in" : "Sign up"}</h1>
+            <h1 className="form-title">Log in</h1>
             <img className="lock-img" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/lock-icon.png"/>
           </header>
           <p className="not-yet-registered">

@@ -13,11 +13,14 @@ p {
   color: lightgray;
 }
 
+body {
+  margin: 0;
+}
 /*  navigation style components */
 .form-layout {
   background-color: #fafafa;
   padding: 100px;
-  height: 700px;
+  box-sizing: border-box;
 }
 
 .formInfo {
@@ -117,6 +120,11 @@ p {
 
 .auth-link {
   color: rgba(26,34,209);
+  text-decoration: none;
+}
+.auth-link:hover {
+
+  text-decoration: underline;
 }
 
 .not-yet-registered {
@@ -140,7 +148,6 @@ p {
 .user-form {
   width: 500px;
   margin: auto;
-  border-bottom: 2px solid #dcdcdc;
 }
 
 .submit-button-signup {
@@ -175,10 +182,15 @@ p {
 }
 
 .ending-subtext {
-  color: gray
-
+  color: gray;
+  border-bottom: 2px solid #dcdcdc;
+  padding-bottom: 20px;
 }
 
 .already-user {
-  border-top: 2px solid #dcdcdc;
+  color: gray;
+  padding-top: 20px;
+  margin: 0 auto;
+  font-family: helvetica,arial,sans-serif;
+
 }
