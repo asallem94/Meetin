@@ -1,10 +1,9 @@
 .OnMobile-section {
   width: 100%;
-  position: relative;
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: baseline;
+  justify-content: space-around;
+  flex-flow: wrap row;
+  align-items: center;
 }
 .OnMobile-container {
   display: flex;
@@ -13,11 +12,10 @@
   height: 300px;
 
 }
-.on-google-img {
-  height: 100px;
-  margin: 25px;
+.phone-img{
+  height: 40vw;
 }
-.on-apple-store-img {
+.on-mobile-img {
   height: 100px;
   margin: 25px;
 }

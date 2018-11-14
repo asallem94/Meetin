@@ -5,23 +5,20 @@ class Interests extends React.Component {
     super(props)
 
   }
-  ComponentDidMount(){
-    debugger
-    this.props.fetchAllInterests()
+  componentDidMount(){
+    this.props.fetchInterests()
   }
   interestItem(){
-    debugger
+
     return this.props.interests.map((interest)=>{
       return (
-        <li className="interest-item">
-          <h3>{interest.title_topics}</h3>
-          <img src={interest.img_url} alt=""/>
+        <li key={interest.id} className="interest-item">
+          <h3>{interest.topic_titles}</h3>
+          <img className="category-img" src={interest.picture_url} alt=""/>
         </li>
       )
     })
     {this.props.interests.title}
-
-
   }
   render(){
     return (
@@ -33,9 +30,8 @@ class Interests extends React.Component {
 }
 
 const msp = (state) => {
-  debugger
   return ({
-    interests: state.entities.interests
+    interests: Object.values(state.entities.interests)
   })
 }
 const mdp = (dispatch) => {

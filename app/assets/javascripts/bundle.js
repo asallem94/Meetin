@@ -156,7 +156,7 @@ var signup = function signup(user) {
 /*!********************************************!*\
   !*** ./frontend/actions/meetin_actions.js ***!
   \********************************************/
-/*! exports provided: REQUEST_ALL_INTERESTS, REQUEST_FINDABLE_GROUPS, REQUEST_FINDABLE_EVENTS, requestFindableGroups, requestAllInterests, fetchFindableGroups, fetchInterests */
+/*! exports provided: REQUEST_ALL_INTERESTS, REQUEST_FINDABLE_GROUPS, REQUEST_FINDABLE_EVENTS, fetchFindableGroups, fetchInterests */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -164,8 +164,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REQUEST_ALL_INTERESTS", function() { return REQUEST_ALL_INTERESTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REQUEST_FINDABLE_GROUPS", function() { return REQUEST_FINDABLE_GROUPS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REQUEST_FINDABLE_EVENTS", function() { return REQUEST_FINDABLE_EVENTS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestFindableGroups", function() { return requestFindableGroups; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestAllInterests", function() { return requestAllInterests; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchFindableGroups", function() { return fetchFindableGroups; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchInterests", function() { return fetchInterests; });
 /* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/api_util */ "./frontend/util/api_util.js");
@@ -173,18 +171,21 @@ __webpack_require__.r(__webpack_exports__);
 var REQUEST_ALL_INTERESTS = "REQUEST_ALL_INTERESTS";
 var REQUEST_FINDABLE_GROUPS = "REQUEST_FINDABLE_GROUPS";
 var REQUEST_FINDABLE_EVENTS = "REQUEST_FINDABLE_EVENTS";
+
 var requestFindableGroups = function requestFindableGroups(groups) {
   return {
     type: REQUEST_FINDABLE_GROUPS,
     groups: groups
   };
 };
+
 var requestAllInterests = function requestAllInterests(interests) {
   return {
     type: REQUEST_ALL_INTERESTS,
     interests: interests
   };
 };
+
 var fetchFindableGroups = function fetchFindableGroups(filters) {
   return function (dispatch) {
     return _util_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchFindableGroups"](filters).then(function (response) {
@@ -464,60 +465,10 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "notRegisteredYet",
-    value: function notRegisteredYet() {
-      if (this.props.formType === "login") {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "not-yet-registered"
-        }, "Not registered with us yet? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          className: "auth-link",
-          to: "/signup"
-        }, "Sign up"));
-      }
-    }
-  }, {
-    key: "submitButton",
-    value: function submitButton() {
-      if (this.props.formType === "signup") {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          class: "subtext"
-        }, "Your name is public. We'll use your email address to send you updates, and your location to find Meetups near you"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          className: "submit-button-signup",
-          type: "submit",
-          value: this.props.formType
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          class: "subtext"
-        }, "When you \"Continue\", you agree to Meetup's Terms of Service. We will manage information about you as described in our Privacy Policy, and Cookie Policy."));
-      } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          className: "submit-button-login",
-          type: "submit",
-          value: this.props.formType
-        });
-      }
-    }
-  }, {
-    key: "alternativeAuth",
-    value: function alternativeAuth() {
-      var _this3 = this;
-
-      if (this.props.formType === "login") {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "alternative-auth"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-          className: "or"
-        }, "OR"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: function onClick() {
-            return _this3.demoLogin();
-          },
-          className: "submit-button-signup",
-          type: "submit"
-        }, "Demo Sign In"));
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-layout"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -529,7 +480,12 @@ function (_React$Component) {
       }, this.props.formType === "login" ? "Log in" : "Sign up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "lock-img",
         src: "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/lock-icon.png"
-      })), this.notRegisteredYet()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "not-yet-registered"
+      }, "Not registered with us yet? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "auth-link",
+        to: "/signup"
+      }, "Sign up"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "auth-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -546,7 +502,21 @@ function (_React$Component) {
         type: "password",
         onChange: this.update('password'),
         value: this.state.password
-      })), this.submitButton()), this.alternativeAuth());
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "submit-button-login",
+        type: "submit",
+        value: this.props.formType
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "alternative-auth"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "or"
+      }, "OR"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.demoLogin();
+        },
+        className: "submit-button-signup",
+        type: "submit"
+      }, "Demo Sign In")));
     }
   }]);
 
@@ -710,14 +680,18 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "submitting-section"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        class: "subtext"
+        className: "subtext"
       }, "Your name is public. We'll use your email address to send you updates, and your location to find Meetups near you"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "submit-button-signup",
         type: "submit",
         value: "Sign Up"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        class: "subtext ending-subtext"
-      }, "When you \"Continue\", you agree to Meetup's Terms of Service. We will manage information about you as described in our Privacy Policy, and Cookie Policy."))));
+        className: "subtext ending-subtext"
+      }, "When you \"Continue\", you agree to Meetup's Terms of Service. We will manage information about you as described in our Privacy Policy, and Cookie Policy.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "already-user"
+      }, "Already a member? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/signin"
+      }, "Log in"), ".")));
     }
   }]);
 
@@ -899,14 +873,7 @@ __webpack_require__.r(__webpack_exports__);
 var HomepageHeader = function HomepageHeader() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "homepage-header-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
-    autoPlay: true,
-    muted: true,
-    loop: true,
-    className: "header-video"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
-    src: "https://www.meetup.com/mu_static/en-US/video.dddafbfe.mp4"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "homepage-header-content"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "header-title"
@@ -915,7 +882,14 @@ var HomepageHeader = function HomepageHeader() {
   }, "Do more of it with Meet in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "homepage-header-signup",
     to: "/signup"
-  }, "Signup")));
+  }, "Signup")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+    autoPlay: true,
+    muted: true,
+    loop: true,
+    className: "header-video"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
+    src: "https://www.meetup.com/mu_static/en-US/video.dddafbfe.mp4"
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (HomepageHeader);
@@ -967,20 +941,20 @@ function (_React$Component) {
   }
 
   _createClass(Interests, [{
-    key: "ComponentDidMount",
-    value: function ComponentDidMount() {
-      debugger;
-      this.props.fetchAllInterests();
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchInterests();
     }
   }, {
     key: "interestItem",
     value: function interestItem() {
-      debugger;
       return this.props.interests.map(function (interest) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: interest.id,
           className: "interest-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, interest.title_topics), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: interest.img_url,
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, interest.topic_titles), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "category-img",
+          src: interest.picture_url,
           alt: ""
         }));
       });
@@ -1001,9 +975,8 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var msp = function msp(state) {
-  debugger;
   return {
-    interests: state.entities.interests
+    interests: Object.values(state.entities.interests)
   };
 };
 
@@ -1051,10 +1024,10 @@ var OnMobile = function OnMobile() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "Get-the-app"
   }, "Get the app"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "on-google-img",
+    className: "on-mobile-img",
     src: "https://www.meetup.com/mu_static/en-US/download_en.cf6dad40.png"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "on-apple-store-img",
+    className: "on-mobile-img",
     src: "https://www.meetup.com/mu_static/en-US/download_en.b85d892d.png"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "phone-img",
@@ -1122,7 +1095,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app */ "./frontend/app.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _actions_meetin_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/meetin_actions */ "./frontend/actions/meetin_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -1157,8 +1132,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   window.getState = store.getState;
-  window.dispatch = store.dispatch; // window.login = login;
-  // window.logout = logout;
+  window.dispatch = store.dispatch;
+  window.fetchInterests = _actions_meetin_actions__WEBPACK_IMPORTED_MODULE_6__["fetchInterests"]; // window.logout = logout;
   // window.signup = signup;
 
   var root = document.getElementById("root");

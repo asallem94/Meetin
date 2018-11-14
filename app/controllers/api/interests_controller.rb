@@ -1,7 +1,7 @@
 class Api::InterestsController < ApplicationController
 
-  def show
+  def index
     @interests = Interest.all
   end
-  
+
 end

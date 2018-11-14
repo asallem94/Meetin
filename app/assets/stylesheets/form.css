@@ -179,4 +179,6 @@ p {
 
 }
 
-/* .already */
+.already-user {
+  border-top: 2px solid #dcdcdc;
+}

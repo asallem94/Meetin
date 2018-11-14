@@ -24,49 +24,7 @@ class SessionForm extends React.Component {
     this.props.processForm({email: 'demouser', password: '123123'});
   }
 
-  notRegisteredYet(){
-    if (this.props.formType === "login"){
-      return (
-        <p className="not-yet-registered">
-          Not registered with us yet? <Link className="auth-link" to='/signup'>Sign up</Link>
-        </p>
-      )
-    }
-  }
 
-  submitButton(){
-    if (this.props.formType === "signup"){
-      return (
-        <div>
-          <p class="subtext">
-            Your name is public. We'll use your email address to send you updates, and your location to find Meetups near you
-          </p>
-          <input className="submit-button-signup" type="submit" value={this.props.formType}/>
-          <p class="subtext">
-            When you "Continue", you agree to Meetup's Terms of Service. We will manage information about you as described in our Privacy Policy, and Cookie Policy.
-          </p>
-        </div>
-      )
-    } else {
-      return (
-
-        <input className="submit-button-login" type="submit" value={this.props.formType}/>
-
-      )
-    }
-
-  }
-
-  alternativeAuth(){
-    if (this.props.formType === "login"){
-      return (
-        <div className="alternative-auth">
-          <h2 className="or">OR</h2>
-          <button onClick={() => this.demoLogin()} className="submit-button-signup" type="submit">Demo Sign In</button>
-        </div>
-      )
-    }
-  }
 
   render(){
     return (
@@ -76,7 +34,9 @@ class SessionForm extends React.Component {
             <h1 className="form-title">{this.props.formType === "login" ? "Log in" : "Sign up"}</h1>
             <img className="lock-img" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/lock-icon.png"/>
           </header>
-          {this.notRegisteredYet()}
+          <p className="not-yet-registered">
+            Not registered with us yet? <Link className="auth-link" to='/signup'>Sign up</Link>
+          </p>
         </div>
         <form className="auth-form" onSubmit={this.handleSubmit}>
           <section className="form-item">
@@ -101,9 +61,12 @@ class SessionForm extends React.Component {
             value={this.state.password}
             />
           </section>
-          { this.submitButton() }
+          <input className="submit-button-login" type="submit" value={this.props.formType}/>
         </form>
-        { this.alternativeAuth()}
+        <div className="alternative-auth">
+          <h2 className="or">OR</h2>
+          <button onClick={() => this.demoLogin()} className="submit-button-signup" type="submit">Demo Sign In</button>
+        </div>
       </div>
     )
   }

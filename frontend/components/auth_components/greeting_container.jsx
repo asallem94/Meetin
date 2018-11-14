@@ -13,15 +13,15 @@ class Greeting extends React.Component{
     if (loggedIn){
      return(
        <nav>
-       <h1>Hello {currentUser.email}!</h1>
-       <button onClick={logout}>Logout</button>
+        <h1>Hello {currentUser.email}!</h1>
+        <button onClick={logout}>Logout</button>
        </nav>
      )
    }else{
      return (
        <div>
          <Navigation/>
-      </div>
+       </div>
      )
    }
  }

@@ -54,15 +54,19 @@ class UserForm extends React.Component {
             />
           </section>
           <div className="submitting-section">
-            <p class="subtext">
+            <p className="subtext">
               Your name is public. We'll use your email address to send you updates, and your location to find Meetups near you
             </p>
             <input className="submit-button-signup" type="submit" value="Sign Up"/>
-            <p class="subtext ending-subtext">
+            <p className="subtext ending-subtext">
               When you "Continue", you agree to Meetup's Terms of Service. We will manage information about you as described in our Privacy Policy, and Cookie Policy.
             </p>
           </div>
+          <section className="already-user">
+            Already a member? <Link to="/signin">Log in</Link>.
+          </section>
         </form>
+
       </div>
     )
   }
