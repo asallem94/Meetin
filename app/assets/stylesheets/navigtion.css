@@ -1,0 +1,51 @@
+/*  navigation style components */
+.navigation-container {
+  /* position: fixed; */
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px solid grey
+}
+
+.logo {
+  color: #eb2040;
+  font-family: 'Pacifico', cursive;
+  font-size: 50px;
+  margin: 10px;
+  text-decoration: none;
+}
+.nav-menu {
+  width: 500px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+}
+
+.new-group-button {
+  border-right: 1px solid gray;
+  font-family: helvetica,arial,sans-serif;
+  font-weight: 400;
+  padding: 15px;
+  /* padding-right: 25; */
+  margin: auto 0;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #eb2040;
+}
+
+.auth-item {
+  font-family: helvetica,arial,sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  text-decoration: none;
+  margin: auto 0;
+  color: gray;
+  padding: auto 30px;
+  font-weight: bold;
+}
+
+.auth-item:hover {
+  color: #eb2040;
+}

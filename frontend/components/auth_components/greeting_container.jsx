@@ -26,6 +26,7 @@ class Greeting extends React.Component{
    }
  }
 }
+//find page to find groups and events
 // <Homepage/>
 
 

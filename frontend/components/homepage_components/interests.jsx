@@ -3,16 +3,19 @@ import { connect } from 'react-redux'
 class Interests extends React.Component {
   constructor(props){
     super(props)
-  }
-  ComponentDidMount(){
 
   }
+  ComponentDidMount(){
+    debugger
+    this.props.fetchAllInterests()
+  }
   interestItem(){
-    this.props.interests.map((interest)=>{
+    debugger
+    return this.props.interests.map((interest)=>{
       return (
         <li className="interest-item">
-          <h3>{interest.title}</h3>
-          <img src={interest.img_url} alt="">
+          <h3>{interest.title_topics}</h3>
+          <img src={interest.img_url} alt=""/>
         </li>
       )
     })
@@ -22,22 +25,23 @@ class Interests extends React.Component {
   }
   render(){
     return (
-      <div className="interests-container">
-        {interestItem()}
-      </div>
+      <ul className="interests-container">
+        {this.interestItem()}
+      </ul>
     );
   }
-};
+}
 
 const msp = (state) => {
+  debugger
   return ({
     interests: state.entities.interests
   })
 }
 const mdp = (dispatch) => {
   return ({
-    interests: ()=>( dispatch(fetchAllInterests()) )
-  }
+    fetchInterests: () => dispatch(fetchInterests())
+  });
 }
 const InterestsContainer = connect(msp, mdp)(Interests);
 export default InterestsContainer

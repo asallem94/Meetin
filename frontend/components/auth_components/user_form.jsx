@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
-class SessionForm extends React.Component {
+class UserForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {email: '', password: ''};
@@ -27,7 +27,7 @@ class SessionForm extends React.Component {
   notRegisteredYet(){
     if (this.props.formType === "login"){
       return (
-        <p className="not-yet-registered">
+        <p>
           Not registered with us yet? <Link className="auth-link" to='/signup'>Sign up</Link>
         </p>
       )
@@ -48,11 +48,7 @@ class SessionForm extends React.Component {
         </div>
       )
     } else {
-      return (
-
-        <input className="submit-button-login" type="submit" value={this.props.formType}/>
-
-      )
+      <input className="submit-button-login" type="submit" value={this.props.formType}/>
     }
 
   }
@@ -61,8 +57,7 @@ class SessionForm extends React.Component {
     if (this.props.formType === "login"){
       return (
         <div className="alternative-auth">
-          <h2 className="or">OR</h2>
-          <button onClick={() => this.demoLogin()} className="submit-button-signup" type="submit">Demo Sign In</button>
+          <button onClick={() => this.demoLogin()} className="submit-button" type="submit" value="Demo Sign In"/>
         </div>
       )
     }
