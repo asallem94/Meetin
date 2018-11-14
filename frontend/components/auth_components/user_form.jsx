@@ -51,7 +51,7 @@ class UserForm extends React.Component {
           </section>
           <section className="form-item">
             <label>
-              Email address
+              Email 
             </label>
             <input
               className="input-field"
