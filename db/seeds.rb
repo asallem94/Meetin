@@ -84,7 +84,7 @@ User.create!(
   bio: "Tech is a great industry to explore creativity and passion"
 )
 User.create!(
-  name: "Machu Duek",
+  name: "Mashu Duek",
   password: "123123",
   email: "test3@gmail.com",
   profile_img_url: "https://secure.gravatar.com/avatar/50b8ca5b7e2c9368f40d81f5aba0914a?secure=true&size=300",
