@@ -17,63 +17,20 @@ class UserForm extends React.Component {
 
   handleSubmit(event){
     event.preventDefault;
-    this.props.processForm(this.state);
+    this.props.signup(this.state);
   }
 
   demoLogin(){
-    this.props.processForm({email: 'demouser', password: '123123'});
+    this.props.signup({email: 'demouser', password: '123123'});
   }
 
-  notRegisteredYet(){
-    if (this.props.formType === "login"){
-      return (
-        <p>
-          Not registered with us yet? <Link className="auth-link" to='/signup'>Sign up</Link>
-        </p>
-      )
-    }
-  }
-
-  submitButton(){
-    if (this.props.formType === "signup"){
-      return (
-        <div>
-          <p class="subtext">
-            Your name is public. We'll use your email address to send you updates, and your location to find Meetups near you
-          </p>
-          <input className="submit-button-signup" type="submit" value={this.props.formType}/>
-          <p class="subtext">
-            When you "Continue", you agree to Meetup's Terms of Service. We will manage information about you as described in our Privacy Policy, and Cookie Policy.
-          </p>
-        </div>
-      )
-    } else {
-      <input className="submit-button-login" type="submit" value={this.props.formType}/>
-    }
-
-  }
-
-  alternativeAuth(){
-    if (this.props.formType === "login"){
-      return (
-        <div className="alternative-auth">
-          <button onClick={() => this.demoLogin()} className="submit-button" type="submit" value="Demo Sign In"/>
-        </div>
-      )
-    }
-  }
 
   render(){
     return (
       <div className="form-layout">
-        <div className="formInfo">
-          <header className="form-header">
-            <h1 className="form-title">{this.props.formType === "login" ? "Log in" : "Sign up"}</h1>
-            <img className="lock-img" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/lock-icon.png"/>
-          </header>
-          {this.notRegisteredYet()}
-        </div>
-        <form className="auth-form" onSubmit={this.handleSubmit}>
+        <form className="user-form" onSubmit={this.handleSubmit}>
+          <h1 className="registering-form-title">Sign up</h1>
+          <button onClick={() => this.demoLogin()} className="submit-button-signup" type="submit">Demo Sign In</button>
           <section className="form-item">
             <label>
               Email address:
@@ -96,14 +53,21 @@ class UserForm extends React.Component {
             value={this.state.password}
             />
           </section>
-          { this.submitButton() }
+          <div className="submitting-section">
+            <p class="subtext">
+              Your name is public. We'll use your email address to send you updates, and your location to find Meetups near you
+            </p>
+            <input className="submit-button-signup" type="submit" value="Sign Up"/>
+            <p class="subtext ending-subtext">
+              When you "Continue", you agree to Meetup's Terms of Service. We will manage information about you as described in our Privacy Policy, and Cookie Policy.
+            </p>
+          </div>
         </form>
-        { this.alternativeAuth()}
       </div>
     )
   }
 }
 
-export default withRouter(SessionForm)
+export default withRouter(UserForm)
 
 // <input className="submit-button" type="submit" value={this.props.formType}/>

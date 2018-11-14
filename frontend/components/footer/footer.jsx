@@ -29,11 +29,11 @@ const Footer = () => {
             Follow us
           </p>
           <ul className="follow-icons">
-            <li className="follow-icon"><i class="fab fa-facebook-square"></i></li>
-            <li className="follow-icon"><i class="fab fa-instagram"></i></li>
-            <li className="follow-icon"><i class="fas fa-globe-americas"></i></li>
-            <li className="follow-icon"><i class="fab fa-github"></i></li>
-            <li className="follow-icon"><i class="fas fa-envelope"></i></li>
+            <li className="follow-icon"><i className="fab fa-facebook-square"></i></li>
+            <li className="follow-icon"><i className="fab fa-instagram"></i></li>
+            <li className="follow-icon"><i className="fas fa-globe-americas"></i></li>
+            <li className="follow-icon"><i className="fab fa-github"></i></li>
+            <li className="follow-icon"><i className="fas fa-envelope"></i></li>
 
           </ul>
           <LanguageSelector/>
