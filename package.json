@@ -32,8 +32,8 @@
     "postinstall": "webpack --mode=production"
   },
   "engines": {
-    "node": "11.0.0",
-    "npm": "6.4.1"
+    "node": "6.9.1",
+    "npm": "3.10.8"
   },
   "repository": {
     "type": "git",
