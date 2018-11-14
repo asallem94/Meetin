@@ -19,3 +19,5 @@ bundle.js.map
 /yarn-error.log
 
 .byebug_history
+
+package-lock.json
