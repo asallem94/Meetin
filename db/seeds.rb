@@ -6,10 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "destroy interest categories"
-Interest.destroy_all
+GroupMembership.destroy_all
+Group.destroy_all
 User.destroy_all
-puts "create interests"
+Interest.destroy_all
+
 interests = [
   'Outdoor & Adventure',
    'Tech',
@@ -68,10 +69,6 @@ interests.each.with_index do |interest, indx|
   Interest.create!(topic_titles: interest, picture_url: interestsPhotoURLS[indx])
 end
 
-puts "destroying users"
-User.destroy_all
-puts "creating users"
-
 u1 = User.create!(
   name: "Sallem Ahmed",
   password: "123123",
@@ -109,10 +106,6 @@ u4 = User.create!(
   lng: -74.003459
 )
 
-puts "destroying groups"
-Group.destroy_all
-puts "creating groups"
-
 aA = Group.new(
   organizer_id: u1.id,
   title: "App Academy Study Group",
@@ -134,10 +127,6 @@ fp = Group.create!(
   lng: -74.647900,
   private: false
 )
-
-puts "destroying group memberships"
-GroupMembership.destroy_all
-puts "creating group Memberships"
 
 GroupMembership.create(user_id: u2.id, group_id: aA.id)
 GroupMembership.create(user_id: u3.id, group_id: aA.id)
