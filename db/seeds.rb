@@ -128,6 +128,6 @@ fp = Group.create!(
   private: false
 )
 
-GroupMembership.create(user_id: u2.id, group_id: aA.id)
-GroupMembership.create(user_id: u3.id, group_id: aA.id)
-GroupMembership.create(user_id: u4.id, group_id: fp.id)
+GroupMembership.create!(user_id: u2.id, group_id: aA.id)
+GroupMembership.create!(user_id: u3.id, group_id: aA.id)
+GroupMembership.create!(user_id: u4.id, group_id: fp.id)
