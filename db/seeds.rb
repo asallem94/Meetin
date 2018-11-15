@@ -10,7 +10,8 @@ puts "destroy interest categories"
 Interest.destroy_all
 User.destroy_all
 puts "create interests"
-interests = ['Outdoor & Adventure',
+interests = [
+  'Outdoor & Adventure',
    'Tech',
     'Family',
      'Health & Wellness',
@@ -33,10 +34,11 @@ interests = ['Outdoor & Adventure',
                       'Hobbies & Crafts',
                        'Fashion & Beauty',
                         'Social',
-                         'Career & Business']
+                         'Career & Business'
+]
 
-interestsPhotoURLS =
-  ['https://secure.meetupstatic.com/photos/event/2/e/a/7/600_450131943.jpeg',
+interestsPhotoURLS = [
+  'https://secure.meetupstatic.com/photos/event/2/e/a/7/600_450131943.jpeg',
   'https://secure.meetupstatic.com/photos/event/2/e/a/d/600_450131949.jpeg',
   'https://secure.meetupstatic.com/photos/event/2/e/9/c/600_450131932.jpeg',
   'https://secure.meetupstatic.com/photos/event/2/e/a/e/600_450131950.jpeg',
@@ -60,7 +62,7 @@ interestsPhotoURLS =
   'https://secure.meetupstatic.com/photos/event/2/e/9/e/600_450131934.jpeg',
   'https://secure.meetupstatic.com/photos/event/2/e/a/b/600_450131947.jpeg',
   'https://secure.meetupstatic.com/photos/event/2/e/9/7/600_450131927.jpeg'
-  ]
+]
 
 interests.each.with_index do |interest, indx|
   Interest.create!(topic_titles: interest, picture_url: interestsPhotoURLS[indx])
@@ -86,7 +88,7 @@ u2 = User.create!(
   profile_img_url: "https://secure.gravatar.com/avatar/d762b266d546dd1bd32ea9f56828f7d8?secure=true&size=300",
   bio: "Tech is a great industry to explore creativity and passion",
   lat: 40.629956,
-  lng: -74.010143,
+  lng: -74.010143
 )
 u3 = User.create!(
   name: "Mashu Duek",
