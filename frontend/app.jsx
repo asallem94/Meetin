@@ -10,14 +10,14 @@ import Footer from './components/footer/footer';
 import Findpage from './components/findpage';
 
 const App = () => (
-  <div>
+  <div className="route-wraper" >
     <header>
       <NavigationContainer/>
-      <ProtectedFromSplat exact path="/" component={Homepage}/>
-      <ProtectedRoute exact path="/find" component={Findpage}/>
-      <AuthRoute exact path="/login" component={LoginFormContainer}/>
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </header>
+    <ProtectedFromSplat exact path="/" component={Homepage}/>
+    <ProtectedRoute exact path="/find" component={Findpage}/>
+    <AuthRoute exact path="/login" component={LoginFormContainer}/>
+    <AuthRoute exact path="/signup" component={SignupFormContainer} />
     <Footer/>
   </div>
 );

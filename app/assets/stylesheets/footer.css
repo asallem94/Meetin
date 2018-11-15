@@ -4,7 +4,7 @@
 }
 
 .footer-content {
-  width: 60%;
+  width: 900px;
   margin: auto;
 
 }
@@ -26,7 +26,8 @@
 .footer-topic {
   color: white;
   list-style: none;
-  padding: 10px;
+  padding-right: 40px;
+  padding-top: 10px; 
   font-size: 15px;
   font-family: helvetica,arial,sans-serif;
 }

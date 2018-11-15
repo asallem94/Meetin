@@ -20,6 +20,8 @@
   width: 300px;
 }
 .on-mobile-img {
+  object-fit: contain;
+  width: 40%;
   height: 50px;
   margin: 10px;
 }

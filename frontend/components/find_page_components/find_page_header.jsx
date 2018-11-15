@@ -1,8 +1,10 @@
 import React from 'react';
 
+
+
 const FindPageHeader = () => {
   return (
-    <header>
+    <header className="find-page-header-component">
       <div className="find-page-header">
         <h1 className="find-page-header-title">
           Find a Meetin

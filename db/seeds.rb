@@ -75,28 +75,36 @@ u1 = User.create!(
   password: "123123",
   email: "test1@gmail.com",
   profile_img_url: "https://media.licdn.com/dms/image/C4E03AQEBtsM5AW83wA/profile-displayphoto-shrink_800_800/0?e=1547683200&v=beta&t=72gP60VElKlgq6kVtlu_QkXBTiKz4sWKGIHhdXScs6E",
-  bio: "I am trying to get to know more people in the tech industry and build my knowledge through the network I create"
+  bio: "I am trying to get to know more people in the tech industry and build my knowledge through the network I create",
+  lat: 40.699512,
+  lng: -73.804964
 )
 u2 = User.create!(
   name: "Simcha Cohen",
   password: "123123",
   email: "test2@gmail.com",
   profile_img_url: "https://secure.gravatar.com/avatar/d762b266d546dd1bd32ea9f56828f7d8?secure=true&size=300",
-  bio: "Tech is a great industry to explore creativity and passion"
+  bio: "Tech is a great industry to explore creativity and passion",
+  lat: 40.629956,
+  lng: -74.010143,
 )
 u3 = User.create!(
   name: "Mashu Duek",
   password: "123123",
   email: "test3@gmail.com",
   profile_img_url: "https://secure.gravatar.com/avatar/50b8ca5b7e2c9368f40d81f5aba0914a?secure=true&size=300",
-  bio: "I love creating websites and have been specializing in frontend applications with javascript"
+  bio: "I love creating websites and have been specializing in frontend applications with javascript",
+  lat: 40.854685,
+  lng: -73.907459
 )
 u4 = User.create!(
   name: "Demo User",
   password: "123123",
   email: "test4@gmail.com",
   profile_img_url: "https://pbs.twimg.com/profile_images/542526971373056000/rYcnP8zz_400x400.jpeg",
-  bio: "I am not real, but I am existant.  I am window watching the contents of this web application.  However I am enjoying this pleasant demo."
+  bio: "I am not real, but I am existant.  I am window watching the contents of this web application.  However I am enjoying this pleasant demo.",
+  lat: 40.755293,
+  lng: -74.003459
 )
 
 puts "destroying groups"
@@ -126,7 +134,7 @@ fp = Group.create!(
 )
 
 puts "destroying group memberships"
-Group.destroy_all
+GroupMembership.destroy_all
 puts "creating group Memberships"
 
 GroupMembership.create(user_id: u2.id, group_id: aA.id)

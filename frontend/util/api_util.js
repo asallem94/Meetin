@@ -7,14 +7,14 @@ export const fetchInterests = () => {
 
 export const fetchFindableGroups = (filters) => {
   return $.ajax({
-    url: 'api/interests',
+    url: 'api/groups',
     method: "GET",
-    data: filters,
+    data: {filters},
   });
 };
 export const fetchGroup = (id) => {
   return $.ajax({
-    url: `api/interests/${id}`,
+    url: `api/groups/${id}`,
     method: "GET",
   });
 };

@@ -280,7 +280,7 @@ body {
 }
 .header-video {
   width: 100%;
-  /* position: absolute; */
+  position: absolute;
 }
 
 .header-title {
@@ -514,4 +514,3 @@ body {
 
 
  */
-

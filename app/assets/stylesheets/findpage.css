@@ -1,0 +1,133 @@
+.find-page-container-content {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: nowrap column;
+}
+.find-page-header-component {
+  width: 100%;
+  background-color: #eb2040;
+}
+
+.find-page-header {
+  margin: 0px auto;
+  width: 400px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.find-page-header-title {
+  color: white;
+  font-size: 35px;
+  margin: 10px;
+}
+
+.subheader {
+  margin: 5px;
+}
+
+.search-component {
+  width: 1000px;
+  height: 75px;
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: space-between;
+  background-color: black;
+  z-index: 2;
+  color: white;
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 0 auto;
+  position: relative;
+    top: -40px
+}
+
+.filters-container {
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchbar-container {
+  display: flex;
+  background-color: white;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.location-filter-section {
+  width: 250px;
+  padding: 5px;
+}
+
+.location-inputs {
+  text-decoration: underline;
+  padding: 5px;
+}
+
+.fa-search {
+  color: lightgray;
+  width: 30px;
+  font-size: 25px;
+  margin: 5px;
+
+}
+
+.search-input {
+  border: 0 solid white;
+  padding: 5px;
+  width: 80%;
+  margin: 5px;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.calendar-groups-tabs {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-flow: nowrap row;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: space-around;
+}
+
+
+.calendar-groups-tab-item {
+  list-style: none;
+  background-color: transparent;
+  color: lightgray;
+  width: 75px;
+  padding: 15px;
+  text-align: center;
+}
+
+.left-tab-item {
+  border-left: 0.5px solid gray;
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  box-shadow: 2px 2px 4px solid black;
+}
+
+.right-tab-item {
+  border-right: 0.5px solid gray;
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.calendar-groups-tab-item:hover {
+  background-color: gray;
+  color:white;
+  box-shadow: inset 2px -2px 10px black;
+
+}

@@ -14,16 +14,19 @@ class Group < ApplicationRecord
     source: :user
 
   def members_count
-    self.members.count.ids
+    self.members.count
   end
 
   def sample_members(num)
     self.members.limit(num)
   end
   def groups_by_filters(filters)
-    r = filters[:location][:radius]/68.703
-    lng = filters[:location][:lng]
-    lat = filters[:location][:lat]
+    debugger
+    r = filters[:radius]/68.703
+    lng = filters[:lng]
+    lat = filters[:lat]
+    querySearch = filters[:querySearch]
+
     # filters:
       # location:
         # radius:
@@ -39,6 +42,7 @@ class Group < ApplicationRecord
 
       # Foo.where(foo: 'bar').or.where(bar: 'bar') # use for interest filters
       Group.where("((lng - :lng) * (lng - :lng)) + ((lat - :lat) * (lat - :lat)) < :r * :r", {lng: lng, lat:lat, r: r})
+        .where("title LIKE :querySearch", querySearch: "%#{querySearch}%")
   end
 
 
