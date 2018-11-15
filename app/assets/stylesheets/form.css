@@ -127,7 +127,7 @@ img {
 }
 
 .auth-link {
-  color: rgba(26,34,209);
+  color: rgba(26,34,209, 1);
   text-decoration: none;
 }
 .auth-link:hover {
