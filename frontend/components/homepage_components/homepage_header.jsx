@@ -17,11 +17,11 @@ const HomepageHeader = () => {
         </Link>
       </section>
 
-      <video autoPlay muted loop className="header-video">
-        <source src="https://www.meetup.com/mu_static/en-US/video.dddafbfe.mp4"/>
+      <video autoPlay muted loop className="header-video" src="https://www.meetup.com/mu_static/en-US/video.dddafbfe.mp4">
+
       </video>
 
     </div>
   );
 };
-export default HomepageHeader
+export default HomepageHeader;

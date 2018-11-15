@@ -1,28 +1,30 @@
 .OnMobile-section {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-flow: wrap row;
   align-items: center;
 }
 .OnMobile-container {
+  width: 350px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   height: 100px;
+  margin: 0 10px;
   box-sizing: border-box;
   padding: 10px;
 
 }
 .phone-img{
-  width: 120px;
+  width: 300px;
 }
 .on-mobile-img {
-  height: 30px;
-  margin: 8px;
+  height: 50px;
+  margin: 10px;
 }
 .Get-the-app {
   margin: 15px;
-  font-size: 15px;
+  font-size: 25px;
   color: rgba(44, 62, 72, 1);
 }

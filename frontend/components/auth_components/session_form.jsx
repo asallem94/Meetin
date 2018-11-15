@@ -70,17 +70,17 @@ class SessionForm extends React.Component {
           <ul>
             {this.displayErrors()}
           </ul>
-          <input className="submit-button-login" type="submit" value={this.props.formType}/>
+          <input className="submit-button-login" type="submit" value="Log in"/>
         </form>
         <div className="alternative-auth">
           <h2 className="or">OR</h2>
           <button onClick={() => this.demoLogin()} className="submit-button-signup" type="submit">Demo Sign In</button>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default withRouter(SessionForm)
+export default withRouter(SessionForm);
 
 // <input className="submit-button" type="submit" value={this.props.formType}/>
