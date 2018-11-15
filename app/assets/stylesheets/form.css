@@ -63,7 +63,7 @@ img {
   padding: 0 50px;
   margin: 0 auto;
   border: 1px solid #dcdcdc;
-  border-top: 1px solid rgba(26,34,209);
+  border-top: 1px solid rgba(26,34,209, 1);
 }
 
 .form-item {
@@ -100,7 +100,7 @@ img {
 }
 
 .input-field:focus {
-  border: 3px solid rgba(26,34,209);
+  border: 3px solid rgba(26,34,209, 1);
 }
 
 .form-header {
