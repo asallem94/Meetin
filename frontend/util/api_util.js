@@ -12,3 +12,9 @@ export const fetchFindableGroups = (filters) => {
     data: filters,
   });
 };
+export const fetchGroup = (id) => {
+  return $.ajax({
+    url: `api/interests/${id}`,
+    method: "GET",
+  });
+};

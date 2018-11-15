@@ -32,6 +32,19 @@ class User < ApplicationRecord
     self.session_token ||= self.generate_session_token!
   end
 
+  has_many :organized_groups,
+    foreign_key: :organizer_id,
+    class_name: :Group
+
+  has_many :group_memberships,
+    foreign_key: :user_id,
+    class_name: :GroupMembership
+
+  has_many :groups,
+    through: :group_memberships,
+    source: :group
+
+
   # private
   def generate_session_token!
     SecureRandom.urlsafe_base64
