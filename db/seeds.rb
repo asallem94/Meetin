@@ -106,7 +106,7 @@ u4 = User.create!(
   lng: -74.003459
 )
 
-aA = Group.new(
+aA = Group.create!(
   organizer_id: u1.id,
   title: "App Academy Study Group",
   img_url: "https://www.cs.helsinki.fi/webfm_send/1831",
