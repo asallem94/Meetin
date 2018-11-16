@@ -11,7 +11,8 @@ const usersReducer = ( state = {}, action ) => {
       defaultState[action.user.id] = action.user;
       return defaultState;
     case RECEIVE_GROUP:
-      return merge({}, state, action.user);
+    // debugger
+      return merge({}, state, action.users);
     case RECEIVE_ERRORS:
       return action.errors;
     default:

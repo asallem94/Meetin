@@ -21,11 +21,11 @@ class Group < ApplicationRecord
     self.members.limit(num)
   end
   def self.groups_by_filters(filters)
-    # debugger
     r = (filters[:radi].to_i)/68.703
     lng = filters[:coord][:lng]
     lat = filters[:coord][:lat]
     querySearch = filters[:query]
+
     # filters:
       # {
       # queryType:"Groups",

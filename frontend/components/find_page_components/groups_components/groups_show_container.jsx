@@ -30,7 +30,7 @@ class GroupShow extends React.Component {
 
 const msp = (state, ownProp) => {
   const currUserId = state.session.currentUserId;
-  
+  // debugger
   return {
     currUserId: currUserId,
     group: state.entities.groups[ownProp.match.params.groupId] ,
