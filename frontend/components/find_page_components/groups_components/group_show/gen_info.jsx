@@ -19,6 +19,7 @@ const GenInfo = ({group, users}) => {
           <li>{(group.private) ? "Private" : "Public"} group</li>
         </div>
         <div className="group-organizer-info">
+          <img className="profile-circle" src={users[group.organizer_id]}/>
           <section>
             <li>Organized by</li>
           </section>
@@ -27,8 +28,7 @@ const GenInfo = ({group, users}) => {
 
     </header>
   )
-  // <img className="profile-circle" src={users[group.organizer_id]}/>
-  // <li>{users[group.organizer_id].name}</li>
 };
 
+// <li>{users[group.organizer_id].name}</li>
 export default GenInfo;

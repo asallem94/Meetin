@@ -33,6 +33,8 @@ class SearchBar extends React.Component {
   invokeQuery(e){
     e.preventDefault;
     this.props.fetchFindableGroups(this.state.filters);
+    // debugger
+    // this.setState({query: ""});
   }
 
   updatefilters(filter){
@@ -56,7 +58,6 @@ class SearchBar extends React.Component {
   }
   handleNewRadi(e){
     const val = e.target.value;
-    debugger
     this.setState({radi: val});
   }
   render(){
@@ -109,20 +110,21 @@ class SearchBar extends React.Component {
 
 const msp = (state) => {
   const currUserId = state.session.currentUserId;
+  const filters = {
+    queryType:"Groups",
+    filters:{
+      query: "",
+      radi: 100,
+      coord:{
+        lng: state.entities.users[currUserId].lng,
+        lat: state.entities.users[currUserId].lat
+      }
+    }
+  };
   return {
     currentUser: state.entities.users[currUserId],
     groups: Object.values(state.entities.groups),
-    filters: state.ui.filters || {
-      queryType:"Groups",
-      filters:{
-        query: "",
-        radi: 50,
-        coord:{
-          lng: this.props.currentUser.lng,
-          lat: this.props.currentUser.lat
-        }
-      }
-    }
+    filters: state.ui.filters
   };
 };
 

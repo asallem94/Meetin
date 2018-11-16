@@ -12,4 +12,7 @@ json.users do
       json.partial! '/api/users/user', user: user
     end
   end
+  json.set! @group.organizer_id do
+    json.partial! '/api/users/user', user: @group.organizer
+  end
 end

@@ -1,29 +1,32 @@
 import * as APIUtil from "../util/api_util";
 
-export const REQUEST_ALL_INTERESTS = "REQUEST_ALL_INTERESTS";
-export const REQUEST_FINDABLE_GROUPS = "REQUEST_FINDABLE_GROUPS";
-export const REQUEST_GROUP = "REQUEST_GROUP";
-export const REQUEST_FINDABLE_EVENTS = "REQUEST_FINDABLE_EVENTS";
-export const REQUEST_EVENT = "REQUEST_EVENT";
+export const RECEIVE_ALL_INTERESTS = "RECEIVE_ALL_INTERESTS";
+export const RECEIVE_FINDABLE_GROUPS = "RECEIVE_FINDABLE_GROUPS";
+export const RECEIVE_GROUP = "RECEIVE_GROUP";
+export const RECEIVE_FINDABLE_EVENTS = "RECEIVE_FINDABLE_EVENTS";
+export const RECEIVE_EVENT = "RECEIVE_EVENT";
 
-const requestFindableGroups = (groups) => {
+
+
+const receiveFindableGroups = (groups) => {
   return {
-    type: REQUEST_FINDABLE_GROUPS,
+    type: RECEIVE_FINDABLE_GROUPS,
     groups
   };
 };
 
-const requestGroup = ({group, users}) => {
+const receiveGroup = ({group, users}) => {
   return {
-    type: REQUEST_GROUP,
+    type: RECEIVE_GROUP,
     group,
     users
   };
 };
 
-const requestAllInterests = (interests) => {
+const receiveAllInterests = (interests) => {
+  debugger
   return {
-    type: REQUEST_ALL_INTERESTS,
+    type: RECEIVE_ALL_INTERESTS,
     interests
   };
 };
@@ -31,14 +34,14 @@ const requestAllInterests = (interests) => {
 export const fetchFindableGroups = (filters) => {
   return (dispatch) => {
     return APIUtil.fetchFindableGroups(filters).then((response)=>{
-      return dispatch(requestFindableGroups(response));
+      return dispatch(receiveFindableGroups(response));
     });
   };
 };
 export const fetchGroup = (id) => {
   return (dispatch) => {
     return APIUtil.fetchGroup(id).then((response)=>{
-      return dispatch(requestGroup(response));
+      return dispatch(receiveGroup(response));
     });
   };
 };
@@ -46,7 +49,7 @@ export const fetchGroup = (id) => {
 export const fetchInterests = () => {
   return (dispatch) => {
     return APIUtil.fetchInterests().then((response) => {
-      return dispatch(requestAllInterests(response));
+      return dispatch(receiveAllInterests(response));
     });
   };
 };

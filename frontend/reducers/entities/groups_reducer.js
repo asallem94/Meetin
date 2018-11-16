@@ -1,4 +1,4 @@
-import { REQUEST_FINDABLE_GROUPS, REQUEST_GROUP } from '../../actions/meetin_actions';
+import { RECEIVE_FINDABLE_GROUPS, RECEIVE_GROUP } from '../../actions/meetin_actions';
 
 import { merge } from 'lodash';
 
@@ -7,9 +7,9 @@ const groupsReducer = ( state = {}, action ) => {
   let defaultState = merge({}, state);
 
   switch(action.type){
-    case REQUEST_FINDABLE_GROUPS:
+    case RECEIVE_FINDABLE_GROUPS:
       return action.groups;
-    case REQUEST_GROUP:
+    case RECEIVE_GROUP:
       return merge({}, state, { [action.group.id]: action.group });
     default:
       return state;

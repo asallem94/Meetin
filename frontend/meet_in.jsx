@@ -4,7 +4,7 @@ import configureStore from './store/store';
 import App from './app'
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
-import {fetchInterests} from './actions/meetin_actions'
+// import {fetchInterests} from './actions/meetin_actions'
 
 const Main = ({store}) => {
   return (
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchInterests = fetchInterests;
+  // window.fetchInterests = fetchInterests;
   // window.logout = logout;
   // window.signup = signup;
   const root = document.getElementById("root");
