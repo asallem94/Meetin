@@ -1,4 +1,4 @@
-json.extract! user, :id, :name, :email, :profile_img_url, :bio, :lng, :lat
+json.extract! user, :id, :name, :profile_img_url, :bio, :email, :lng, :lat
 
 # debugger
 # json.array![(user.groups.ids)

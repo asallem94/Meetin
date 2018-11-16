@@ -13,10 +13,11 @@ const requestFindableGroups = (groups) => {
   };
 };
 
-const requestGroup = (group) => {
+const requestGroup = ({group, users}) => {
   return {
     type: REQUEST_GROUP,
-    group
+    group,
+    users
   };
 };
 

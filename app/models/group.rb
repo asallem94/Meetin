@@ -20,29 +20,27 @@ class Group < ApplicationRecord
   def sample_members(num)
     self.members.limit(num)
   end
-  def groups_by_filters(filters)
-    debugger
-    r = filters[:radius]/68.703
-    lng = filters[:lng]
-    lat = filters[:lat]
-    querySearch = filters[:querySearch]
-
+  def self.groups_by_filters(filters)
+    # debugger
+    r = (filters[:radi].to_i)/68.703
+    lng = filters[:coord][:lng]
+    lat = filters[:coord][:lat]
+    querySearch = filters[:query]
     # filters:
-      # location:
-        # radius:
-        # lng:
-        # lat:
-      # interests: eventually
+      # {
+      # queryType:"Groups",
+      # filters:{
+      #   query: "",
+      #   radi: 5,
+      #   coord:{
+      #     lng: this.props.currentUser.lng,
+      #     lat: this.props.currentUser.lat
+      #   }
+      # }
 
-      # create bounds from radius:
-      # less than
-      # Group.where("lng BETWEEN ? and ?", lng+r, lng-r)
-      #   .where("lat BETWEEN ? and ?", lat+r, lat-r)
-
-
-      # Foo.where(foo: 'bar').or.where(bar: 'bar') # use for interest filters
       Group.where("((lng - :lng) * (lng - :lng)) + ((lat - :lat) * (lat - :lat)) < :r * :r", {lng: lng, lat:lat, r: r})
-        .where("title LIKE :querySearch", querySearch: "%#{querySearch}%")
+        .where("title LIKE :querySearch OR description LIKE :querySearch", querySearch: "%#{querySearch}%")
+
   end
 
 

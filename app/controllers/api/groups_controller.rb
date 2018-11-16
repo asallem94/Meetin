@@ -5,7 +5,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = Group.groups_by_filters(params[:filters])
   end
 
   def new

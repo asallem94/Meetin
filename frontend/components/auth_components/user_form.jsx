@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 class UserForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = {email: '', password: ''};
+    this.state = {name:'', email: '', password: '', lat: '', lng: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCoords = this.handleCoords.bind(this);
   }
 
   update(field){
@@ -14,7 +15,15 @@ class UserForm extends React.Component {
       this.setState({[field]: event.currentTarget.value});
     };
   }
-
+  componentDidMount(){
+    navigator.geolocation.getCurrentPosition(this.handleCoords);
+  }
+  handleCoords(location){
+    this.setState({
+      lat: location.coords.latitude,
+      lng: location.coords.longitude
+    });
+  }
   handleSubmit(event){
     event.preventDefault;
     this.props.signup(this.state);
@@ -34,10 +43,10 @@ class UserForm extends React.Component {
 
   render(){
     return (
-      <div className="form-layout">
+      <div className="signout-form-layout">
         <form className="user-form" onSubmit={this.handleSubmit}>
           <h1 className="registering-form-title">Sign up</h1>
-          <button onClick={() => this.demoLogin()} className="submit-button-signup" type="submit">Demo Sign In</button>
+          <button onClick={() => this.demoLogin()} className="submit-button-signup demo-signup" type="submit">Demo Sign In</button>
           <section className="form-item">
             <label>
               Your name
@@ -45,8 +54,8 @@ class UserForm extends React.Component {
             <input
               className="input-field"
               type="text"
-              onChange={this.update('email')}
-              value={this.state.email}
+              onChange={this.update('name')}
+              value={this.state.name}
             />
           </section>
           <section className="form-item">
@@ -72,7 +81,7 @@ class UserForm extends React.Component {
             />
           </section>
           <div className="submitting-section">
-            <p className="subtext">
+            <p className="subtext begining-subtext">
               Your name is public. We'll use your email address to send you updates, and your location to find Meetups near you
             </p>
             <ul>

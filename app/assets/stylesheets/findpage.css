@@ -36,7 +36,7 @@
   flex-flow: nowrap row;
   justify-content: space-between;
   background-color: black;
-  z-index: 2;
+  z-index: 0;
   color: white;
   box-sizing: border-box;
   padding: 15px;
@@ -62,7 +62,11 @@
 }
 
 .location-filter-section {
-  width: 250px;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: nowrap row;
+  /* width: 250px; */
+  align-items: baseline;
   padding: 5px;
 }
 

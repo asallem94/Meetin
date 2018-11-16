@@ -12,11 +12,11 @@ const Homepage = () => {
     <div className="homepage-container">
       <HomepageHeader/>
       <Interests/>
-      <OnMobile/>
     </div>
   );
 };
 
+// <OnMobile/>
 
 export default Homepage;
 

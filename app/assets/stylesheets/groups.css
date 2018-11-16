@@ -1,16 +1,20 @@
 .groups-index-item {
+  position: relative;
   width: 300px;
   height: 200px;
   object-fit: cover;
   list-style: none;
   border-radius: 5px;
   overflow: hidden;
+  margin: 15px;
 }
 
 .group-titleing {
-
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
   background-color: green;
-  z-index: 8;
+  z-index: 1;
 }
 
 .groups-index {
@@ -32,4 +36,37 @@
   font-size: 10px;
   font-weight: 400;
   font-family: helvetica,arial,sans-serif;
+}
+
+.radi-option {
+  color: black;
+  list-style: none;
+}
+.radi-option:hover {
+  background-color: lightgray;
+  color: white
+}
+
+.fit-to-width {
+  height: auto;
+  width: 100%
+}
+.fit-to-height {
+  height: 100%;
+  width: auto;
+}
+
+.Groups-Image {
+  width: 100;
+  /* height: auto; */
+  object-fit: fill;
+}
+
+
+
+/* groups show page */
+
+
+.groups-show-page {
+
 }

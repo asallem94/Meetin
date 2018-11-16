@@ -8,7 +8,7 @@ const groupsReducer = ( state = {}, action ) => {
 
   switch(action.type){
     case REQUEST_FINDABLE_GROUPS:
-      return merge({}, state, action.groups);
+      return action.groups;
     case REQUEST_GROUP:
       return merge({}, state, { [action.group.id]: action.group });
     default:

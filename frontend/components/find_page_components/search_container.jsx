@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchFindableGroups } from '../../actions/meetin_actions'
-import GroupsIndex from './groups_components/groups_index'
+import { fetchFindableGroups } from '../../actions/meetin_actions';
+import GroupsIndex from './groups_components/groups_index';
 
 class SearchBar extends React.Component {
   constructor(props){
@@ -10,7 +10,7 @@ class SearchBar extends React.Component {
       queryType:"Groups",
       filters:{
         query: "",
-        radi: 5,
+        radi: 100,
         coord:{
           lng: this.props.currentUser.lng,
           lat: this.props.currentUser.lat
@@ -19,14 +19,19 @@ class SearchBar extends React.Component {
     };
     this.updatefilters = this.updatefilters.bind(this);
     this.invokeQuery = this.invokeQuery.bind(this);
+    this.handleNewRadi = this.handleNewRadi.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchFindableGroups(this.state.filters);
   }
+  componentDidUpdate(){
+    console.log(this.state.filters.radi);
+    // this.props.fetchFindableGroups(this.state.filters);
+  }
 
   invokeQuery(e){
-    // e.preventDefault;
+    e.preventDefault;
     this.props.fetchFindableGroups(this.state.filters);
   }
 
@@ -41,8 +46,19 @@ class SearchBar extends React.Component {
       this.setState({queryType: e.target.value});
     };
   }
+  displayRadi(n){
+    if (n > 100) {
+      return "any distance";
+    }else{
+      return `${n} miles`;
+    }
 
-
+  }
+  handleNewRadi(e){
+    const val = e.target.value;
+    debugger
+    this.setState({radi: val});
+  }
   render(){
     return (
       <div className="find-page-container-content">
@@ -61,8 +77,20 @@ class SearchBar extends React.Component {
 
             <div className="location-filter-section">
               within
-              <span className="search-radius location-inputs" >5 miles
+              <ul className="dropdown">
+              <span className="search-radius location-inputs" >
+                {this.displayRadi(this.state.filters.radi)}
               </span>
+                <ul className="dropdown-container radi-dropdown-container">
+                  <li onClick={this.handleNewRadi} className="radi-option" value="2">2 miles</li>
+                  <li onClick={this.handleNewRadi} className="radi-option" value="5">5 miles</li>
+                  <li onClick={this.handleNewRadi} className="radi-option" value="10">10 miles</li>
+                  <li onClick={this.handleNewRadi} className="radi-option" value="20">20 miles</li>
+                  <li onClick={this.handleNewRadi} className="radi-option" value="50">50 miles</li>
+                  <li onClick={this.handleNewRadi} className="radi-option" value="100">100 miles</li>
+                  <li onClick={this.handleNewRadi} className="radi-option" value="12455">anything distance</li>
+                </ul>
+              </ul>
                 of
               <span className="search-city location-inputs">New York, Bronx
               </span>
@@ -84,7 +112,17 @@ const msp = (state) => {
   return {
     currentUser: state.entities.users[currUserId],
     groups: Object.values(state.entities.groups),
-    filters: state.ui.filters
+    filters: state.ui.filters || {
+      queryType:"Groups",
+      filters:{
+        query: "",
+        radi: 50,
+        coord:{
+          lng: this.props.currentUser.lng,
+          lat: this.props.currentUser.lat
+        }
+      }
+    }
   };
 };
 

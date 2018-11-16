@@ -8,6 +8,7 @@ import { AuthRoute, ProtectedRoute, ProtectedFromSplat} from './util/route_util'
 import Homepage from './components/homepage';
 import Footer from './components/footer/footer';
 import Findpage from './components/findpage';
+import GroupShow from './components/find_page_components/groups_components/groups_show_container';
 
 const App = () => (
   <div className="route-wraper" >
@@ -16,6 +17,7 @@ const App = () => (
     </header>
     <ProtectedFromSplat exact path="/" component={Homepage}/>
     <ProtectedRoute exact path="/find" component={Findpage}/>
+    <Route exact path="/groups/:groupId" component={GroupShow}/>
     <AuthRoute exact path="/login" component={LoginFormContainer}/>
     <AuthRoute exact path="/signup" component={SignupFormContainer} />
     <Footer/>
