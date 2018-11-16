@@ -127,7 +127,7 @@
 }
 .dot {
   list-style-type: circle;
-  background-color: black
+  background-color: black;
   color: black;
   padding: 3px;
 }

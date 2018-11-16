@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :interests, only: [:index]
     resources :groups, only: [:index, :show, :create, :new, :edit, :update]
     resource :session, only: [:create, :destroy]
+    resources :groups_memberships, only: [:create, :destroy]
   end
 
 end
