@@ -6,6 +6,9 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 // import {fetchInterests} from './actions/meetin_actions'
 
+import * as actions from './actions/membership_actions';
+window.actions = actions;
+
 const Main = ({store}) => {
   return (
     <Provider store={store}>

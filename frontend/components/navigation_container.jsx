@@ -67,6 +67,7 @@ class Navigation extends React.Component {
 
 const msp = (state) => {
   const currUserId = state.session.currentUserId;
+  // debugger
   return {
     loggedIn: Boolean(currUserId),
     currentUser: state.entities.users[currUserId]

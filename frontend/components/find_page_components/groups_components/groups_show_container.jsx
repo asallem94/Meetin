@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchGroup } from '../../../actions/meetin_actions';
 import GenInfo from './group_show/gen_info';
+import GroupDetail from './group_show/gen_info';
+import GroupNavBarContainer from './group_show/group_nav_bar_container';
+import { Route } from 'react-router';
 
 class GroupShow extends React.Component {
   constructor(props){
@@ -19,10 +22,11 @@ class GroupShow extends React.Component {
   }
 
   render(){
-
     return (
       <div className="groups-show-page">
         <GenInfo group={this.props.group} users={this.props.users}/>
+        <GroupNavBarContainer group={this.props.group} currentUser={this.props.users[this.props.currUserId]}/>
+        <GroupDetail group={this.props.group} users={this.props.users}/>
       </div>
     );
   }
@@ -30,7 +34,6 @@ class GroupShow extends React.Component {
 
 const msp = (state, ownProp) => {
   const currUserId = state.session.currentUserId;
-  // debugger
   return {
     currUserId: currUserId,
     group: state.entities.groups[ownProp.match.params.groupId] ,

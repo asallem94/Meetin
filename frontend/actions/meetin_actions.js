@@ -24,7 +24,6 @@ const receiveGroup = ({group, users}) => {
 };
 
 const receiveAllInterests = (interests) => {
-  debugger
   return {
     type: RECEIVE_ALL_INTERESTS,
     interests

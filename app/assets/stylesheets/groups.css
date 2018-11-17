@@ -104,19 +104,17 @@
 
 
 .group-show-header {
-  width: 100%;
-  margin: 20px 100px;
+  width: 900px;
+  margin: 20px auto;
   display: flex;
   flex-flow: nowrap row;
   justify-content: space-between;
-
 
 }
 
 .group-show-subinfo {
   display: flex;
   justify-content: flex-start;
-  /* flex-flow: row nowrap; */
   align-items: baseline;
   font-weight: 400;
 }
@@ -127,7 +125,6 @@
 }
 .dot {
   list-style-type: circle;
-  background-color: black;
   color: black;
   padding: 3px;
 }
@@ -166,4 +163,22 @@
   flex-direction: column;
   justify-content: space-around;
 
+}
+.group-menu-bar-div {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  width: 100%;
+}
+.group-menu-bar {
+  width: 900px;
+  margin: 20px auto;
+  padding: 25px 0;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: flex-start;
+}
+.group-menu-item {
+  padding-right: 60px;
 }
