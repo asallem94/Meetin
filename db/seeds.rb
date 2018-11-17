@@ -117,7 +117,7 @@ aA = Group.create!(
   private: false
 )
 
-fp = Group.create!(
+pp = Group.create!(
   organizer_id: u2.id,
   title: "Picnic Party",
   img_url: "https://kid101.com/wp-content/uploads/2015/09/Apple-picking.jpg",
@@ -127,7 +127,30 @@ fp = Group.create!(
   lng: -74.647900,
   private: false
 )
+hg = Group.create!(
+  organizer_id: u1.id,
+  title: "Halo 5 Gaming",
+  img_url: "https://content.halocdn.com/media/Default/channel/fall-of-reach/orion-thumbnail-542x305-2e0c31648bae4a279aacdffee63e2330.jpg",
+  city: "New Jersey",
+  description: "Halo: The Fall of Reach is an animated adaptation of the beloved Eric Nylund novel of the same name, and in many ways the origin story of the Master Chief and Blue Team. Told in three connected acts, the high-quality animated production is included with the Digital Deluxe Edition, Limited Edition and Limited Collector’s Edition of Halo 5: Guardians* and can be viewed via The Halo Channel with the launch of the game on October 27.",
+  lat: 40.025156,
+  lng: -74.647900,
+  private: false
+)
+
+ss = Group.create!(
+  organizer_id: u3.id,
+  title: "Saturday Soccer",
+  img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsXFt8YGF2NmXpdHMOwVOnQu0Tl0n2NFkyIzBnGXFO-erae0lX",
+  city: "New Jersey",
+  description: "Football, also called association football or soccer, game in which two teams of 11 players, using any part of their bodies except their hands and arms, try to maneuver the ball into the opposing team’s goal. Only the goalkeeper is permitted to handle the ball and may do so only within the penalty area surrounding the goal. The team that scores more goals wins.
+
+Football is the world’s most popular ball game in numbers of participants and spectators. Simple in its principal rules and essential equipment, the sport can be played almost anywhere, from official football playing fields (pitches) to gymnasiums, streets, school playgrounds, parks, or beaches. Football’s governing body, the Fédération Internationale de Football Association (FIFA), estimated that at the turn of the 21st century there were approximately 250 million football players and over 1.3 billion people “interested” in football; in 2010 a combined television audience of more than 26 billion watched football’s premier tournament, the quadrennial month-long World Cup finals.",
+  lat: 40.025156,
+  lng: -74.647900,
+  private: false
+)
 
 GroupMembership.create!(user_id: u2.id, group_id: aA.id)
 GroupMembership.create!(user_id: u3.id, group_id: aA.id)
-GroupMembership.create!(user_id: u4.id, group_id: fp.id)
+GroupMembership.create!(user_id: u4.id, group_id: pp.id)

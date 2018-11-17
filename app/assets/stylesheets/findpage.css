@@ -1,7 +1,9 @@
 .find-page-container-content {
   display: flex;
-  justify-content: flex-start;
-  flex-flow: nowrap column;
+  justify-content: center;
+  flex-flow: wrap column;
+  width: 1000px;
+  margin: 0 auto;
 }
 .find-page-header-component {
   width: 100%;
@@ -33,7 +35,7 @@
   width: 1000px;
   height: 75px;
   display: flex;
-  flex-flow: nowrap row;
+  flex-flow: wrap row;
   justify-content: space-between;
   background-color: black;
   z-index: 0;
@@ -133,5 +135,8 @@
   background-color: gray;
   color:white;
   box-shadow: inset 2px -2px 10px black;
+}
 
+.search-component:hover + .groups-index{
+  z-index: -1;
 }

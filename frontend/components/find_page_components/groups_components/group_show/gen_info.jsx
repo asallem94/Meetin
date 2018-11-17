@@ -1,7 +1,9 @@
 import React from 'react';
+import GroupShowContainer from '../groups_show_container'
 
 const GenInfo = ({group, users}) => {
   if (!group){
+    // return (<GroupShowContainer/>);
     return null;
   }
 
@@ -29,7 +31,7 @@ const GenInfo = ({group, users}) => {
       </div>
 
     </header>
-  )
+  );
 };
 
 export default GenInfo;

@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchGroup } from '../../../actions/meetin_actions';
 import GenInfo from './group_show/gen_info';
-import GroupDetail from './group_show/gen_info';
+import GroupDetail from './group_show/group_detail';
 import GroupNavBarContainer from './group_show/group_nav_bar_container';
-import { Route } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 
 class GroupShow extends React.Component {
   constructor(props){
@@ -26,11 +26,15 @@ class GroupShow extends React.Component {
       <div className="groups-show-page">
         <GenInfo group={this.props.group} users={this.props.users}/>
         <GroupNavBarContainer group={this.props.group} currentUser={this.props.users[this.props.currUserId]}/>
-        <GroupDetail group={this.props.group} users={this.props.users}/>
+        <GroupDetail group={this.props.group} users={this.props.users} />
       </div>
     );
   }
 }
+// <Switch>
+// <Route exact path="/" component={GroupDetail} group={this.props.group} users={this.props.users} />
+// <Route exact path="/meetins" component={GroupDetail} group={this.props.group} users={this.props.users} />
+// </Switch>
 
 const msp = (state, ownProp) => {
   const currUserId = state.session.currentUserId;

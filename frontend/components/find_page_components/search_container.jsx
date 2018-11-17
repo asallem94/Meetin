@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
   }
 
   invokeQuery(e){
-    e.preventDefault;
+    e.preventDefault();
     console.log(`fetching groups with current state ${this.state}`);
 
     this.props.fetchFindableGroups(this.state);

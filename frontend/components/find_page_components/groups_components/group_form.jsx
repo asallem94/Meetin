@@ -2,10 +2,10 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
-class UserForm extends React.Component {
+class GroupForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = {name:'', email: '', password: '', lat: '', lng: ''};
+    this.state = {name:'', email: '', password: '', lat: '', lng: '', im};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCoords = this.handleCoords.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
@@ -30,8 +30,29 @@ class UserForm extends React.Component {
     this.props.signup(this.state);
   }
 
-  demoLogin(){
-    this.props.login({email: 'test4@gmail.com', password: '123123'});
+  getAddress(latitude, longitude){
+    return new Promise(function (resolve, reject) {
+        var request = new XMLHttpRequest();
+
+        var method = 'GET';
+        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true';
+        var async = true;
+
+        request.open(method, url, async);
+        request.onreadystatechange = function () {
+            if (request.readyState == 4) {
+                if (request.status == 200) {
+                    var data = JSON.parse(request.responseText);
+                    var address = data.results[0];
+                    resolve(address);
+                }
+                else {
+                    reject(request.status);
+                }
+            }
+        };
+        request.send();
+    });
   }
 
   displayErrors(){
@@ -50,18 +71,18 @@ class UserForm extends React.Component {
           <button onClick={() => this.demoLogin()} className="demo-signup" type="submit">Demo Sign In</button>
           <section className="form-item">
             <label>
-              Your name
+              Group title:
             </label>
             <input
               className="input-field"
               type="text"
-              onChange={this.update('name')}
-              value={this.state.name}
+              onChange={this.update('title')}
+              value={this.state.title}
             />
           </section>
           <section className="form-item">
             <label>
-              Email
+              What are you about?
             </label>
             <input
               className="input-field"
@@ -70,31 +91,12 @@ class UserForm extends React.Component {
               value={this.state.email}
             />
           </section>
-          <section className="form-item">
-            <label>
-              Password
-            </label>
-            <input
-            className="input-field"
-            type="password"
-            onChange={this.update('password')}
-            value={this.state.password}
-            />
-          </section>
+
           <div className="submitting-section">
-            <p className="subtext begining-subtext">
-              Your name is public. We'll use your email address to send you updates, and your location to find Meetups near you
-            </p>
             <ul>
               {this.displayErrors()}
             </ul>
-            <input className="submit-button-signup" type="submit" value="Sign Up"/>
-            <p className="subtext ending-subtext">
-              When you "Continue", you agree to Meetup's Terms of Service. We will manage information about you as described in our Privacy Policy, and Cookie Policy.
-            </p>
-            <div className="already-user">
-              Already a member? <Link className="auth-link" to="/login">Log in</Link>.
-            </div>
+            <input className="submit-button" type="submit" value="Create group"/>
           </div>
         </form>
       </div>
@@ -102,4 +104,4 @@ class UserForm extends React.Component {
   }
 }
 
-export default withRouter(UserForm);
+export default withRouter(GroupForm);

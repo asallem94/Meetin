@@ -8,9 +8,9 @@ const GroupIndex = ({groups}) => {
     group={group}/>
   ));
   return (
-    <ul className="groups-index">
+    <div className="groups-index">
       {groupViewable}
-    </ul>
+    </div>
   );
 };
 

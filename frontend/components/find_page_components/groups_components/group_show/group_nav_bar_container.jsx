@@ -28,11 +28,9 @@ class GroupNavBar extends React.Component {
     return (
       <div className="group-menu-bar-div">
         <ul className="group-menu-bar">
-          <Link to={`/groups/${this.props.group.id}`} exact><li className="group-menu-item">About</li></Link>
-          <Link to="/" exact><li className="group-menu-item">Meetups</li></Link>
-          <Link to="/" exact><li className="group-menu-item">Members</li></Link>
-          // <Link to="/" exact><li className="group-menu-item">Photos</li></Link>
-          <Link to="/" exact><li className="group-menu-item">Discussions</li></Link>
+          <Link to={`/groups/${this.props.group.id}/`}><li className="group-menu-item">About</li></Link>
+          <Link to={`/groups/${this.props.group.id}/meetins`}><li className="group-menu-item">Meetins</li></Link>
+          <Link to={`/groups/${this.props.group.id}/members`}><li className="group-menu-item">Members</li></Link>
           <button onClick={(joined ? this.handleUnjoin : this.handleJoin)}>{joined ? "Leave this group" : "Join this group"}</button>
         </ul>
       </div>
@@ -40,6 +38,8 @@ class GroupNavBar extends React.Component {
   }
 }
 
+// <Link to="/" exact><li className="group-menu-item">Photos</li></Link>
+// <Link to="/"><li className="group-menu-item">Discussions</li></Link>
 const msp = (state) => {
   const currUserId = state.session.currentUserId;
   return {

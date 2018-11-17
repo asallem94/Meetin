@@ -13,7 +13,10 @@ class Api::GroupsController < ApplicationController
   end
 
   def create
+
     @group = Group.new(group_params)
+    @group.organizer_id = current_user.id
+    @group.img_url = "http://www.clutterfairyhouston.com/wp/wp-content/uploads/2014/10/Depositphotos_12802359_s-Golden-Abstract-Bokeh-Background-Gold-Dust-over-Black-cropped-719x321.jpg"
     if @group.save
       render :show
     else

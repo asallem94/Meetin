@@ -20,7 +20,7 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(event){
-    event.preventDefault;
+    event.preventDefault();
     this.props.login(this.state);
   }
 
@@ -78,7 +78,7 @@ class SessionForm extends React.Component {
         </form>
         <div className="alternative-auth">
           <h2 className="or">OR</h2>
-          <button onClick={() => this.demoLogin()} className="submit-button-signup" type="submit">Demo Sign In</button>
+          <button onClick={() => this.demoLogin()} className="demo-login" type="submit">Demo Sign In</button>
         </div>
       </div>
     );

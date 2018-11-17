@@ -15,14 +15,8 @@ const Footer = () => {
           </Link>
         </div>
         <ul className="footer-topics">
-          <li className="footer-topic">Help</li>
           <li className="footer-topic">About us</li>
-          <li className="footer-topic">Meetin Pro</li>
-          <li className="footer-topic">Jobs</li>
-          <li className="footer-topic">Apps</li>
-          <li className="footer-topic">API</li>
-          <li className="footer-topic">Topics</li>
-          <li className="footer-topic">Blog</li>
+          <a href="https://www.meetup.com/"><li className="footer-topic">Meetup Original</li></a>
         </ul>
         <div className="footer-followers">
           <p className="footer-follow-us">

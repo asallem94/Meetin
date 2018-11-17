@@ -1,3 +1,7 @@
+#google_translate_element{
+  width: 40px;
+}
+
 .footer {
   width: 100%;
   background-color: rgba(16, 23, 32, 1);
@@ -27,7 +31,7 @@
   color: white;
   list-style: none;
   padding-right: 40px;
-  padding-top: 10px; 
+  padding-top: 10px;
   font-size: 15px;
   font-family: helvetica,arial,sans-serif;
 }
