@@ -41,6 +41,7 @@
   justify-content: space-between;
   margin: 30px auto;
   margin-bottom: 250px;
+
 }
 
 .new-group-icon {
@@ -98,14 +99,17 @@
 }
 
 .unhidden-step {
+  padding-top: 60px;
   border-top: 1px solid lightgray;
 }
 
 .interest-label {
   border: 1px solid lightgray;
+  font-size: 14px;
+  font-weight: 200;
   border-radius: 5px;
-  margin: 8px;
-  padding: 5px;
+  margin: 4px;
+  padding: 2px 5px;
 }
 .interest-checkbox {
   display: none

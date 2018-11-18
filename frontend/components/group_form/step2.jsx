@@ -33,7 +33,7 @@ class Step2 extends React.Component{
       <input onChange={this.handleInterestFilter} type="text" placeholder="Search for a topic" className="interest-filter" value={this.state.interestFilter}/>
       {this.displayInterests()}
       </div>
-      <button onClick={(e)=>this.props.unhideStep('3', e)} className="continue-button">Next</button>
+        <button onClick={(e)=>this.props.unhideStep('3', e)} className="continue-button">Next</button>
       </div>
       </div>
     );

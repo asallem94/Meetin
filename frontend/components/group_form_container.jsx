@@ -37,7 +37,9 @@ class GroupForm extends React.Component {
     const stepContainer = document.getElementById(step);
     stepContainer.classList.add('unhidden-step');
     stepContainer.classList.remove('hidden-step');
-
+    window.setTimeout(()=>{
+      window.scroll(0, [stepContainer.offsetTop]);
+    }, 5);
     e.target.style.display = "none";
   }
 
