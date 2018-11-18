@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchGroup } from '../../../actions/meetin_actions';
+import { fetchGroup } from './../actions/meetin_actions';
 import GenInfo from './group_show/gen_info';
 import GroupDetail from './group_show/group_detail';
 import GroupNavBarContainer from './group_show/group_nav_bar_container';

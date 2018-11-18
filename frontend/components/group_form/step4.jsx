@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Step4 = ({handleSubmit}) => {
+const Step4 = ({handleSubmit, loggedIn}) => {
 
   return (
 
@@ -15,7 +15,7 @@ const Step4 = ({handleSubmit}) => {
           <li className="list">Always safe and respectful</li>
           <li className="list">Put your members first</li>
         </article>
-        <button onClick={handleSubmit} className="continue-button">Next</button>
+        <button onClick={handleSubmit} className="continue-button">{loggedIn ? "create group" : "Next"}</button>
       </div>
     </div>
 

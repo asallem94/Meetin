@@ -1,8 +1,8 @@
-
-.route-wraper {
-  display: flex;
-  flex-direction: column;
+body {
+  width: 100%;
+  
 }
+
 /*  header style components */
 .homepage-header-container {
   width: 100%;

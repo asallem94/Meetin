@@ -8,9 +8,9 @@ import { AuthRoute, ProtectedRoute, ProtectedFromSplat} from './util/route_util'
 import Homepage from './components/homepage';
 import Footer from './components/footer/footer';
 import Findpage from './components/findpage';
-import GroupShow from './components/find_page_components/groups_components/groups_show_container';
+import GroupShow from './components/groups_show_container';
 // import GroupShow from './components/find_page_components/groups_components/groups_show_container';
-import GroupFormContainer from './components/find_page_components/groups_components/group_form_container';
+import GroupFormContainer from './components/group_form_container';
 
 const App = () => (
   <div className="route-wraper" >

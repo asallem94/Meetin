@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { createGroup, fetchInterests } from '../../../actions/meetin_actions';
+import { createGroup, fetchInterests } from './../actions/meetin_actions';
 import GenInfo from './group_show/gen_info';
 import { Route } from 'react-router-dom';
 import FormHeader from './group_form/form_header';
@@ -10,7 +10,7 @@ import Step1 from './group_form/step1';
 import Step2 from './group_form/step2';
 import Step3 from './group_form/step3';
 import Step4 from './group_form/step4';
-import UserForm from './../../auth_components/user_form';
+import UserForm from './auth_components/user_form';
 
 class GroupForm extends React.Component {
   constructor(props){
@@ -60,7 +60,7 @@ class GroupForm extends React.Component {
         <Step1 unhideStep={this.unhideStep}/>
         <Step2 unhideStep={this.unhideStep} interests={this.props.interests}/>
         <Step3 unhideStep={this.unhideStep}/>
-        <Step4 handleSubmit={this.handleSubmit}/>
+        <Step4 handleSubmit={this.handleSubmit} loggedIn={this.props.loggedIn}/>
       </div>
     );
   }

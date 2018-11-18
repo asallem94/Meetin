@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  margin: 8px;
 
 }
 .interests-container {
@@ -9,17 +10,13 @@
   flex-flow: wrap row;
   justify-content: space-between;
   padding: 0;
-  margin: 0 auto;
-  width: 1200px;
-}
-
-.interest-item {
-  margin: 8px;
+  margin: 75px auto;
+  width: 80%;
 }
 
 .category-img {
   border-radius: 5px;
   object-fit: cover;
-  width: 250px;
-  height: 150px;
+  width: 200px;
+  height: 125px;
 }

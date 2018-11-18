@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { joinGroup, unjoinGroup } from '../../../../actions/membership_actions';
+import { joinGroup, unjoinGroup } from '../../actions/membership_actions';
 
 class GroupNavBar extends React.Component {
   constructor(props){
