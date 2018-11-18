@@ -11,8 +11,8 @@ const GroupDetail = (props) => {
       <div className={(organizer ? "group-organizer-content hovered-content" : "group-member-content hovered-content")}>
         <img className="show-member-circle" src={props.users[id].profile_img_url}/>
         <section className="group-organizer-textinfo">
-          <li>{organizer ? "Organized by" : "Member"}</li>
-          <li className="organizer-name">{props.users[id].name}</li>
+          <li className="member-type">{organizer ? "Organized by" : "Member"}</li>
+          <li className="member-name">{props.users[id].name}</li>
         </section>
       </div>
     );

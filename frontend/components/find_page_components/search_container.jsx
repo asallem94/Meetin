@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchFindableGroups } from '../../actions/meetin_actions';
 import { updateRadi } from '../../actions/filter_actions';
-import GroupsIndex from './groups_components/groups_index';
+import GroupsIndex from './groups_components/group_index/groups_index';
 import { merge } from 'lodash';
+
 
 class SearchBar extends React.Component {
   constructor(props){
@@ -11,6 +12,7 @@ class SearchBar extends React.Component {
     this.state =  this.props.filters;
     this.updatefilters = this.updatefilters.bind(this);
     this.invokeQuery = this.invokeQuery.bind(this);
+    this.updateReferenceLocation = this.updateReferenceLocation.bind(this);
   }
 
   componentDidMount(){
@@ -28,7 +30,7 @@ class SearchBar extends React.Component {
 
   updatefilters(filter){
     return (e) => {
-      console.log(`updating ${filter} to: ${e.target.value}`);
+      // console.log(`updating ${filter} to: ${e.target.value}`);
 
       if (filter === 'radi'){
         // if the filter is radi this is what you wanna do .
@@ -43,6 +45,15 @@ class SearchBar extends React.Component {
       }
 
     };
+  }
+
+  updateReferenceLocation(){
+    navigator.geolocation.getCurrentPosition((location) =>{
+      this.setState({coord: {
+        lat: location.coords.latitude,
+        lng: location.coords.longitude
+      }});
+    });
   }
 
   updateQueryType(queryType){
@@ -92,7 +103,7 @@ class SearchBar extends React.Component {
                 </ul>
               </ul>
                 of
-              <span className="search-city location-inputs">New York, Bronx
+              <span onClick={this.updateReferenceLocation} className="search-city location-inputs">New York, Bronx
               </span>
             </div>
           </div>

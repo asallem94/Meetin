@@ -37,9 +37,18 @@ export const fetchFindableGroups = (filters) => {
     });
   };
 };
+
 export const fetchGroup = (id) => {
   return (dispatch) => {
     return APIUtil.fetchGroup(id).then((response)=>{
+      return dispatch(receiveGroup(response));
+    });
+  };
+};
+
+export const createGroup = (group) => {
+  return (dispatch) => {
+    return APIUtil.fetchGroup(group).then((response)=>{
       return dispatch(receiveGroup(response));
     });
   };

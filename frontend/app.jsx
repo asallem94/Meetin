@@ -9,6 +9,8 @@ import Homepage from './components/homepage';
 import Footer from './components/footer/footer';
 import Findpage from './components/findpage';
 import GroupShow from './components/find_page_components/groups_components/groups_show_container';
+// import GroupShow from './components/find_page_components/groups_components/groups_show_container';
+import GroupFormContainer from './components/find_page_components/groups_components/group_form_container';
 
 const App = () => (
   <div className="route-wraper" >
@@ -18,6 +20,7 @@ const App = () => (
     <ProtectedFromSplat exact path="/" component={Homepage}/>
     <ProtectedRoute exact path="/find" component={Findpage}/>
     <Route exact path="/groups/:groupId" component={GroupShow}/>
+    <Route exact path="/create" component={GroupFormContainer}/>
     <AuthRoute exact path="/login" component={LoginFormContainer}/>
     <AuthRoute exact path="/signup" component={SignupFormContainer} />
     <Footer/>

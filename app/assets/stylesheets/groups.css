@@ -162,11 +162,15 @@
 }
 
 .group-organizer-textinfo {
-  margin-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  height: 80%;
+  margin: auto 0;
+}
 
+.member-type {
+  margin: 10px 0;
 }
 .group-menu-bar-div {
   border-top: 1px solid lightgray;
@@ -205,14 +209,16 @@
 
 .group-description {
   font-size: 16px;
-  line-height: 1.25px;
+  width: 100%;
+  line-height: 2;
   margin: 20px 0;
+  word-break: normal;
+  /* display: inline-block; */
 }
 
 .group-organizer-content {
   width: 100%;
   margin: 10px 10px;
-  padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-flow: row;
@@ -229,7 +235,6 @@
 
 .group-member-content {
   width: 20%;
-  height: 200px;
   box-sizing: border-box;
   padding: 10px;
   margin: 10px;
@@ -254,10 +259,10 @@
 }
 
 .show-member-circle {
-  object-fit: cover;
   height: 80px;
   width: 80px;
   border-radius: 40px;
+  margin: 30px;
 }
 
 .fa-comments {
@@ -283,6 +288,15 @@
   margin-bottom: 30px;
 }
 
+.member-name {
+  margin: 10px 0;
+}
+
 .discussions {
   color: darkgray;
+}
+
+.header-img {
+  width: 100%;
+  height: 275px;
 }

@@ -54,7 +54,7 @@ class Navigation extends React.Component {
       <div className="navigation-container">
         <Link to="/" className="logo">Meetin</Link>
       <div className="nav-menu">
-        <Link to="/signup" className="new-group-button">Start a new Group</Link>
+        <Link to="/create" className="new-group-button">Start a new Group</Link>
         {
           (loggedIn) ? this.loggedIn() : this.notLoggedIn()
         }

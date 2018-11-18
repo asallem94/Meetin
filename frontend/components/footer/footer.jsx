@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-content">
         <div className="upper-footer-content">
-          <Link to="/login" className="upper-footer-items">
+          <Link to="/create" className="upper-footer-items">
             Start a new group
           </Link>
           <Link to="/login" className="upper-footer-items">
