@@ -6,7 +6,7 @@
   list-style: none;
   border-radius: 5px;
   overflow: hidden;
-  margin: 1px;
+  margin: 10px;
 }
 
 .group-titleing {
@@ -22,7 +22,7 @@
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 1;
@@ -86,7 +86,7 @@
 .radi-dropdown {
   position: relative;
   padding-left: 0;
-  /* display: inline-block; */
+  outline: none;
 }
 
 .radi-dropdown-container {
@@ -101,7 +101,7 @@
   z-index: 10;
 }
 
-.radi-dropdown:hover .radi-dropdown-container {
+.radi-dropdown:focus .radi-dropdown-container {
   display: block;
 }
 /* groups show page */
@@ -165,8 +165,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 80%;
-  margin: auto 0;
+  margin: 0 20px;
 }
 
 .member-type {
@@ -174,18 +173,18 @@
 }
 .group-menu-bar-div {
   border-top: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
   width: 100%;
 }
 .group-menu-bar {
   width: 1000px;
-  margin: 20px auto;
-  padding: 25px 0;
+  margin: 5px auto;
+  padding: 5px 0;
   font-weight: 500;
   font-size: 16px;
   display: flex;
   flex-flow: nowrap row;
   justify-content: flex-start;
+  align-items: baseline;
 }
 .group-menu-item {
   padding-right: 60px;
@@ -193,14 +192,24 @@
 
 .background {
   background-color: #f6f7f8;
+  display: flex;
+  justify-content: space-around;
+}
 
+.main-detail-content {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  box-sizing: border-box;
+  padding: 10px;
 }
 
 .about-us-content {
-  width: 1000px;
+  margin: 0 auto;
+  width: 90%;
   display: flex;
-  flex-direction: column;
-  margin: auto;
+  justify-content: space-between;
+
 }
 .group-headings {
   font-weight: 500;
@@ -278,7 +287,6 @@
   align-items: center;
 }
 .empty-discussions {
-  width: 100%;
   border: 2px dashed lightgray;
   border-radius: 10px;
   padding: 40px;
@@ -300,4 +308,27 @@
 .header-img {
   width: 100%;
   height: 275px;
+}
+
+.join-unjoin-button {
+  border-radius: 5px;
+  background-color: #eb2040;
+  font-size: 14px;
+  font-family: helvetica,arial,sans-serif;
+  font-weight: bold;
+  color: white;
+  padding: 8px 20px;
+  margin: 10px 0;
+}
+
+.create-event-button {
+  border-radius: 5px;
+  background-color: #eb2040;
+  font-size: 14px;
+  font-family: helvetica,arial,sans-serif;
+  font-weight: bold;
+  color: white;
+  padding: 8px 20px;
+  margin: 10px 0;
+  width: 80%;
 }

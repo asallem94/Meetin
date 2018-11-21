@@ -16,12 +16,14 @@ class GroupForm extends React.Component {
   constructor(props){
     super(props);
     this.unhideStep = this.unhideStep.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCoordinates = this.handleCoordinates.bind(this);
+    this.handleChangeLocaiton = this.handleChangeLocaiton.bind(this);
+    this.state = {city: "", lng: "", lat: ""};
   }
 
   componentDidMount(){
-    if (!this.props.loggedIn) {
-      this.handleChangeLocaiton();
-    }
+    this.handleCoordinates( this.props.currentUser.lat, this.props.currentUser.lng );
     this.props.fetchInterests();
   }
 
@@ -31,6 +33,27 @@ class GroupForm extends React.Component {
       lng: location.coords.longitude
     };
     navigator.geolocation.getCurrentPosition(handleCoords);
+  }
+  handleCoordinates(lat, lng){
+    const api_key = "APPID=6c47a97e3a341c6c6752d2304c925f5d";
+    const api_url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&${api_key}`;
+
+    let request = new XMLHttpRequest();
+    const that = this;
+    request.open('GET', api_url, true);
+    request.onload = (response) => {
+      if (request.status >= 200 && request.status < 400) {
+        const res = JSON.parse(response.currentTarget.response);
+        that.setState({city: res.name, lng: lng, lat:lat});
+        let resp = request.responseText;
+      }
+    };
+
+    request.onerror = function(err) {
+      // There was a connection error of some sort
+      console.log(err);
+    };
+    request.send();
   }
 
   unhideStep(step, e){
@@ -44,14 +67,18 @@ class GroupForm extends React.Component {
   }
 
   handleSubmit(){
-    group = {
-      lng: this.location.lng || currentUser.lng,
-      lat: this.location.lat || currentUser.lat,
+    const group = {
+      lng: this.state.lng || this.props.currentUser.lng,
+      lat: this.state.lat || this.props.currentUser.lat,
       title: document.getElementById('title').value,
       description: document.getElementById('description').value,
-      city: document.getElementById('city').value,
+      city: this.state.city,
     };
-    this.props.createGroup(group);
+    // debugger
+    this.props.createGroup(group).then(res => {
+      // debugger
+      return this.props.history.push(`/groups/${res.group.id}`);
+    });
 
   }
 
@@ -59,7 +86,7 @@ class GroupForm extends React.Component {
     return (
       <div className="groups-form-page">
         <FormHeader/>
-        <Step1 unhideStep={this.unhideStep}/>
+        <Step1 unhideStep={this.unhideStep} city={this.state.city}/>
         <Step2 unhideStep={this.unhideStep} interests={this.props.interests}/>
         <Step3 unhideStep={this.unhideStep}/>
         <Step4 handleSubmit={this.handleSubmit} loggedIn={this.props.loggedIn}/>

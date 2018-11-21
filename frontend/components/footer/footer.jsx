@@ -4,7 +4,7 @@ import LanguageSelector from './language-selector';
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <div id="footer" className="footer">
       <div className="footer-content">
         <div className="upper-footer-content">
           <Link to="/create" className="upper-footer-items">

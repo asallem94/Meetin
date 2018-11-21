@@ -40,10 +40,30 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :GroupMembership
 
+
   has_many :groups,
     through: :group_memberships,
     source: :group
 
+  has_many :events_rsvp,
+    foreign_key: :user_id,
+    class_name: :EventRsvp
+
+  has_many :hosted_events,
+    foreign_key: :host_id,
+    class_name: :Event
+
+  has_many :going_responses, -> { EventRsvp.going},
+    foreign_key: :user_id,
+    class_name: :EventRsvp
+
+  has_many :attending_events,
+    through: :going_responses,
+    source: :event
+
+  def attending_events
+    self.rsvped_events.where(rsvp: true)
+  end
 
 
   # private

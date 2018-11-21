@@ -1,0 +1,242 @@
+#map {
+  height: 300px;  /* The height is 400 pixels */
+  width: 100%;  /* The width is the width of the web page */
+  /* border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 10px; */
+}
+.event-map {
+  margin: 0;
+}
+.location-time-icon {
+  font-size: 32px;
+  color: lightgray;
+  margin-right: 30px;
+}
+.event-time-location-container {
+  border-radius: 10px;
+  background-color: white;
+  margin: 10px 0;
+  height: max-content;
+  overflow: hidden;
+}
+.event-location-time-info {
+  margin-left: 10px;
+}
+.location-time-container {
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 100;
+
+}
+
+
+.event-date-post {
+  /* margin: 20px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(246, 247, 248, 1);
+  padding: 10px;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+.event-post-date {
+  color: #eb2040;
+
+}
+
+.event-post-month {
+  color: darkgray;
+}
+
+.event-show-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.event-show-info {
+  min-width: 50%;
+  margin: 20px;
+}
+
+.event-rsvp-container {
+  width: 25%;
+  margin: 20px;
+}
+
+.event-organizer-info {
+  display: flex;
+
+}
+
+.event-img {
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.detail-banner {
+  padding: 10px;
+  box-sizing: border-box;
+  width: 40%;
+}
+.event-brief-info {
+  margin-left: 10px;
+}
+
+.event_show-item {
+  display: flex;
+
+}
+
+.detail-container {
+  max-height: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background:linear-gradient(transparent 150px, black);
+}
+.detail-container:before {
+  max-height: 150px;
+
+  background:linear-gradient(transparent 150px, black);
+  overflow: hidden;
+}
+
+.attendees-container {
+  display: flex;
+  /* position: relative; */
+  background-color: lightgray;
+  height: 40px;
+  border-radius: 20px;
+}
+.attendees-img-circle {
+  /* position: absolute; */
+  border-radius: 20px;
+  height: 30px;
+  width: 30px;
+  border: 2px solid white;
+  margin: -5px;
+}
+.host-name {
+  margin-left: 10px;
+}
+
+.event-show-item-info {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.event-show-item {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.event-show-item-content {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.host-info {
+  display: flex;
+}
+
+.event-full-date-label {
+  text-decoration: none;
+  width: max-content;
+  font-weight: 50px;
+  margin: 0;
+  font-size: 10px;
+}
+
+.event-title-label {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.attending-status {
+  width: max-content;
+  display: flex;
+  background-color: rgba(246,247,248,1);
+  align-items: center;
+  margin: 10px;
+  box-sizing: border-box;
+  padding:  5px 15px;
+  border-radius: 30px;
+
+}
+
+.attendees-count {
+  padding: 5px;
+  margin: 5px 10px;
+}
+
+.main-meetin-content {
+  width: 75%
+}
+
+.event-date-post {
+  margin: 20px;
+}
+
+.edit-date-style {
+  font-size: 15px;
+  font-weight: normal;
+  margin: 5px;
+}
+
+.event-organizer-textinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 20px;
+}
+
+.event-organizer-content {
+  width: 100%;
+  margin: 10px 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row;
+
+}
+
+.event-member-content {
+  width: 20%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.event-members-container {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap row;
+  justify-content: flex-start;
+}
+
+.fixed-location-date-container {
+   position: sticky;
+   top: 5rem;
+}
+.detail-banner {
+  /* position: relative; */
+}

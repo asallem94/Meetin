@@ -14,9 +14,9 @@ class Api::UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
-  def index
-    # @users = User.all
-  end
+  # def index
+  #   # @users = User.all
+  # end
 
   private
   def user_params

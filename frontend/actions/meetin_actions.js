@@ -3,8 +3,6 @@ import * as APIUtil from "../util/api_util";
 export const RECEIVE_ALL_INTERESTS = "RECEIVE_ALL_INTERESTS";
 export const RECEIVE_FINDABLE_GROUPS = "RECEIVE_FINDABLE_GROUPS";
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
-export const RECEIVE_FINDABLE_EVENTS = "RECEIVE_FINDABLE_EVENTS";
-export const RECEIVE_EVENT = "RECEIVE_EVENT";
 
 
 
@@ -15,11 +13,12 @@ const receiveFindableGroups = (groups) => {
   };
 };
 
-const receiveGroup = ({group, users}) => {
+const receiveGroup = ({group, users, events}) => {
   return {
     type: RECEIVE_GROUP,
     group,
-    users
+    users,
+    events
   };
 };
 
@@ -48,7 +47,7 @@ export const fetchGroup = (id) => {
 
 export const createGroup = (group) => {
   return (dispatch) => {
-    return APIUtil.fetchGroup(group).then((response)=>{
+    return APIUtil.createGroup(group).then((response)=>{
       return dispatch(receiveGroup(response));
     });
   };

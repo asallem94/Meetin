@@ -36,7 +36,7 @@ const msp = (state) => {
   });
 };
 const mdp = (dispatch) => {
-  // debugger
+  
   return ({
     fetchInterests: () => {
       return dispatch(fetchInterests());

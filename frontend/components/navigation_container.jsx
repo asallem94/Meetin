@@ -9,18 +9,30 @@ class Navigation extends React.Component {
     this.loggedIn = this.loggedIn.bind(this)
   }
 
+
+  myGroups(){
+     const myGroups = this.props.groups
+      .filter((group)=>currentUser.groups[group.id])
+      .map((group) => {
+        <li className="myGroup" key="group_id">
+          {group.title}
+        </li>
+    })
+
+  }
+
   loggedIn(){
     const user = this.props.currentUser;
-    // debugger
     return (
       <>
         <Link to="/find" className="auth-item">Explore</Link>
         <Link to="/find" className="auth-item">Messages</Link>
-        <ul className="dropdown">
+        <ul className="dropdown" tabIndex="123">
 
           <img className="profile-circle" src={user.profile_img_url}></img>
           <div className="dropdown-container">
             <ul className="myGroups-dropdown">
+
             </ul>
             <ul className="account-actions-dropdown">
               <li className="account-actions">
@@ -67,10 +79,12 @@ class Navigation extends React.Component {
 
 const msp = (state) => {
   const currUserId = state.session.currentUserId;
-  // debugger
+  const currentUser = state.entities.users[currUserId];
+
   return {
     loggedIn: Boolean(currUserId),
-    currentUser: state.entities.users[currUserId]
+    currentUser: currentUser,
+    groups: state.entities.groups
   };
 };
 

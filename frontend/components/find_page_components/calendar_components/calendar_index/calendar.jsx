@@ -5,15 +5,27 @@ class Calendar extends React.Component{
     super(props);
     this.d = new Date();
     const mon = this.d.getMonth();
-    const yr = this.d.getYear();
+    const yr = this.d.getFullYear();
     const date = this.d.getDate();
-    this.state = {month: mon, year: yr, day: date};
+    this.state = {month: mon, year: yr, day: date, start_date: this.d};
     this.renderMonth = this.renderMonth.bind(this);
     this.renderWeek = this.renderWeek.bind(this);
+    this.changeMonth = this.changeMonth.bind(this);
   }
   componentDidMount(){
 
   }
+
+  changeMonth(direction){
+    return () => {
+      if (direction === "next") {
+        this.setState({month: this.state.month+1});
+      } else {
+        this.setState({month: this.state.month-1});
+      }
+    };
+  }
+
   populateDates(){
     const firstDay = new Date(this.state.year, this.state.month, 1);
     const lastDay = new Date(this.state.year, this.state.month + 1, 0);
@@ -22,13 +34,13 @@ class Calendar extends React.Component{
     const cal = [];
     let i=1;
     let empty = 0;
-    // debugger
+
     while (i < lastDay.getDate()) {
       console.log(i);
       let week = [];
-      // debugger
+
       for (let j = 0; j < 7; j++) {
-        if (empty < startDay+2){
+        if (empty < startDay){
           empty++;
           week.push(-1);
         }else{
@@ -43,13 +55,13 @@ class Calendar extends React.Component{
       }
       cal.push(week);
     }
-    // debugger
+
     return cal;
   }
 
   renderWeek(week){
     return week.map((day, indx) => (
-        <li key={indx} className={(this.d.getDate()===day) ? "today-cell calendar-cell" : "calendar-cell"} >
+        <li key={indx} tabIndex={day > -1 ? "123" : ""} className={(this.d.getDate()===day) ? "today-cell calendar-cell" : "calendar-cell"} >
           {day > -1 ? day : ""}
         </li>
       )
@@ -69,7 +81,7 @@ class Calendar extends React.Component{
     const days = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const daysOfWeek = days.map((day, indx) => (
-      <li key={indx} className="calendar-cell">{day}</li>
+      <li key={indx} className="calendar-cell week-cell">{day}</li>
       )
     );
 
@@ -84,8 +96,8 @@ class Calendar extends React.Component{
             <h4 className="calendar-title">{this.state.year}</h4>
           </div>
           <div>
-            <button className="calendar-buttons">&lang;</button>
-            <button className="calendar-buttons">&rang;</button>
+            <button onClick={this.changeMonth("next")} className="calendar-buttons">&lang;</button>
+            <button onClick={this.changeMonth("prev")} className="calendar-buttons">&rang;</button>
           </div>
         </ul>
         <ul className="calendar-row daysOfWeek">

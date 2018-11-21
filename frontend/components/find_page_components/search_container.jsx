@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchFindableGroups } from '../../actions/meetin_actions';
 import { updateRadi } from '../../actions/filter_actions';
 import GroupsIndex from './groups_components/group_index/groups_index';
+import Calendar from './calendar_components/calendar_index/calendar';
 import { merge } from 'lodash';
 
 
@@ -12,6 +13,8 @@ class SearchBar extends React.Component {
     this.state =  this.props.filters;
     this.updatefilters = this.updatefilters.bind(this);
     this.invokeQuery = this.invokeQuery.bind(this);
+    this.updateQueryType = this.updateQueryType.bind(this);
+    this.displayContent = this.displayContent.bind(this);
     this.updateReferenceLocation = this.updateReferenceLocation.bind(this);
   }
 
@@ -41,7 +44,7 @@ class SearchBar extends React.Component {
       } else {
         // if the filter is NOT radi, then you only want to update the state part.
         // without the success callback
-        this.setState({[filter]: e.target.value})
+        this.setState({[filter]: e.target.value});
       }
 
     };
@@ -58,10 +61,16 @@ class SearchBar extends React.Component {
 
   updateQueryType(queryType){
     return (e) => {
-      this.setState({queryType: e.target.value});
+      this.setState({queryType: queryType});
     };
   }
-
+  tabClass(queryType){
+    if (this.state.queryType === "groups"){
+      return (queryType === "groups") ? "calendar-groups-tab-item left-tab-item calendar-groups-tab-selected" : "calendar-groups-tab-item right-tab-item";
+    } else {
+      return (queryType === "calendar") ? "calendar-groups-tab-item right-tab-item calendar-groups-tab-selected" : "calendar-groups-tab-item left-tab-item";
+    }
+  }
   displayRadi(n){
     if (n > 100) {
       return "any distance";
@@ -69,7 +78,13 @@ class SearchBar extends React.Component {
       return `${n} miles`;
     }
   }
-
+  displayContent(){
+    if (this.state.queryType === "groups") {
+      return (<GroupsIndex groups={this.props.groups}/>);
+    } else {
+      return (<Calendar groups={this.props.filters}/>);
+    }
+  }
   render(){
     return (
       <div className="find-page-container-content">
@@ -88,7 +103,7 @@ class SearchBar extends React.Component {
 
             <div className="location-filter-section">
               within
-              <ul className="radi-dropdown">
+              <ul className="radi-dropdown" tabIndex="123">
               <span className="search-radius location-inputs" >
                 {this.displayRadi(this.state.radi)}
               </span>
@@ -108,11 +123,11 @@ class SearchBar extends React.Component {
             </div>
           </div>
           <ul className="calendar-groups-tabs">
-            <li className="calendar-groups-tab-item left-tab-item" onClick={this.updateQueryType("Groups")}>Groups</li>
-            <li className="calendar-groups-tab-item right-tab-item" >Calendar</li>
+            <li className={this.tabClass("groups")} onClick={this.updateQueryType("groups")} >Groups</li>
+            <li className={this.tabClass("calendar")} onClick={this.updateQueryType("calendar")}>Calendar</li>
           </ul>
         </form>
-        <GroupsIndex groups={this.props.groups}/>
+        {this.displayContent()}
       </div>
     );
   }
@@ -121,8 +136,8 @@ class SearchBar extends React.Component {
 const msp = (state) => {
   const currUserId = state.session.currentUserId;
   const currentUser = state.entities.users[currUserId];
-  const filters = merge({}, state.ui.filters, {coord: {lng: currentUser.lng, lat: currentUser.lat}});
 
+  const filters = merge({}, state.ui.filters, {coord: {lng: currentUser.lng, lat: currentUser.lat}});
   return {
     currentUser: currentUser,
     groups: Object.values(state.entities.groups),

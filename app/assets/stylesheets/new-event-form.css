@@ -1,0 +1,35 @@
+.date-time-input {
+  margin: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.dt-input-container {
+  background-color: rgba(246, 247, 248, 1);
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.dt-input-field {
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #fafafa;
+  width: 100%;
+}
+
+.dt-label {
+  padding: 0;
+}
+
+.when-question {
+  margin: 0;
+  font-weight: normal;
+  font-size: 15px;
+}

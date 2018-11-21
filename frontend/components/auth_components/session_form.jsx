@@ -10,7 +10,7 @@ class SessionForm extends React.Component {
   }
 
   componentWillUnmount(){
-    // debugger
+    
     this.props.errors.session = [];
   }
   update(field){

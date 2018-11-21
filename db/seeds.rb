@@ -6,10 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+EventRsvp.destroy_all
 GroupMembership.destroy_all
+Event.destroy_all
 Group.destroy_all
 User.destroy_all
 Interest.destroy_all
+puts "destroyed tables"
 
 interests = [
   'Outdoor & Adventure',
@@ -69,6 +72,8 @@ interests.each.with_index do |interest, indx|
   Interest.create!(topic_titles: interest, picture_url: interestsPhotoURLS[indx])
 end
 
+puts "created interests"
+
 u1 = User.create!(
   name: "Sallem Ahmed",
   password: "123123",
@@ -105,6 +110,8 @@ u4 = User.create!(
   lat: 40.755293,
   lng: -74.003459
 )
+
+puts "created users"
 
 aA = Group.create!(
   organizer_id: u1.id,
@@ -151,6 +158,180 @@ Football is the world’s most popular ball game in numbers of participants and 
   private: false
 )
 
+fg = Group.create!(
+  organizer_id: u2.id,
+  title: "Fixed Gear City Riders ",
+  img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz0WYn2YePUNcCZUeKeDLs3d6vUnR3zEZDjW2VcNbp-2uLtIXC",
+  city: "New York",
+  description: "There’s a point when a trend turns into a movement and movement turns into a way of life. In regards to the advancement of bike culture in major Chinese cities, a movement has begun. The influx of foreign and local led biking efforts across major Chinese cities is propelling both the customized (through the fixed gear scene) and the traditional bike culture movement forward into 2010 and beyond.",
+  lat: 40.755295,
+  lng: -74.003457,
+  private: false
+)
+
+
+
+ce = Group.create!(
+  organizer_id: u1.id,
+  title: "Car Enthuses",
+  img_url: "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/media/51/2017-10best-lead-photo-672628-s-original.jpg?crop=1xw:1xh;center,top&resize=800:*",
+  city: "New York",
+  description: "If you search for the meaning of community, you’ll find the definition as people who share common interests. That’s why the universe has cooking clubs, football fanatics and Game Of Thrones diehards. But to us petrolheads, cars are so much more than a simply defined ‘interest’. We are defined by a passion that infiltratres our lives on a much deeper level.
+
+And so the stronger the passion, the tighter a community will be, and you’ll find this solidarity by the bucketload in the automotive scene. When we’re not out driving our cars, we’re socialising online with fellow car enthusiasts and subconsciously consuming any car facts and figures we can get our minds on.",
+  lat: 40.755291,
+  lng: -74.003452,
+  private: false
+)
+
+
+gt = Group.create!(
+  organizer_id: u1.id,
+  title: "Game of Thrones Fan Club",
+  img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSbEUBccfYh9ThdEHbpPAUxTEK49uHg_UhFGzKmuExYrXWx6BLVg",
+  city: "New York",
+  description: "Years after a rebellion spurred by a stolen bride to be and the blind ambitions of a mad king, Robert of the house Baratheon sits on the much desired Iron Throne. In the mythical land of Westeros, nine noble families fight for every inch of control and every drop of power. The King's Hand, Jon Arryn, is dead. And Robert seeks out his only other ally in all of Westeros, his childhood friend Eddard Stark. The solemn and honorable Warden of the North is tasked to depart his frozen sanctuary and join the King in the capital of King's Landing to help the now overweight and drunk Robert rule. However, a letter in the dead of night informs Ned that the former Hand was murdered, and that Robert will be next. So noble Ned goes against his better desires in an attempt to save his friend and the kingdoms. But political intrigue, plots, murders, and sexual desires lead to a secret that could tear the Seven Kingdoms apart. And soon Eddard will find out what happens when you play the Game of Thrones.",
+  lat: 40.755299,
+  lng: -74.003451,
+  private: false
+)
+
+
+id = Group.create!(
+  organizer_id: u4.id,
+  title: "Interior Decore",
+  img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR26i8sbgYaV8n3xSoHfUw9_1NYSHbQc5qk-hN5Iy8Vs1A1QtTrRA
+",
+  city: "New York",
+  description: "Interior designers work closely with architects, structural engineers, mechanical engineers, and builders, to determine how interior spaces will function, look, and be furnished. Interior designers read blueprints and must be aware of building codes and inspection regulations.
+Although some sketches or drawings may be freehand, most interior designers use computer-aided design (CAD) software for the majority of their drawings.
+
+
+Many designers specialize in a particular type of building (home, hospital, or hotel), a specific room (bathroom or kitchen), or a specific style. Some designers work for home furnishings stores, providing design services to help customers choose materials and furnishings.",
+  lat: 40.755296,
+  lng: -74.003453,
+  private: false
+)
+
+
+we = Group.create!(
+  organizer_id: u4.id,
+  title: "Welding Experts",
+  img_url: "https://www.butlertech.org/wp-content/uploads/2017/06/Welding.jpg",
+  city: "New York",
+  description: "Welders fabricate and assemble metal structures and equipment through the use of welders, cutters, shapers and measuring tools. Welders produce metal products according to customer or employer specifications. They use multiple welding machines to repair and maintain metal equipment and structures of various sizes.",
+  lat: 40.755292,
+  lng: -74.003454,
+  private: false
+)
+
+
+
+llg = Group.create!(
+  organizer_id: u3.id,
+  title: "League of Legends Gaming",
+  img_url: "https://cyberbullying.org/wp-content/uploads/2016/10/league-of-legends-wallpaper-e1478011147165.jpg",
+  city: "New York",
+  description: "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements. Two teams of powerful champions, each with a unique design and playstyle, battle head-to-head across multiple battlefields and game modes.",
+  lat: 40.755296,
+  lng: -74.003454,
+  private: false
+)
+
+puts "created groups"
+
 GroupMembership.create!(user_id: u2.id, group_id: aA.id)
 GroupMembership.create!(user_id: u3.id, group_id: aA.id)
 GroupMembership.create!(user_id: u4.id, group_id: pp.id)
+
+puts "created group memberships"
+
+e1 = Event.create!(
+  host_id: u3.id,
+  group_id: ss.id,
+  title: "Saturday for the Boys",
+  event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
+  address: "92 Hudson River Greenway, New York, NY 10014",
+  city: "New York",
+  detail: "In Bubble Ball, players wear inflatable bubble suits that allow them to safely bounce off one another and roll over completely. You can play games like Bubble Soccer, Capture the Flag and Bubble Football. BubbleBall is perfect for birthday​s, company picnics, school events, and much more. This is your chance to become a human bubble!
+  Bubble Soccer Rules
+
+
+1.    Players
+
+
+
+A match is played by two teams, each consisting of not more than five players.  Each team must have at least one female on the field at all times during play.  A match may not start if either team consists of fewer than three players.
+
+
+
+Substitutions:
+
+Substitutions will be allowed during the game at any time during active play.  To substitute a player, the player coming off of the field needs to stand by the sideline of the field as the new player going onto the field crosses the side-line to enter the game simultaneously.  All substituted players will be checked for equipment by a referee before entering onto the field.
+
+
+
+Goalkeeper:
+
+During gameplay, there are five active players on the field with each team.  Goalkeepers are NOT allowed.  There will be a crease area in front of the goal – players can travel through the crease, but cannot stay in the crease for more than three seconds.
+
+
+
+2.    Safety & Equipment
+
+
+
+The referees provided during the match are for the supervision of the game, but also to ensure the safety of the players.
+
+
+
+Excessive force bumps without the intent to gain possession of the ball OR without the intent to clear the path of the ball to the goal, can and will be penalized with a 2 min penalty based on referee’s discretion. Depending on the case, especially when these bumps are from blind spots & when safety of the opponent is endangered, referee has the authority to eject a player.
+
+
+
+Bumping the opponents outside the boundary cones is NOT leagal. Point of contact/bump determines what is a bump in our out of the boundary areas. A bump inside the playing field that results in an opponent falling outside that playing area is legal.
+
+
+
+We recommend twearing  knee pads for indoor bubble soccer games.
+
+
+
+Equipment:
+
+Each player must be in a “Battle Ball” prior to stepping on the field.  The equipment shall be worn fully-inflated and over the shoulders with shoulder straps that are snug to ensure that the player is secured tightly inside the ball.
+
+
+
+Players must wear tennis shoes or turf shoes, soccer cleats will not be allowed.  Shin guards and kneepads are recommended but not required.
+
+
+
+Jewelry, glasses and other sharp objects:
+
+No jewelry or other sharp objects may be worn during play or in the Battle Ball.  Glasses may be used, however will need to be worn with an eyewear retainer to keep them on the player at all times.
+
+
+
+“On the Ground Rule:”
+
+Players who are knocked to the ground during play must be allowed to get up before being contacted again by the opposing team.  It is critical that players not be hit while on the ground and be allowed to get up.  Referees will strictly enforce this rule as a players legs are vulnerable when trying to stand up and to ensure safety.
+
+Whistle to Stop Play
+
+Referees will blow the whistle three times consecutively to either stop play, or to signal the end of a half and/or game.  All players must STOP if they hear the signal.  Active gameplay will be stopped by the referees to respond to player safety concerns (loose strap, Battle Balls which are not properly inflated or other unsafe condition).",
+  lat: 40.729258,
+  lng: -74.011582,
+  start_date: Time.utc(2018, 11, 8, 9, 10),
+  end_date: Time.utc(2018, 12, 8, 9, 10),
+  private: false,
+  price: 350.00
+)
+
+puts "created events"
+
+EventRsvp.create!(user_id: u1.id, event_id: e1.id, rsvp: true)
+EventRsvp.create!(user_id: u2.id, event_id: e1.id, rsvp: false)
+EventRsvp.create!(user_id: u3.id, event_id: e1.id, rsvp: true)
+
+puts "created rsvps"

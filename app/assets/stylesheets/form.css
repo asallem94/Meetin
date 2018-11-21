@@ -6,6 +6,11 @@ label {
   padding: 30px 0  10px 0;
 }
 
+h3 {
+  font-weight: normal;
+  margin: 5px 0;
+}
+
 p {
   font-size: 15px;
   line-height: 1.25;

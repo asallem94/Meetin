@@ -13,6 +13,10 @@ class Group < ApplicationRecord
     through: :user_memberships,
     source: :user
 
+  has_many :events,
+    foreign_key: :group_id,
+    class_name: :Event
+
   def members_count
     self.members.count
   end

@@ -1,11 +1,9 @@
 import React from 'react';
-import GroupShowContainer from '../groups_show_container'
+import { Link } from 'react-router-dom';
 
-const GenInfo = ({group, users}) => {
-  if (!group){
-    // return (<GroupShowContainer/>);
-    return null;
-  }
+const GenInfo = ({group, users, currUserId}) => {
+
+  
 
   return (
     <header className="group-show-header">
@@ -28,6 +26,9 @@ const GenInfo = ({group, users}) => {
             <li className="organizer-name">{users[group.organizer_id].name}</li>
           </section>
         </div>
+        <Link to="/events/new"><button className="create-event-button">
+          Create New Event
+        </button></Link>
       </div>
 
     </header>
