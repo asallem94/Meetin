@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchFindableGroups } from '../../actions/meetin_actions';
 import { updateRadi } from '../../actions/filter_actions';
 import GroupsIndex from './groups_components/group_index/groups_index';
-import Calendar from './calendar_components/calendar_index/calendar';
+import EventSearchContainer from './calendar_components/event_search_container';
 import { merge } from 'lodash';
 
 
@@ -26,14 +26,12 @@ class SearchBar extends React.Component {
 
   invokeQuery(e){
     e.preventDefault();
-    console.log(`fetching groups with current state ${this.state}`);
 
     this.props.fetchFindableGroups(this.state);
   }
 
   updatefilters(filter){
     return (e) => {
-      // console.log(`updating ${filter} to: ${e.target.value}`);
 
       if (filter === 'radi'){
         // if the filter is radi this is what you wanna do .
@@ -80,9 +78,12 @@ class SearchBar extends React.Component {
   }
   displayContent(){
     if (this.state.queryType === "groups") {
+      debugger
       return (<GroupsIndex groups={this.props.groups}/>);
     } else {
-      return (<Calendar groups={this.props.filters}/>);
+      debugger
+      return null;
+      // return (<EventSearchContainer filters={this.props.filters}/>);
     }
   }
   render(){
@@ -140,7 +141,7 @@ const msp = (state) => {
   const filters = merge({}, state.ui.filters, {coord: {lng: currentUser.lng, lat: currentUser.lat}});
   return {
     currentUser: currentUser,
-    groups: Object.values(state.entities.groups),
+    events: Object.values(state.entities.events),
     filters: filters,
   };
 };

@@ -1,4 +1,5 @@
 export const fetchFindableEvents = (filters) => {
+  debugger
   return $.ajax({
     url: 'api/events',
     method: "GET",
@@ -15,7 +16,7 @@ export const fetchEvent = (id) => {
 
 export const createEvent = (event) => {
   return $.ajax({
-    url: `/api/groups/${event.group_id}/events`,
+    url: `/api/groups/${event.groupId}/events`,
     method: "POST",
     data: { event },
   });

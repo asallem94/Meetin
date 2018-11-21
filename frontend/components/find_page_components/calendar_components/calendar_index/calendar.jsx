@@ -1,4 +1,5 @@
 import React from 'react';
+import Moment from 'moment';
 
 class Calendar extends React.Component{
   constructor(props){
@@ -18,11 +19,19 @@ class Calendar extends React.Component{
 
   changeMonth(direction){
     return () => {
+      newDate = Date(this.state.year, this.state.day, this.state.month);
+      let d;
       if (direction === "next") {
-        this.setState({month: this.state.month+1});
+        d = moment(newDate).add(1, 'months');
+        // this.setState({month: this.state.month+1});
       } else {
-        this.setState({month: this.state.month-1});
+        d = moment(newDate).subtract(1, 'months');
+        // this.setState({month: this.state.month-1});
       }
+      const mon = this.d.getMonth();
+      const yr = this.d.getFullYear();
+      const date = this.d.getDate();
+      this.state = {month: mon, year: yr, day: date, start_date: this.d};
     };
   }
 
@@ -36,7 +45,6 @@ class Calendar extends React.Component{
     let empty = 0;
 
     while (i < lastDay.getDate()) {
-      console.log(i);
       let week = [];
 
       for (let j = 0; j < 7; j++) {
@@ -96,8 +104,8 @@ class Calendar extends React.Component{
             <h4 className="calendar-title">{this.state.year}</h4>
           </div>
           <div>
-            <button onClick={this.changeMonth("next")} className="calendar-buttons">&lang;</button>
-            <button onClick={this.changeMonth("prev")} className="calendar-buttons">&rang;</button>
+            <button onClick={this.changeMonth("prev")} className="calendar-buttons">&lang;</button>
+            <button onClick={this.changeMonth("next")} className="calendar-buttons">&rang;</button>
           </div>
         </ul>
         <ul className="calendar-row daysOfWeek">

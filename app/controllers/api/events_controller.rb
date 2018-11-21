@@ -6,6 +6,7 @@ class Api::EventsController < ApplicationController
 
   def index
     # @events = Event.events_by_filters(params[:filters])
+    debugger
     @events = Event.all
   end
 
@@ -17,7 +18,7 @@ class Api::EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.host_id = current_user.id
     @event.group_id = params[:group_id]
-    @event.event_img_url = "http://www.clutterfairyhouston.com/wp/wp-content/uploads/2014/10/Depositphotos_12802359_s-Golden-Abstract-Bokeh-Background-Gold-Dust-over-Black-cropped-719x321.jpg"
+    @event.event_img_url = "https://www.pixelstalk.net/wp-content/uploads/2016/11/Color-explosion-wallpaper-2560x1600.jpg"
     if @event.save
       render :show
     else
@@ -39,7 +40,7 @@ class Api::EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :image_url, :city, :description, :lng, :lat, :private)
+    params.require(:event).permit(:title, :image_url, :city, :detail, :lng, :lat, :private, :start_date, :end_date, :address)
   end
 
 end

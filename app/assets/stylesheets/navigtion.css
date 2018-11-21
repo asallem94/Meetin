@@ -1,4 +1,13 @@
 /*  navigation style components */
+
+.err_page {
+  font-size: 128px;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  height: 1080px;
+  width: 100%;
+}
 .navigation-container {
   z-index: 10;
   width: 100%;

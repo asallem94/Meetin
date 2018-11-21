@@ -3,8 +3,17 @@ import { Link } from 'react-router-dom';
 
 const GenInfo = ({group, users, currUserId}) => {
 
-  
 
+  let createEvent = null;
+  if (currUserId === group.organizer_id) {
+    createEvent = (
+      <Link to={`/groups/${group.id}/events/new`}>
+        <button className="create-event-button">
+          Create New Event
+        </button>
+      </Link>
+    );
+  }
   return (
     <header className="group-show-header">
       <img className="group-show-img" src={group.img_url}/>
@@ -26,9 +35,8 @@ const GenInfo = ({group, users, currUserId}) => {
             <li className="organizer-name">{users[group.organizer_id].name}</li>
           </section>
         </div>
-        <Link to="/events/new"><button className="create-event-button">
-          Create New Event
-        </button></Link>
+
+        {createEvent}
       </div>
 
     </header>

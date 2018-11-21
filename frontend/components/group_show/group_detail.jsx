@@ -55,9 +55,7 @@ const GroupDetail = (props) => {
           </div>
         </div>
         <div className="detail-banner">
-          <ul className="group-members-container ">
-            {displayGroupEvents(props.group.event_ids, props.events)}
-          </ul>
+          {displayGroupEvents(props.group.event_ids, props.events)}
         </div>
       </div>
     </div>

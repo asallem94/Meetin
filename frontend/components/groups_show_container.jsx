@@ -37,7 +37,7 @@ class GroupShow extends React.Component {
 
         <Switch>
 
-          <Route path="/groups/:groupId/meetin" render={
+          <Route path="/groups/:groupId/meetins" render={
             () => <GroupMeetins {...passedProps}/>
           } />
 
@@ -45,9 +45,10 @@ class GroupShow extends React.Component {
             () => <GroupDetail {...passedProps}/>
           } />
 
-
+          <Route path="/groups/:groupId/members" render={
+            () => <GroupMeetins {...passedProps}/>
+          } />
         </Switch>
-        <GroupMeetins {...passedProps}/>
       </div>
     );
   }

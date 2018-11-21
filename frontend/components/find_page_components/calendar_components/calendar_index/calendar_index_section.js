@@ -2,7 +2,7 @@ import React from 'react';
 
 const CalendarIndexSection = ({events}) => {
 
-  const eventViewable = Object.keys(groupedEvents)events.map((event) =>(
+  const eventViewable = Object.keys(groupedEvents).events.map((event) =>(
     <ul>
       <CalendarsIndexItem
         key={event.id}

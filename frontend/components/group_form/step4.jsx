@@ -15,7 +15,7 @@ const Step4 = ({handleSubmit, loggedIn}) => {
           <li className="list">Always safe and respectful</li>
           <li className="list">Put your members first</li>
         </article>
-        <button onClick={handleSubmit} className="continue-button">{loggedIn ? "create group" : "Next"}</button>
+        <button onClick={handleSubmit} className="continue-button">{"Create Group"}</button>
       </div>
     </div>
 

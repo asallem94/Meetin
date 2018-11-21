@@ -51,7 +51,6 @@ class GroupForm extends React.Component {
 
     request.onerror = function(err) {
       // There was a connection error of some sort
-      console.log(err);
     };
     request.send();
   }
@@ -74,9 +73,7 @@ class GroupForm extends React.Component {
       description: document.getElementById('description').value,
       city: this.state.city,
     };
-    // debugger
     this.props.createGroup(group).then(res => {
-      // debugger
       return this.props.history.push(`/groups/${res.group.id}`);
     });
 

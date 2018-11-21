@@ -8,6 +8,7 @@ import Step1 from './event_form/step1';
 import Step2 from './event_form/step2';
 import Step3 from './event_form/step3';
 import Step4 from './event_form/step4';
+import Moment from 'moment';
 
 class EventForm extends React.Component {
   constructor(props){
@@ -16,7 +17,8 @@ class EventForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCoordinates = this.handleCoordinates.bind(this);
     this.handleChangeLocaiton = this.handleChangeLocaiton.bind(this);
-    this.state = {city: "", lng: "", lat: "", startDate: "", endDate: ""};
+    this.update = this.update.bind(this);
+    this.state = {city: "", lng: "", lat: "", startDate: Moment().format("YYYY-MM-DD"), endDate: Moment().format("YYYY-MM-DD"), startTime:"10:00", endTime: "14:00"};
   }
 
   componentDidMount(){
@@ -48,44 +50,61 @@ class EventForm extends React.Component {
 
     request.onerror = function(err) {
       // There was a connection error of some sort
-      console.log(err);
     };
     request.send();
   }
 
   unhideStep(step, e){
+    e.preventDefault();
     const stepContainer = document.getElementById(step);
     stepContainer.classList.add('unhidden-step');
     stepContainer.classList.remove('hidden-step');
     window.setTimeout(()=>{
       window.scroll(0, [stepContainer.offsetTop]);
     }, 5);
-    e.target.style.display = "none";
+    if (e.target.value === "") {
+      e.target.style.display = "none";
+    }else{
+      e.target.children[e.target.children.length-1].style.display = "none";
+    }
+  }
+
+  update(field){
+    return (e) => {
+      this.setState({[field]: e.target.value});
+    };
   }
 
   handleSubmit(){
-    // const inputedDate = document.getElementById('start-date').value
-    // console.log(inputedDate);
+    const startDateInputed = document.getElementById('start-date').value;
+    const startTimeInputed = document.getElementById('start-time').value;
+    const endDateInputed = document.getElementById('end-date').value;
+    const endTimeInputed = document.getElementById('end-time').value;
+    const startDate = Date(startDateInputed + " " + startTimeInputed);
+    const endDate = Date(endDateInputed + " " + endTimeInputed);
     const event = {
       lng: this.state.lng || this.props.currentUser.lng,
       lat: this.state.lat || this.props.currentUser.lat,
+      address: document.getElementById('address').value,
       title: document.getElementById('title').value,
-      description: document.getElementById('description').value,
+      detail: document.getElementById('description').value,
       city: this.state.city,
+      start_date: startDate,
+      end_date: endDate,
+      groupId: this.props.match.params.groupId
     };
-    // debugger
     this.props.createEvent(event).then(res => {
-      // debugger
       return this.props.history.push(`/events/${res.event.id}`);
     });
 
   }
 
   render(){
+    const dateTime={startDate: this.state.startDate, endDate: this.state.endDate, startTime: this.state.startTime, endTime: this.state.endTime};
     return (
       <div className="events-form-page">
         <FormHeader/>
-        <Step1 unhideStep={this.unhideStep} city={this.state.city} startDate={this.state.startTime} endDate={this.state.endDate}/>
+        <Step1 unhideStep={this.unhideStep} city={this.state.city} dateTime={dateTime} update={this.update}/>
         <Step2 unhideStep={this.unhideStep} interests={this.props.interests}/>
         <Step3 unhideStep={this.unhideStep}/>
         <Step4 handleSubmit={this.handleSubmit} loggedIn={this.props.loggedIn}/>
@@ -96,7 +115,7 @@ class EventForm extends React.Component {
 
 
 
-const msp = (state) => {
+const msp = (state, ownProps) => {
   const currUserId = state.session.currentUserId;
   const currentUser = state.entities.users[currUserId];
 

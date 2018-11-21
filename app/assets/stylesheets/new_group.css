@@ -82,7 +82,7 @@
 }
 
 .continue-button {
-  width: 100px;
+  width: max-content;
   border-radius: 5px;
   background-color: #eb2040;
   font-size: 18px;

@@ -2,6 +2,7 @@
 
 json.extract! user,:id, :name, :profile_img_url, :lat, :lng, :bio, :lng, :lat
 json.set! :groups_count, user.group_memberships.count
+json.set! :organized_groups, user.organized_groups.ids
 
 user.group_memberships.each do |membership|
   json.groups do
