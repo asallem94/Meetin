@@ -3,6 +3,7 @@ export const UPDATE_START_DATE = "UPDATE_START_DATE";
 export const UPDATE_END_DATE = "UPDATE_END_DATE";
 export const UPDATE_QUERY_SEARCH = "UPDATE_QUERY_SEARCH";
 export const UPDATE_QUERY_TYPE = "UPDATE_QUERY_TYPE";
+export const UPDATE_ALL_FILTERS = "UPDATE_ALL_FILTERS";
 
 export const updateRadi = (radi) => ({
   type: UPDATE_RADI,
@@ -27,4 +28,8 @@ export const updateQuerySearch = (querySearch) => ({
 export const updateQueryType = (queryType) => ({
   type: UPDATE_QUERY_TYPE,
   queryType
+});
+export const updateFilters = (filters) => ({
+  type: UPDATE_ALL_FILTERS,
+  filters
 });

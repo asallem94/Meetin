@@ -7,11 +7,11 @@ import { merge, remove } from 'lodash';
 const eventsReducer = ( state = {}, action ) => {
   Object.freeze(state);
   let defaultState = merge({}, state);
-    
+
 
   switch(action.type){
     case RECEIVE_FINDABLE_EVENTS:
-      return action.events;
+      return action.events || {};
     case RECEIVE_EVENT:
       return merge({}, state, { [action.event.id]: action.event });
     case RECEIVE_GROUP:

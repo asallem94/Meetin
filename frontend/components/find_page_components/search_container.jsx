@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchFindableGroups } from '../../actions/meetin_actions';
-import { updateRadi } from '../../actions/filter_actions';
+import { fetchFindableEvents } from '../../actions/event_actions';
+import { updateFilters } from '../../actions/filter_actions';
 import GroupsIndex from './groups_components/group_index/groups_index';
 import EventSearchContainer from './calendar_components/event_search_container';
 import { merge } from 'lodash';
@@ -26,7 +27,6 @@ class SearchBar extends React.Component {
 
   invokeQuery(e){
     e.preventDefault();
-
     this.props.fetchFindableGroups(this.state);
   }
 
@@ -37,14 +37,18 @@ class SearchBar extends React.Component {
         // if the filter is radi this is what you wanna do .
         this.setState({[filter]: e.target.value}, () => {
           // on success (in this call back), invoke the fetcher
+          this.props.updateFilters(this.state);
           if (this.state.queryType === "groups") {
             this.props.fetchFindableGroups(this.state);
+          } else {
+            this.props.fetchFindableEvents(this.state);
           }
         });
       } else {
         // if the filter is NOT radi, then you only want to update the state part.
         // without the success callback
         this.setState({[filter]: e.target.value});
+        this.props.updateFilters(this.state);
       }
 
     };
@@ -56,12 +60,14 @@ class SearchBar extends React.Component {
         lat: location.coords.latitude,
         lng: location.coords.longitude
       }});
+      this.props.updateFilters(this.state);
     });
   }
 
   updateQueryType(queryType){
     return (e) => {
       this.setState({queryType: queryType});
+      this.props.updateFilters(this.state);
     };
   }
   tabClass(queryType){
@@ -82,7 +88,7 @@ class SearchBar extends React.Component {
     if (this.state.queryType === "groups") {
       return (<GroupsIndex className="groupsIndex" groups={this.props.groups}/>);
     } else {
-      return (<EventSearchContainer filters={this.props.filters}/>);
+      return (<EventSearchContainer/>);
     }
   }
   render(){
@@ -150,7 +156,10 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
   return {
+
+    fetchFindableEvents: (filters) => dispatch(fetchFindableEvents(filters)),
     fetchFindableGroups: (filters) => dispatch(fetchFindableGroups(filters)),
+    updateFilters: (filters) => dispatch(updateFilters(filters)),
   };
 };
 

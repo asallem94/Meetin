@@ -30,6 +30,8 @@ class Event < ApplicationRecord
     lng = filters[:coord][:lng]
     lat = filters[:coord][:lat]
     querySearch = filters[:query]
+    start_date = filters[:filterStartDate]
+    end_date = filters[:filterEndDate]
 
     # filters:
       # {
@@ -45,6 +47,7 @@ class Event < ApplicationRecord
 
       Event.where("((lng - :lng) * (lng - :lng)) + ((lat - :lat) * (lat - :lat)) < :r * :r", {lng: lng, lat:lat, r: r})
         .where("title LIKE :querySearch OR detail LIKE :querySearch", querySearch: "%#{querySearch}%")
+        .where("start_date between :start_date AND :end_date", {start_date: start_date, end_date: end_date})
 
   end
 

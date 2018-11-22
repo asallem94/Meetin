@@ -22,7 +22,7 @@ const App = () => {
       <Switch>
         <ProtectedFromSplat exact path="/" component={Homepage}/>
         <ProtectedRoute exact path="/find" component={Findpage}/>
-        <ProtectedRoute exact path="/groups/:groupId" component={GroupShowContainer}/>
+        <ProtectedRoute path="/groups/:groupId" component={GroupShowContainer}/>
         <AuthEventCreatorRoute exact path="/groups/:groupId/events/new" component={EventFormContainer}/>
         <ProtectedRoute exact path="/events/:eventId" component={EventsShowContainer}/>
         <ProtectedRoute exact path="/create" component={GroupFormContainer}/>

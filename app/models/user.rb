@@ -45,6 +45,10 @@ class User < ApplicationRecord
     through: :group_memberships,
     source: :group
 
+  has_many :my_groups_events,
+    through: :groups,
+    source: :events
+
   has_many :events_rsvp,
     foreign_key: :user_id,
     class_name: :EventRsvp
@@ -60,11 +64,6 @@ class User < ApplicationRecord
   has_many :attending_events,
     through: :going_responses,
     source: :event
-
-  def attending_events
-    self.rsvped_events.where(rsvp: true)
-  end
-
 
   # private
   def generate_session_token!

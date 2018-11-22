@@ -160,7 +160,7 @@ Football is the world’s most popular ball game in numbers of participants and 
 
 fg = Group.create!(
   organizer_id: u2.id,
-  title: "Fixed Gear City Riders ",
+  title: "Fixed Gear City Riders",
   img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz0WYn2YePUNcCZUeKeDLs3d6vUnR3zEZDjW2VcNbp-2uLtIXC",
   city: "New York",
   description: "There’s a point when a trend turns into a movement and movement turns into a way of life. In regards to the advancement of bike culture in major Chinese cities, a movement has begun. The influx of foreign and local led biking efforts across major Chinese cities is propelling both the customized (through the fixed gear scene) and the traditional bike culture movement forward into 2010 and beyond.",
@@ -171,9 +171,9 @@ fg = Group.create!(
 
 
 
-ce = Group.create!(
+cl = Group.create!(
   organizer_id: u1.id,
-  title: "Car Enthuses",
+  title: "Car Lovers",
   img_url: "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/media/51/2017-10best-lead-photo-672628-s-original.jpg?crop=1xw:1xh;center,top&resize=800:*",
   city: "New York",
   description: "If you search for the meaning of community, you’ll find the definition as people who share common interests. That’s why the universe has cooking clubs, football fanatics and Game Of Thrones diehards. But to us petrolheads, cars are so much more than a simply defined ‘interest’. We are defined by a passion that infiltratres our lives on a much deeper level.
@@ -274,7 +274,7 @@ e7 = Event.create!(
   start_date: Time.utc(2018, 11, 22, 8, 10),
   end_date: Time.utc(2018, 11, 22, 9, 10),
   private: false,
-  price: 350.00
+  price: 25.00
 )
 
 e2 = Event.create!(
@@ -360,3 +360,142 @@ EventRsvp.create!(user_id: u2.id, event_id: e1.id, rsvp: false)
 EventRsvp.create!(user_id: u3.id, event_id: e1.id, rsvp: true)
 
 puts "created rsvps"
+
+
+puts "creating nader seeds"
+
+e50 = Event.create!(
+  host_id: u2.id,
+  group_id: fg.id,
+  title: "Race in Times Square",
+  event_img_url: "http://www.wheeltalkfixed.com/wp-content/uploads/2018/03/WheelTalk_FixedGearPortland_ThisIsASign-8236-810x540.jpg",
+  address: "Manhattan, NY 10036",
+  city: "New York",
+  detail: "Be the fastest rider to go from start to finish while dodging car people and other riders in the most busiest city in the world! Come see if you can make it across the finish line alive and if you can be the first to do so.",
+  lat: 40.729252,
+  lng: -74.011586,
+  start_date: Time.utc(2018, 11, 28, 9, 00),
+  end_date: Time.utc(2018, 11, 28, 11, 00),
+  private: false,
+  price: 0
+)
+
+EventRsvp.create!(user_id: u1.id, event_id: e50.id, rsvp: true)
+EventRsvp.create!(user_id: u2.id, event_id: e50.id, rsvp: true)
+EventRsvp.create!(user_id: u3.id, event_id: e50.id, rsvp: true)
+
+
+e51 = Event.create!(
+  host_id: u2.id,
+  group_id: fg.id,
+  title: "Track Stand Competition",
+  event_img_url: "http://static.wixstatic.com/media/40f2de_26f949ddb0f9de4eab67a49137386781.jpg_1024",
+  address: "Brooklyn 11201",
+  city: "New York",
+  detail: "Balance you bike with out moving? Thats right, see if you can be the longest person stand with your bike with out moving.",
+  lat: 40.729255,
+  lng: -74.011588,
+  start_date: Time.utc(2018, 12, 13, 12, 00),
+  end_date: Time.utc(2018, 12, 13, 14, 00),
+  private: false,
+  price: 0
+)
+
+EventRsvp.create!(user_id: u1.id, event_id: e51.id, rsvp: true)
+EventRsvp.create!(user_id: u2.id, event_id: e51.id, rsvp: true)
+EventRsvp.create!(user_id: u3.id, event_id: e51.id, rsvp: false)
+
+
+
+e52 = Event.create!(
+  host_id: u2.id,
+  group_id: fg.id,
+  title: "Longest Skid Competition",
+  event_img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6FP2nTFs6ktErzleDrT4zJPM4SSGjPlqrEaVVJoGqCi2vlpPK",
+  address: "Brooklyn Williamsburg",
+  city: "New York",
+  detail: "How far can you skid? Come join us to see the longest skidding and all around good times. Share your bike and your experience of this awesome fixed gear life.",
+  lat: 40.729259,
+  lng: -74.011584,
+  start_date: Time.utc(2018, 12, 20, 14, 00),
+  end_date: Time.utc(2018, 12, 20, 16, 00),
+  private: false,
+  price: 0
+)
+
+EventRsvp.create!(user_id: u1.id, event_id: e52.id, rsvp: true)
+EventRsvp.create!(user_id: u2.id, event_id: e52.id, rsvp: true)
+EventRsvp.create!(user_id: u3.id, event_id: e52.id, rsvp: false)
+
+
+
+
+
+
+
+e53 = Event.create!(
+  host_id: u1.id,
+  group_id: cl.id,
+  title: "Imports only",
+  event_img_url: "https://www.nissanusa.com/content/dam/Nissan/us/vehicles/gtr/r35/2_minor_change/overview/18tdi-gtrhelios101.jpg.ximg.s_12_h.smart.jpg",
+  address: "Astoria NY 1103",
+  city: "New York",
+  detail: "Come share your foreign car and share your experience of the journey these overseas cars made. Show domestic cars how its done from afar.",
+  lat: 40.729251,
+  lng: -74.011584,
+  start_date: Time.utc(2018, 11, 30, 16, 00),
+  end_date: Time.utc(2018, 11, 30, 19, 00),
+  private: false,
+  price: 0
+)
+
+EventRsvp.create!(user_id: u1.id, event_id: e53.id, rsvp: true)
+EventRsvp.create!(user_id: u2.id, event_id: e53.id, rsvp: true)
+EventRsvp.create!(user_id: u3.id, event_id: e53.id, rsvp: true)
+
+
+
+
+e54 = Event.create!(
+  host_id: u1.id,
+  group_id: cl.id,
+  title: "Drift Day!",
+  event_img_url: "http://historylocker.com/wp-content/uploads/2017/07/drift-as-popular-as-formula-one.jpg3_.png",
+  address: "99 Caven Point Rd, Jersey City, NJ 07305",
+  city: "New Jersey",
+  detail: "Break those tires loose! Bring your car and have fun. Pop some donuts or make a classy figure 8. Decreased price courtesy of RPM Racing Track.",
+  lat: 40.729251,
+  lng: -74.011584,
+  start_date: Time.utc(2018, 12, 15, 8, 00),
+  end_date: Time.utc(2018, 12, 15, 16, 00),
+  private: false,
+  price: 240
+)
+
+EventRsvp.create!(user_id: u1.id, event_id: e54.id, rsvp: false)
+EventRsvp.create!(user_id: u2.id, event_id: e54.id, rsvp: true)
+EventRsvp.create!(user_id: u3.id, event_id: e54.id, rsvp: true)
+
+
+
+e55 = Event.create!(
+  host_id: u1.id,
+  group_id: cl.id,
+  title: "Drag Race!",
+  event_img_url: "https://www.nhra.com/sites/default/files/styles/news_gallery_big_image_920x518/public/2017-11/lucas.jpg?itok=ezFgOSg9",
+  address: "99 Caven Point Rd, Jersey City, NJ 07305",
+  city: "New Jersey",
+  detail: "Just you and the clock. Straight road and straight power. How much can you put down to get to the finish line the fastest?",
+  lat: 40.729253,
+  lng: -74.011587,
+  start_date: Time.utc(2018, 12, 30, 8, 00),
+  end_date: Time.utc(2018, 12, 30, 16, 00),
+  private: false,
+  price: 160
+)
+
+EventRsvp.create!(user_id: u1.id, event_id: e55.id, rsvp: false)
+EventRsvp.create!(user_id: u2.id, event_id: e55.id, rsvp: true)
+EventRsvp.create!(user_id: u3.id, event_id: e55.id, rsvp: true)
+
+puts "finished"

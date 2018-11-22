@@ -16,11 +16,6 @@ class CalendarIndex extends React.Component {
     this.eventGrouping = this.eventGrouping.bind(this);
   }
 
-  componentDidMount(){
-    // debugger
-    // this.props.fetchFindableEvents();
-  }
-
   eventGrouper(date, eventId, grouper){
     const refDate = Moment(date).format("YYYY-MM-DD");
     if (grouper[refDate]) {

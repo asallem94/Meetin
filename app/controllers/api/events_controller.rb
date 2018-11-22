@@ -5,8 +5,17 @@ class Api::EventsController < ApplicationController
   end
 
   def index
-    # @events = Event.events_by_filters(params[:filters])
-    @events = Event.all
+    case params[:filters][:eventFilterType]
+    when "All Meetins"
+      @events = Event.events_by_filters(params[:filters]).includes(:attendees).includes(:group)
+    when "My Meetins"
+      @events = current_user.my_groups_events.events_by_filters(params[:filters]).includes(:attendees).includes(:group)
+    when "I'm going"
+      @events = current_user.attending_events.events_by_filters(params[:filters]).includes(:attendees).includes(:group)
+    else
+      @events = Event.events_by_filters(params[:filters]).includes(:attendees).includes(:group)
+    end
+
   end
 
   def new

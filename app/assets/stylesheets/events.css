@@ -248,3 +248,24 @@
 .detail-banner {
   /* position: relative; */
 }
+
+.link {
+  width: 100%;
+  text-decoration: none;
+  color: black;
+}
+
+.events-group-name {
+  margin: 4px 0;
+  font-size: 18px;
+  color: rgba(50, 50, 50, 1);
+}
+.events-group-title {
+  margin: 0 5px;
+  font-size: 24px;
+}
+.events-group-count {
+  margin: 10px 5px;
+  font-size: 14px;
+  color: darkgray;
+}
