@@ -253,79 +253,104 @@ e1 = Event.create!(
   event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
   address: "92 Hudson River Greenway, New York, NY 10014",
   city: "New York",
-  detail: "In Bubble Ball, players wear inflatable bubble suits that allow them to safely bounce off one another and roll over completely. You can play games like Bubble Soccer, Capture the Flag and Bubble Football. BubbleBall is perfect for birthday​s, company picnics, school events, and much more. This is your chance to become a human bubble!
-  Bubble Soccer Rules
-
-
-1.    Players
-
-
-
-A match is played by two teams, each consisting of not more than five players.  Each team must have at least one female on the field at all times during play.  A match may not start if either team consists of fewer than three players.
-
-
-
-Substitutions:
-
-Substitutions will be allowed during the game at any time during active play.  To substitute a player, the player coming off of the field needs to stand by the sideline of the field as the new player going onto the field crosses the side-line to enter the game simultaneously.  All substituted players will be checked for equipment by a referee before entering onto the field.
-
-
-
-Goalkeeper:
-
-During gameplay, there are five active players on the field with each team.  Goalkeepers are NOT allowed.  There will be a crease area in front of the goal – players can travel through the crease, but cannot stay in the crease for more than three seconds.
-
-
-
-2.    Safety & Equipment
-
-
-
-The referees provided during the match are for the supervision of the game, but also to ensure the safety of the players.
-
-
-
-Excessive force bumps without the intent to gain possession of the ball OR without the intent to clear the path of the ball to the goal, can and will be penalized with a 2 min penalty based on referee’s discretion. Depending on the case, especially when these bumps are from blind spots & when safety of the opponent is endangered, referee has the authority to eject a player.
-
-
-
-Bumping the opponents outside the boundary cones is NOT leagal. Point of contact/bump determines what is a bump in our out of the boundary areas. A bump inside the playing field that results in an opponent falling outside that playing area is legal.
-
-
-
-We recommend twearing  knee pads for indoor bubble soccer games.
-
-
-
-Equipment:
-
-Each player must be in a “Battle Ball” prior to stepping on the field.  The equipment shall be worn fully-inflated and over the shoulders with shoulder straps that are snug to ensure that the player is secured tightly inside the ball.
-
-
-
-Players must wear tennis shoes or turf shoes, soccer cleats will not be allowed.  Shin guards and kneepads are recommended but not required.
-
-
-
-Jewelry, glasses and other sharp objects:
-
-No jewelry or other sharp objects may be worn during play or in the Battle Ball.  Glasses may be used, however will need to be worn with an eyewear retainer to keep them on the player at all times.
-
-
-
-“On the Ground Rule:”
-
-Players who are knocked to the ground during play must be allowed to get up before being contacted again by the opposing team.  It is critical that players not be hit while on the ground and be allowed to get up.  Referees will strictly enforce this rule as a players legs are vulnerable when trying to stand up and to ensure safety.
-
-Whistle to Stop Play
-
-Referees will blow the whistle three times consecutively to either stop play, or to signal the end of a half and/or game.  All players must STOP if they hear the signal.  Active gameplay will be stopped by the referees to respond to player safety concerns (loose strap, Battle Balls which are not properly inflated or other unsafe condition).",
-  lat: 40.729258,
-  lng: -74.011582,
+  detail: "In Bubble Ball, players wear inflatable bubble suits that allow them to safely bounce off one another and roll over completely. You can play games like Bubble Soccer, Capture the Flag and Bubble Football. BubbleBall is perfect for birthday​s, company picnics, school events, and much more. This is your chance to become a human bubble!",
+  lat: 40.729253,
+  lng: -74.011589,
   start_date: Time.utc(2018, 11, 8, 9, 10),
   end_date: Time.utc(2018, 12, 8, 9, 10),
   private: false,
   price: 350.00
+)
+e7 = Event.create!(
+  host_id: u3.id,
+  group_id: ss.id,
+  title: "Fifa time",
+  event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
+  address: "92 Hudson River Greenway, New York, NY 10014",
+  city: "New York",
+  detail: "In Bubble Ball, players wear inflatable bubble suits that allow them to safely bounce off one another and roll over completely. You can play games like Bubble Soccer, Capture the Flag and Bubble Football. BubbleBall is perfect for birthday​s, company picnics, school events, and much more. This is your chance to become a human bubble!",
+  lat: 40.729252,
+  lng: -74.011589,
+  start_date: Time.utc(2018, 11, 22, 8, 10),
+  end_date: Time.utc(2018, 11, 22, 9, 10),
+  private: false,
+  price: 350.00
+)
+
+e2 = Event.create!(
+  host_id: u3.id,
+  group_id: ss.id,
+  title: "halo 1",
+  event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
+  address: "92 Hudson River Greenway, New York, NY 10014",
+  city: "New York",
+  detail: "In Bubble Ball, players wear inflatable bubble suits that allow them to safely bounce off one another and roll over completely. You can play games like Bubble Soccer, Capture the Flag and Bubble Football. BubbleBall is perfect for birthday​s, company picnics, school events, and much more. This is your chance to become a human bubble!",
+  lat: 40.729254,
+  lng: -74.011586,
+  start_date: Time.utc(2018, 11, 26, 7, 10),
+  end_date: Time.utc(2018, 11, 26, 9, 10),
+  private: false,
+  price: 0.00
+)
+e3 = Event.create!(
+  host_id: u3.id,
+  group_id: ss.id,
+  title: "Halo 2",
+  event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
+  address: "92 Hudson River Greenway, New York, NY 10014",
+  city: "New York",
+  detail: "In Bubble Ball, players wear inflatable bubble suits that allow them to safely bounce off one another and roll over completely. You can play games like Bubble Soccer, Capture the Flag and Bubble Football. BubbleBall is perfect for birthday​s, company picnics, school events, and much more. This is your chance to become a human bubble!",
+  lat: 40.729258,
+  lng: -74.011582,
+  start_date: Time.utc(2018, 11, 23, 4, 10),
+  end_date: Time.utc(2018, 11, 23, 9, 10),
+  private: false,
+  price: 0.00
+)
+e4 = Event.create!(
+  host_id: u3.id,
+  group_id: ss.id,
+  title: "Halo 3",
+  event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
+  address: "92 Hudson River Greenway, New York, NY 10014",
+  city: "New York",
+  detail: "In Bubble Ball, players wear inflatable bubble suits that allow them to safely bounce off one another and roll over completely. You can play games like Bubble Soccer, Capture the Flag and Bubble Football. BubbleBall is perfect for birthday​s, company picnics, school events, and much more. This is your chance to become a human bubble!",
+  lat: 40.729251,
+  lng: -74.011585,
+  start_date: Time.utc(2018, 11, 25, 4, 10),
+  end_date: Time.utc(2018, 11, 25, 9, 10),
+  private: false,
+  price: 0.00
+)
+e5 = Event.create!(
+  host_id: u3.id,
+  group_id: ss.id,
+  title: "Halo 4",
+  event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
+  address: "92 Hudson River Greenway, New York, NY 10014",
+  city: "New York",
+  detail: "In Bubble Ball, players wear inflatable bubble suits that allow them to safely bounce off one another and roll over completely. You can play games like Bubble Soccer, Capture the Flag and Bubble Football. BubbleBall is perfect for birthday​s, company picnics, school events, and much more. This is your chance to become a human bubble!",
+  lat: 40.729253,
+  lng: -74.011589,
+  start_date: Time.utc(2018, 11, 27, 4, 10),
+  end_date: Time.utc(2018, 11, 27, 9, 10),
+  private: false,
+  price: 0.00
+)
+e6 = Event.create!(
+  host_id: u3.id,
+  group_id: ss.id,
+  title: "Halo 5",
+  event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
+  address: "92 Hudson River Greenway, New York, NY 10014",
+  city: "New York",
+  detail: "In Bubble Ball, players wear inflatable bubble suits that allow them to safely bounce off one another and roll over completely. You can play games like Bubble Soccer, Capture the Flag and Bubble Football. BubbleBall is perfect for birthday​s, company picnics, school events, and much more. This is your chance to become a human bubble!",
+  lat: 40.729256,
+  lng: -74.011584,
+  start_date: Time.utc(2018, 11, 22, 4, 10),
+  end_date: Time.utc(2018, 11, 22, 9, 10),
+  private: false,
+  price: 0.00
 )
 
 puts "created events"

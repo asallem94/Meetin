@@ -8,7 +8,7 @@ class Calendar extends React.Component{
     const mon = this.d.getMonth();
     const yr = this.d.getFullYear();
     const date = this.d.getDate();
-    this.state = {month: mon, year: yr, day: date, start_date: this.d};
+    this.state = {month: mon, year: yr, day: date, filterStartDate: Moment(this.d).format('L'), filterEndDate: new Date(this.d.getFullYear(), this.d.getMonth()+1, 0)};
     this.renderMonth = this.renderMonth.bind(this);
     this.renderWeek = this.renderWeek.bind(this);
     this.changeMonth = this.changeMonth.bind(this);
@@ -18,14 +18,17 @@ class Calendar extends React.Component{
   }
 
   changeMonth(direction){
-    return () => {
-      newDate = Date(this.state.year, this.state.day, this.state.month);
+    return (e) => {
+      e.preventDefault();
+      const newDate = Date(this.state.filterStartDate);
       let d;
       if (direction === "next") {
-        d = moment(newDate).add(1, 'months');
+        debugger
+        d = newDate.setMonth(newDate.getMonth()+1);
+        console.log(d);
         // this.setState({month: this.state.month+1});
       } else {
-        d = moment(newDate).subtract(1, 'months');
+        d = Moment(newDate).subtract(1, 'months');
         // this.setState({month: this.state.month-1});
       }
       const mon = this.d.getMonth();

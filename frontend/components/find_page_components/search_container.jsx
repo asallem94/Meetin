@@ -37,7 +37,9 @@ class SearchBar extends React.Component {
         // if the filter is radi this is what you wanna do .
         this.setState({[filter]: e.target.value}, () => {
           // on success (in this call back), invoke the fetcher
-          this.props.fetchFindableGroups(this.state);
+          if (this.state.queryType === "groups") {
+            this.props.fetchFindableGroups(this.state);
+          }
         });
       } else {
         // if the filter is NOT radi, then you only want to update the state part.
@@ -78,57 +80,56 @@ class SearchBar extends React.Component {
   }
   displayContent(){
     if (this.state.queryType === "groups") {
-      debugger
-      return (<GroupsIndex groups={this.props.groups}/>);
+      return (<GroupsIndex className="groupsIndex" groups={this.props.groups}/>);
     } else {
-      debugger
-      return null;
-      // return (<EventSearchContainer filters={this.props.filters}/>);
+      return (<EventSearchContainer filters={this.props.filters}/>);
     }
   }
   render(){
     return (
-      <div className="find-page-container-content">
-        <form className="search-component" onSubmit={this.invokeQuery}>
-          <div className="filters-container">
-            <div className="searchbar-container">
-              <input
-                className="search-input"
-                type="text"
-                placeholder="All Meet-ins"
-                value={this.state.query}
-                onChange={this.updatefilters('query')}
-              />
-              <i className="fas fa-search"></i>
-            </div>
+      <div className="find-page-container">
+        <div className="find-page-container-content">
+          <form className="search-component" onSubmit={this.invokeQuery}>
+            <div className="filters-container">
+              <div className="searchbar-container">
+                <input
+                  className="search-input"
+                  type="text"
+                  placeholder="All Meet-ins"
+                  value={this.state.query}
+                  onChange={this.updatefilters('query')}
+                />
+                <i className="fas fa-search"></i>
+              </div>
 
-            <div className="location-filter-section">
-              within
-              <ul className="radi-dropdown" tabIndex="123">
-              <span className="search-radius location-inputs" >
-                {this.displayRadi(this.state.radi)}
-              </span>
-                <ul className="radi-dropdown-container">
-                  <li onClick={this.updatefilters('radi')} className="radi-option" value="2">2 miles</li>
-                  <li onClick={this.updatefilters('radi')} className="radi-option" value="5">5 miles</li>
-                  <li onClick={this.updatefilters('radi')} className="radi-option" value="10">10 miles</li>
-                  <li onClick={this.updatefilters('radi')} className="radi-option" value="20">20 miles</li>
-                  <li onClick={this.updatefilters('radi')} className="radi-option" value="50">50 miles</li>
-                  <li onClick={this.updatefilters('radi')} className="radi-option" value="100">100 miles</li>
-                  <li onClick={this.updatefilters('radi')} className="radi-option" value="12455">any distance</li>
+              <div className="location-filter-section">
+                within
+                <ul className="radi-dropdown" tabIndex="123">
+                <span className="search-radius location-inputs" >
+                  {this.displayRadi(this.state.radi)}
+                </span>
+                  <ul className="radi-dropdown-container">
+                    <li onClick={this.updatefilters('radi')} className="radi-option" value="2">2 miles</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option" value="5">5 miles</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option" value="10">10 miles</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option" value="20">20 miles</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option" value="50">50 miles</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option" value="100">100 miles</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option" value="12455">any distance</li>
+                  </ul>
                 </ul>
-              </ul>
-                of
-              <span onClick={this.updateReferenceLocation} className="search-city location-inputs">New York, Bronx
-              </span>
+                  of
+                <span onClick={this.updateReferenceLocation} className="search-city location-inputs">New York, Bronx
+                </span>
+              </div>
             </div>
-          </div>
-          <ul className="calendar-groups-tabs">
-            <li className={this.tabClass("groups")} onClick={this.updateQueryType("groups")} >Groups</li>
-            <li className={this.tabClass("calendar")} onClick={this.updateQueryType("calendar")}>Calendar</li>
-          </ul>
-        </form>
-        {this.displayContent()}
+            <ul className="calendar-groups-tabs">
+              <li className={this.tabClass("groups")} onClick={this.updateQueryType("groups")} >Groups</li>
+              <li className={this.tabClass("calendar")} onClick={this.updateQueryType("calendar")}>Calendar</li>
+            </ul>
+          </form>
+          {this.displayContent()}
+        </div>
       </div>
     );
   }
@@ -141,7 +142,7 @@ const msp = (state) => {
   const filters = merge({}, state.ui.filters, {coord: {lng: currentUser.lng, lat: currentUser.lat}});
   return {
     currentUser: currentUser,
-    events: Object.values(state.entities.events),
+    groups: Object.values(state.entities.groups),
     filters: filters,
   };
 };

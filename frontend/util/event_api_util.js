@@ -1,5 +1,4 @@
 export const fetchFindableEvents = (filters) => {
-  debugger
   return $.ajax({
     url: 'api/events',
     method: "GET",

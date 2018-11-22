@@ -10,7 +10,7 @@ const FindPageHeader = () => {
           Find a Meetin
         </h1>
         <p className="subheader">
-          n meet-ins in your groups * n meet-ins nearby
+          8 meet-ins in your groups <li className="dot"></li>17 meet-ins nearby
         </p>
       </div>
     </header>

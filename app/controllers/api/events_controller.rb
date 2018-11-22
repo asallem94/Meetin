@@ -6,7 +6,6 @@ class Api::EventsController < ApplicationController
 
   def index
     # @events = Event.events_by_filters(params[:filters])
-    debugger
     @events = Event.all
   end
 

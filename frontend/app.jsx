@@ -14,7 +14,6 @@ import GroupFormContainer from './components/group_form_container';
 import EventFormContainer from './components/event_form_container';
 
 const App = () => {
-  debugger
   return (
     <div className="route-wraper" >
       <header>

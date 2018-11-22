@@ -1,5 +1,6 @@
 import React from 'react';
 import CalendarsIndexSection from './calendar_index_section';
+import Moment from 'moment';
 import { connect } from 'react-redux';
 import { fetchFindableEvents } from '../../../../actions/event_actions';
 
@@ -9,17 +10,19 @@ import { fetchFindableEvents } from '../../../../actions/event_actions';
 class CalendarIndex extends React.Component {
   constructor(props){
     super(props);
-    // this.eventGrouping = this.eventGrouping.bind(this);
+    this.state = props.filters;
+    this.eventGrouping = this.eventGrouping.bind(this);
     this.eventGrouper = this.eventGrouper.bind(this);
+    this.eventGrouping = this.eventGrouping.bind(this);
   }
 
   componentDidMount(){
-    debugger
-    this.props.fetchFindableEvents();
+    // debugger
+    // this.props.fetchFindableEvents();
   }
 
   eventGrouper(date, eventId, grouper){
-    refDate = Date(date);
+    const refDate = Moment(date).format("YYYY-MM-DD");
     if (grouper[refDate]) {
       grouper[refDate].push(eventId);
     } else {
@@ -30,26 +33,28 @@ class CalendarIndex extends React.Component {
 
   eventGrouping(){
     const groupedEvents = {};
-    // debugger
-    const count = Object.keys(this.props.events).length;
-    for (var i = 0; i < this.props.events.length; i++) {
-      eventGrouper(events[i].start_date, events[i].id, groupedEvents);
+    const eventIds = Object.keys(this.props.events);
+    for (var i = 0; i < eventIds.length; i++) {
+      this.eventGrouper(this.props.events[eventIds[i]].start_date, this.props.events[eventIds[i]].id, groupedEvents);
     }
     return groupedEvents;
   }
 
   render(){
-    // const eventViewable = this.eventGrouping().map((eventDate, indx) =>(
-    //   <ul>
-    //     <h1>{eventDate}</h1>
-    //     <CalendarsIndexSection
-    //       key={indx}
-    //       events={this.groupedEvents[eventDate]}/>
-    //   </ul>
-    // ));
+
+    const groupedEvents = this.eventGrouping();
+    const groupings = Object.keys(groupedEvents);
+    const eventViewable = groupings.map((eventDate, indx) =>(
+      <ul key={indx}>
+        <h5 className="calendar-index-section-header">{Moment(eventDate).format("LL")}</h5>
+        <CalendarsIndexSection
+          eventIds={groupedEvents[eventDate]}
+          events={this.props.events}/>
+      </ul>
+    ));
     return (
       <div className="events-index">
-        Hello
+        {eventViewable}
       </div>
     );
   }

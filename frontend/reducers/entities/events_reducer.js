@@ -7,6 +7,7 @@ import { merge, remove } from 'lodash';
 const eventsReducer = ( state = {}, action ) => {
   Object.freeze(state);
   let defaultState = merge({}, state);
+    
 
   switch(action.type){
     case RECEIVE_FINDABLE_EVENTS:

@@ -1,0 +1,52 @@
+.event-component {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row-reverse;
+  width: 100%;
+}
+.event-filters-box {
+  width: 25%;
+}
+.display-events {
+  width: 70%
+}
+
+.events-in-day-section {
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  padding: 0;
+}
+
+.events-in-day-item:last-child {
+  border-bottom: 0px solid lightgray;
+}
+
+.events-in-day-item {
+  display: flex;
+  justify-content: row;
+  border-bottom: 1px solid lightgray;
+}
+
+.event-time {
+  padding: 10px 20px;
+}
+
+.event-index-item-component {
+  padding: 10px 20px;
+  width: 50%;
+}
+
+.event-index-item-component > h5{
+  padding: 5px;
+}
+
+.calendar-index-section-header {
+  margin: 10px;
+  font-size: 16px;
+}
+
+.time-until {
+  width: 20%;
+  padding: 10px;
+}

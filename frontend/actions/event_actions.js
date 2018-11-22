@@ -5,10 +5,12 @@ export const RECEIVE_EVENT = "RECEIVE_EVENT";
 
 
 
-const receiveFindableEvents = (events) => {
+const receiveFindableEvents = ({events, users}) => {
+
   return {
     type: RECEIVE_FINDABLE_EVENTS,
-    events
+    events,
+    users,
   };
 };
 
