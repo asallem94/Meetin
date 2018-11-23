@@ -22,6 +22,7 @@ const eventsReducer = ( state = {}, action ) => {
       } else {
         _.remove(defaultState[action.rsvp.event_id].attendees_ids, (userId) => userId === action.rsvp.user_id);
       }
+      merge(defaultState, action.events);
       return defaultState;
     default:
       return state;

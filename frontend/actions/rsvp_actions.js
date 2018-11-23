@@ -2,10 +2,11 @@ import * as RsvpAPIUtil from '../util/rsvp_api_util';
 
 export const RECEIVE_RSVP = "RECEIVE_RSVP";
 
-const receiveRsvp = (rsvp) => {
+const receiveRsvp = ({rsvp, events}) => {
   return {
     type: RECEIVE_RSVP,
-    rsvp
+    rsvp,
+    events
   };
 };
 

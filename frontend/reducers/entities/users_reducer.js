@@ -24,6 +24,7 @@ const usersReducer = ( state = {}, action ) => {
       delete defaultState[action.membership.user_id].groups[action.membership.group_id];
       return defaultState;
     case RECEIVE_RSVP:
+
       merge(defaultState[action.rsvp.user_id].events, {[action.rsvp.event_id]: {going: action.rsvp.rsvp, rsvpId: action.rsvp.id}});
       return defaultState;
 

@@ -279,8 +279,8 @@ e7 = Event.create!(
 
 e2 = Event.create!(
   host_id: u3.id,
-  group_id: ss.id,
-  title: "halo 1",
+  group_id: hg.id,
+  title: "Halo 1",
   event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
   address: "92 Hudson River Greenway, New York, NY 10014",
   city: "New York",
@@ -294,7 +294,7 @@ e2 = Event.create!(
 )
 e3 = Event.create!(
   host_id: u3.id,
-  group_id: ss.id,
+  group_id: hg.id,
   title: "Halo 2",
   event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
   address: "92 Hudson River Greenway, New York, NY 10014",
@@ -309,7 +309,7 @@ e3 = Event.create!(
 )
 e4 = Event.create!(
   host_id: u3.id,
-  group_id: ss.id,
+  group_id: hg.id,
   title: "Halo 3",
   event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
   address: "92 Hudson River Greenway, New York, NY 10014",
@@ -324,7 +324,7 @@ e4 = Event.create!(
 )
 e5 = Event.create!(
   host_id: u3.id,
-  group_id: ss.id,
+  group_id: hg.id,
   title: "Halo 4",
   event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
   address: "92 Hudson River Greenway, New York, NY 10014",
@@ -339,7 +339,7 @@ e5 = Event.create!(
 )
 e6 = Event.create!(
   host_id: u3.id,
-  group_id: ss.id,
+  group_id: hg.id,
   title: "Halo 5",
   event_img_url: "https://www.canalsidebuffalo.com/wp-content/uploads/2016/05/780x410.jpg",
   address: "92 Hudson River Greenway, New York, NY 10014",

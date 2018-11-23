@@ -110,20 +110,35 @@
   border-radius: 5px;
   margin: 4px;
   padding: 2px 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.interest-checkbox {
-  display: none
-}
-.interest-checkbox:checked + .interest-label{
-  background-color: red;
-  color: red
-
-}
-
 .fa-heart {
-  /* background-color: red;
-  color: red */
+  margin: 5px;
+  padding: 5px;
+  color: red;
 }
+
+.interest-checkbox {
+  display: none;
+}
+
+.interest-checkbox ~ .heart-hollow {
+  display: block;
+}
+
+.interest-checkbox ~ .heart-solid {
+  display: none;
+}
+.interest-checkbox:checked ~ .heart-hollow {
+  display: none;
+}
+
+.interest-checkbox:checked ~ .heart-solid {
+  display: block;
+}
+
 
 .interest-filter {
   width: 100%;
@@ -138,10 +153,7 @@
   flex-flow: row wrap;
 }
 
-.fa-heart {
-  margin: 5px;
-  padding: 5px;
-}
+
 
 .group-principles {
   list-style: circle;

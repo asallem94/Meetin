@@ -10,15 +10,15 @@ class EventShow extends React.Component {
     super(props);
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.props.fetchEvent(this.props.match.params.eventId);
+  }
+  componentDidMount(){
     window.addEventListener('scroll', this.handleScroll);
   }
-
   componentWillUnmount(){
       window.removeEventListener('scroll', this.handleScroll);
   }
-
   handleScroll(event){
     document.getElementById("movable").classList.add('fixed-location-date-container');
 
@@ -34,9 +34,9 @@ class EventShow extends React.Component {
     if ( !this.props.event ) {
       return null;
     }
-    // if ( !this.props.event.host_id ) {
-    //   return null;
-    // }
+    if ( !this.props.event.host_id ) {
+      return null;
+    }
     return (
       <div className="events-show-page">
         <EventInfo event={this.props.event} users={this.props.users} currentUserId={this.props.currUserId}/>

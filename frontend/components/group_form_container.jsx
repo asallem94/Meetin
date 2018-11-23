@@ -66,6 +66,13 @@ class GroupForm extends React.Component {
   }
 
   handleSubmit(){
+
+    interestNodeList = document.querySelectorAll("input.interest-checkbox:checked");
+    const interests = [];
+    for (var i = 0; i < interestNodeList.length; i++) {
+      interests.push(interestNodeList[i].value);
+    }
+
     const group = {
       lng: this.state.lng || this.props.currentUser.lng,
       lat: this.state.lat || this.props.currentUser.lat,

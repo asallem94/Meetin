@@ -32,7 +32,6 @@ class Navigation extends React.Component {
           <img className="profile-circle" src={user.profile_img_url}></img>
           <div className="dropdown-container">
             <ul className="myGroups-dropdown">
-
             </ul>
             <ul className="account-actions-dropdown">
               <li className="account-actions">
