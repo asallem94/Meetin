@@ -19,6 +19,7 @@ class GroupNavBar extends React.Component {
     if (!this.props.group){
       return null;
     }
+    
     let joined = false;
     if (this.props.currentUser.groups[this.props.group.id]) {
       joined = true;

@@ -39,14 +39,17 @@ class CalendarIndex extends React.Component {
 
     const groupedEvents = this.eventGrouping();
     const groupings = Object.keys(groupedEvents);
-    const eventViewable = groupings.map((eventDate, indx) =>(
-      <ul key={indx}>
-        <h5 className="calendar-index-section-header">{Moment(eventDate).format("LL")}</h5>
-        <CalendarsIndexSection
-          eventIds={groupedEvents[eventDate]}
-          events={this.props.events}/>
-      </ul>
-    ));
+    const eventViewable = groupings
+      .sort((groupingDate_a, groupingDate_b) => new Date(groupingDate_a) - new Date(groupingDate_b))
+      .map((eventDate, indx) =>(
+        <ul key={indx}>
+          <h5 className="calendar-index-section-header">{Moment(eventDate).format("LL")}</h5>
+          <CalendarsIndexSection
+            eventIds={groupedEvents[eventDate]}
+            events={this.props.events}/>
+        </ul>
+      ));
+
     return (
       <div className="events-index">
         {eventViewable}

@@ -42,12 +42,15 @@ const EventShowItem = ({event, users}) => {
         </div>
 
         <p className="detail-container">{event.detail}</p>
-
-        <div className="attending-status">
-          {displayAttendees(event, users)}
-          <p className="attendees-count">{event.attendees_count} going</p>
+        <div className="event-attending-controller">
+          <div className="attending-status">
+            {displayAttendees(event, users)}
+            <p className="attendees-count">{event.attendees_count} going</p>
+          </div>
+          <div className="event-rsvp-meetin">
+            <RsvpContainer event={event}/>
+          </div>
         </div>
-        <RsvpContainer event={event}/>
       </div>
     </Link>
   );
