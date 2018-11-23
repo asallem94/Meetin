@@ -19,7 +19,7 @@ const EventDetail = (props) => {
     );
   };
 
-  const atendees = props.event.attendees_ids.map((id)=>{
+  const attendees = props.event.attendees_ids.map((id)=>{
     return (
       showattentdee(id)
     );
@@ -41,7 +41,7 @@ const EventDetail = (props) => {
 
           <div className="event-membership-container">
             <ul className="event-members-container">
-              {atendees}
+              {attendees}
             </ul>
           </div>
           <div className="no-discusions-content">

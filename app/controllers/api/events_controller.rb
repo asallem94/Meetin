@@ -15,7 +15,6 @@ class Api::EventsController < ApplicationController
     else
       @events = Event.events_by_filters(params[:filters]).includes(:attendees).includes(:group)
     end
-
   end
 
   def new

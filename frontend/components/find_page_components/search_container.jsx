@@ -30,8 +30,8 @@ class SearchBar extends React.Component {
     if (this.state.queryType === "groups") {
       this.props.fetchFindableGroups(this.state);
     } else {
-      this.props.updateFilters(this.state);
-      this.props.fetchFindableEvents(this.props.filters);
+      // this.props.updateFilters(merge({}, this.props.filters, this.state));
+      this.props.fetchFindableEvents(this.state);
     }
   }
 

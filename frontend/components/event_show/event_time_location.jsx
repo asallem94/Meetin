@@ -3,25 +3,27 @@ import GetFullDateTime from './shared/get_full_date_time';
 
 class EventTimeLocation extends React.Component{
   constructor(props){
-    super(props)
+    super(props);
   }
 
-
   componentDidMount(){
-    //instantite googleapis on SF location
+
     const mapOptions = {
-      center: { lat: this.props.event.lat, lng: this.props.event.lng }, // this is SF
+      center: {lat: this.props.event.lat || 40.729253, lng: this.props.event.lng || -74.011589},
       zoom: 11,
       disableDefaultUI: true
     };
-    this.map = new google.maps.Map(this.mapNode, mapOptions);
-    const newLatLng = new google.maps.LatLng(this.props.event.lat, this.props.event.lng);
 
-    let marker = new google.maps.Marker({
-      position: newLatLng,
+    this.map = new google.maps.Map(this.mapNode, mapOptions);
+    console.log("Mount 1 MAP");
+    console.log(this.props.events);
+
+    const marker = new google.maps.Marker({
+      position: {lat: this.props.event.lat || 40.729253, lng: this.props.event.lng || -74.011589},
       title: this.props.event.title,
       map: this.map
     });
+
   }
 
   render(){
