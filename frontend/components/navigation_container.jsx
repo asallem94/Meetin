@@ -26,7 +26,7 @@ class Navigation extends React.Component {
     return (
       <>
         <Link to="/find" className="auth-item">Explore</Link>
-        <Link to="/find" className="auth-item">Messages</Link>
+        <Link to="/messaging" className="auth-item">Messages</Link>
         <ul className="dropdown" tabIndex="123">
 
           <img className="profile-circle" src={user.profile_img_url}></img>

@@ -12,6 +12,8 @@ import GroupShowContainer from './components/groups_show_container';
 import EventsShowContainer from './components/events_show_container';
 import GroupFormContainer from './components/group_form_container';
 import EventFormContainer from './components/event_form_container';
+import ChatsContainer from './components/chats_container';
+import CssTests from './css_tests';
 
 const App = () => {
   return (
@@ -23,11 +25,13 @@ const App = () => {
         <ProtectedFromSplat exact path="/" component={Homepage}/>
         <ProtectedRoute exact path="/find" component={Findpage}/>
         <ProtectedRoute path="/groups/:groupId" component={GroupShowContainer}/>
+        <ProtectedRoute exact path="/messaging" component={ChatsContainer}/>
         <AuthEventCreatorRoute exact path="/events/:groupId/new" component={EventFormContainer}/>
         <ProtectedRoute exact path="/events/:eventId" component={EventsShowContainer}/>
         <ProtectedRoute exact path="/create" component={GroupFormContainer}/>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        <Route exact path="/trials" component={CssTests} />
       </Switch>
       <Footer/>
     </div>

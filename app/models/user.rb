@@ -65,6 +65,20 @@ class User < ApplicationRecord
     through: :going_responses,
     source: :event
 
+  # action cable associations
+  has_many :user_relationships,
+    foreign_key: :user_id,
+    class_name: :ChatUserRelationship
+
+  has_many :chats,
+    through: :user_relationships,
+    source: :chat
+
+  has_many :messages,
+    foreign_key: :author_id,
+    class_name: :Message
+
+
   # private
   def generate_session_token!
     SecureRandom.urlsafe_base64

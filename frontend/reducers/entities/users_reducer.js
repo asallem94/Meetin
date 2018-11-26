@@ -3,6 +3,7 @@ import { RECEIVE_GROUP } from '../../actions/meetin_actions';
 import { RECEIVE_EVENT } from '../../actions/event_actions';
 import { RECEIVE_RSVP } from '../../actions/rsvp_actions';
 import { RECEIVE_MEMBERSHIP, REMOVE_MEMBERSHIP } from '../../actions/membership_actions';
+import { RECEIVE_CHAT } from '../../actions/messaging_actions';
 import { merge } from 'lodash';
 
 
@@ -28,6 +29,8 @@ const usersReducer = ( state = {}, action ) => {
       merge(defaultState[action.rsvp.user_id].events, {[action.rsvp.event_id]: {going: action.rsvp.rsvp, rsvpId: action.rsvp.id}});
       return defaultState;
 
+    case RECEIVE_CHAT:
+      return merge({}, state, action.users);
     case RECEIVE_ERRORS:
       return action.errors;
     default:

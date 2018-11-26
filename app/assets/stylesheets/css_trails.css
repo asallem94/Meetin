@@ -1,0 +1,86 @@
+.canvas {
+  background-color: red;
+  margin:100px;
+  width: 500px;
+  height: 500px;
+}
+
+.bubbles {
+
+}
+
+.bubbles-bottom1 {
+  position: sticky;
+  transition-delay: 1.5s;
+  margin-left: 10%;
+  top: 105%;
+  background-color: green;
+  padding: 5px;
+  border-radius: 5px;
+  width: max-content;
+  transition: 5s;
+}
+.bubbles-bottom2 {
+  position: sticky;
+  transition-delay: 1.3s;
+  margin-left: 20%;
+  top: 105%;
+  background-color: green;
+  padding: 5px;
+  border-radius: 5px;
+  width: max-content;
+  transition: 5s;
+}
+.bubbles-bottom3 {
+  position: sticky;
+  transition-delay: 1.7s;
+  margin-left: 30%;
+  top: 105%;
+  background-color: green;
+  padding: 5px;
+  border-radius: 5px;
+  width: max-content;
+  transition: 5s;
+}
+.bubbles-bottom4 {
+  position: sticky;
+  transition-delay: 1.3s;
+  margin-left: 40%;
+  top: 105%;
+  background-color: green;
+  padding: 5px;
+  border-radius: 5px;
+  width: max-content;
+  transition: 5s;
+}
+.bubbles-bottom5 {
+  position: sticky;
+  transition-delay: 1.8s;
+  margin-left: 50%;
+  top: 105%;
+  background-color: green;
+  padding: 5px;
+  border-radius: 5px;
+  width: max-content;
+  transition: 5s;
+}
+.bubbles-bottom6 {
+  position: sticky;
+  transition-delay: 1.2s;
+  margin-left: 70%;
+  top: 105%;
+  background-color: green;
+  padding: 5px;
+  border-radius: 5px;
+  width: max-content;
+  transition: 5s;
+}
+
+.bubbles-top {
+  top: -10px;
+  background-color: blue;
+  padding: 5px;
+  border-radius: 5px;
+  width: max-content;
+  transition: 5s;
+}

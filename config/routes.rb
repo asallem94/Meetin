@@ -17,8 +17,17 @@ Rails.application.routes.draw do
       resources :events_rsvps, only: [:create, :update]
     end
 
+    resources :chats, only: [:create, :show, :index] do
+      resources :chat_user_relationships, only: [:create]
+      resources :messages, only: [:create, :show]
+    end
+
+    resources :chat_user_relationships, only: [:destroy]
+
     resource :session, only: [:create, :destroy]
 
   end
+
+  mount ActionCable.server => '/cable'
 
 end
