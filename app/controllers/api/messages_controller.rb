@@ -8,7 +8,6 @@ class Api::MessagesController < ApplicationController
       serialized_data = ActiveModelSerializers::Adapter::Json.new(
         MessageSerializer.new(@message)
       ).serializable_hash
-      debugger
       MessagesChannel.broadcast_to chat, serialized_data
       head :ok
     end

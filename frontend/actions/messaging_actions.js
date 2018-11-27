@@ -20,11 +20,10 @@ const receiveChat = ({chats, messages, users}) => {
   };
 };
 
-const recieveMessage = ({message, chats}) => {
+export const recieveMessage = ({message, chats}) => {
   return {
     type: RECIEVE_MESSAGE,
-    message,
-    chats
+    message
   };
 };
 

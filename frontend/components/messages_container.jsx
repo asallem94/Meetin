@@ -1,20 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { fetchChat, createMessage } from './../actions/messaging_actions';
+import { fetchChat, createMessage, recieveMessage } from './../actions/messaging_actions';
+import { ActionCable } from 'react-actioncable-provider';
 
 class MessagesIndex extends React.Component {
   constructor(props){
     super(props);
     this.sendMessage = this.sendMessage.bind(this);
+    this.displayMessages = this.displayMessages.bind(this);
     // this.scrollToLastMessage = this.scrollToLastMessage.bind(this);
   }
 
-  componentDidMount(){
-    if (this.props.chatId){
-      this.props.fetchChat(this.props.chatId);
-    }
-  }
+  // componentDidMount(){
+  //   if (this.props.chatId){
+  //     this.props.fetchChat(this.props.chatId);
+  //   }
+  // }
   componentDidUpdate(prevProps){
     if (this.props.chatId){
       if (this.props.chatId !== prevProps.chatId) {
@@ -39,15 +41,9 @@ class MessagesIndex extends React.Component {
     );
     // scroll to the last message
   }
-  render(){
-    if (!this.props.chatId){
-      return null;
-    }
-    if (!this.props.chats[this.props.chatId].messages_ids){
-      return null;
-    }
-    console.log(this.props.chats[this.props.chatId]);
-    const messages = this.props.chats[this.props.chatId].messages_ids.map((messageId)=>{
+
+  displayMessages(){
+    return this.props.chats[this.props.chatId].messages_ids.map((messageId)=>{
       if (this.props.currUserId === this.props.messages[messageId].author_id) {
         return (
           <div key={messageId} className="message-index-item message-right">
@@ -65,10 +61,19 @@ class MessagesIndex extends React.Component {
       }
 
     });
+  }
+  render(){
+    if (!this.props.chatId){
+      return null;
+    }
+    if (!this.props.chats[this.props.chatId].messages_ids){
+      return null;
+    }
+
     return (
       <div className="message-container">
         <div id="message-index" className="message-index">
-          {messages}
+          {this.displayMessages()}
         </div>
         <form className="message-controller" onSubmit={this.sendMessage}>
           <input id="message" className="message-editor" type="text" required placeholder="Send message"/>
@@ -99,6 +104,7 @@ const mdp = (dispatch) => {
   return {
     createMessage: (chat) => dispatch(createMessage(chat)),
     fetchChat: (id) => dispatch(fetchChat(id)),
+    recieveMessage: (message) => dispatch(recieveMessage(message))
   };
 };
 

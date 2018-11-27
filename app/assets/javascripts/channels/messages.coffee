@@ -8,7 +8,7 @@ App.room = App.cable.subscriptions.create "MessagesChannel",
 
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
-  #   alert data[:message]
-  #
-  # speak: (message) ->
-    # @perform 'speak', message: message
+    # alert data[:message]
+
+  speak: (message) ->
+    @perform 'speak', message: message
