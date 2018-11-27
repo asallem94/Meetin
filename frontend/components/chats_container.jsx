@@ -10,6 +10,7 @@ class ChatsIndex extends React.Component {
     this.state = {selectedChat: null};
     this.selectChat = this.selectChat.bind(this);
     this.displayChats = this.displayChats.bind(this);
+    this.scrollToLastMessage = this.scrollToLastMessage.bind(this);
   }
 
   componentDidMount(){
@@ -21,6 +22,13 @@ class ChatsIndex extends React.Component {
       e.preventDefault();
       this.setState({selectedChat: id});
     };
+  }
+
+  scrollToLastMessage(){
+    const element = document.getElementById('message-index');
+    if (element){
+      element.scrollTop = element.scrollHeight;
+    }
   }
 
   displayChats(){
@@ -36,7 +44,11 @@ class ChatsIndex extends React.Component {
       );
     });
   }
-  
+
+  createChat(){
+    debugger
+  }
+
   render(){
     if (!this.props.chats) {
       return null;
@@ -44,9 +56,14 @@ class ChatsIndex extends React.Component {
 
     return (
       <div className="chat-container">
-        <div className="chat-index">
-          {this.displayChats()}
-        </div>
+        <section className="chats-section">
+          <div className="chat-index">
+            {this.displayChats()}
+          </div>
+          <div>
+            {this.createChat()}
+          </div>
+        </section>
         <MessagesContainer chatId={this.state.selectedChat} />
       </div>
     );

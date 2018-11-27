@@ -9,7 +9,7 @@ class MessagesIndex extends React.Component {
     super(props);
     this.sendMessage = this.sendMessage.bind(this);
     this.displayMessages = this.displayMessages.bind(this);
-    // this.scrollToLastMessage = this.scrollToLastMessage.bind(this);
+    this.scrollToLastMessage = this.scrollToLastMessage.bind(this);
   }
 
   // componentDidMount(){
@@ -20,25 +20,20 @@ class MessagesIndex extends React.Component {
   componentDidUpdate(prevProps){
     if (this.props.chatId){
       if (this.props.chatId !== prevProps.chatId) {
-        this.props.fetchChat(this.props.chatId).then(
-          ()=>{
-            const element = document.getElementById('message-index');
-            element.scrollTop = element.scrollHeight;
-          }
-        );
+        this.props.fetchChat(this.props.chatId);
       }
     }
   }
-
+  scrollToLastMessage(){
+    const element = document.getElementById('message-index');
+    if (element){
+      element.scrollTop = element.scrollHeight;
+    }
+  }
   sendMessage(e){
-    e.preventDefault();
     const body = document.getElementById('message').value;
-    this.props.createMessage({chat_id: this.props.chatId, author_id: this.props.currUserId, body: body}).then(
-      ()=>{
-        const element = document.getElementById('message-index');
-        element.scrollTop = element.scrollHeight;
-      }
-    );
+    e.preventDefault();
+    this.props.createMessage({chat_id: this.props.chatId, author_id: this.props.currUserId, body: body});
     // scroll to the last message
   }
 
@@ -74,6 +69,7 @@ class MessagesIndex extends React.Component {
       <div className="message-container">
         <div id="message-index" className="message-index">
           {this.displayMessages()}
+
         </div>
         <form className="message-controller" onSubmit={this.sendMessage}>
           <input id="message" className="message-editor" type="text" required placeholder="Send message"/>
