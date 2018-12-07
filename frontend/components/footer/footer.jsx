@@ -23,12 +23,8 @@ const Footer = () => {
             Follow us
           </p>
           <ul className="follow-icons">
-            <li className="follow-icon"><i className="fab fa-facebook-square"></i></li>
-            <li className="follow-icon"><i className="fab fa-instagram"></i></li>
             <li className="follow-icon"><i className="fas fa-globe-americas"></i></li>
-            <li className="follow-icon"><i className="fab fa-github"></i></li>
-            <li className="follow-icon"><i className="fas fa-envelope"></i></li>
-
+            <a href="https://github.com/asallem94/Meetin"><li className="follow-icon"><i className="fab fa-github"></i></li></a>
           </ul>
           <LanguageSelector/>
         </div>

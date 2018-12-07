@@ -2,6 +2,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.profile_img_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIFSqtFBX1VvqWmYgkIMcyyumxjffeiECt1m63GgWnY7TAkdE7"
     if @user.save
       log_in!(@user)
       render :show
