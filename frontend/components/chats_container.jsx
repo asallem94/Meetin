@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchAllMyChats, createChat, fetchChat, recieveMessage } from './../actions/messaging_actions';
 import MessagesContainer from './messages_container';
 import { ActionCable } from 'react-actioncable-provider';
+import NewChatForm from './create_chat_modal'
 
 class ChatsIndex extends React.Component {
   constructor(props){
@@ -11,6 +12,7 @@ class ChatsIndex extends React.Component {
     this.selectChat = this.selectChat.bind(this);
     this.displayChats = this.displayChats.bind(this);
     this.scrollToLastMessage = this.scrollToLastMessage.bind(this);
+    this.displayChatsModal = this.displayChatsModal.bind(this);
   }
 
   componentDidMount(){
@@ -46,7 +48,18 @@ class ChatsIndex extends React.Component {
   }
 
   createChat(){
+
     debugger
+    // this.props.createChat(chat);
+  }
+
+  displayChatsModal(e){
+    e.preventDefault();
+    this.openModal();
+  }
+
+  openModal(){
+    document.getElementById('create-chat-modal').style.display = "flex";
   }
 
   render(){
@@ -56,13 +69,14 @@ class ChatsIndex extends React.Component {
 
     return (
       <div className="chat-container">
+        <NewChatForm/>
         <section className="chats-section">
           <div className="chat-index">
             {this.displayChats()}
           </div>
-          <div>
-            {this.createChat()}
-          </div>
+          <button className="create-chat" onClick={this.displayChatsModal}>
+            New chat
+          </button>
         </section>
         <MessagesContainer chatId={this.state.selectedChat} />
       </div>

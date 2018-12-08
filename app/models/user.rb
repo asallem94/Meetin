@@ -40,10 +40,13 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :GroupMembership
 
-
   has_many :groups,
     through: :group_memberships,
     source: :group
+
+  has_many :aquaintances,
+    through: :groups,
+    source: :members
 
   has_many :my_groups_events,
     through: :groups,
@@ -78,6 +81,10 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: :Message
 
+  def self.users_by_filters(querySearch)
+    Users.where("name LIKE :querySearch OR email LIKE :querySearch", querySearch: "%#{querySearch}%")
+
+  end
 
   # private
   def generate_session_token!
