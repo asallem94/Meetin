@@ -116,21 +116,21 @@ class SearchBar extends React.Component {
               <div className="location-filter-section">
                 within
                 <ul className="radi-dropdown" tabIndex="123">
-                <span className="search-radius location-inputs" >
+                <span className="search-radius location-inputs clickable" >
                   {this.displayRadi(this.state.radi)}
                 </span>
                   <ul className="radi-dropdown-container">
-                    <li onClick={this.updatefilters('radi')} className="radi-option" value="2">2 miles</li>
-                    <li onClick={this.updatefilters('radi')} className="radi-option" value="5">5 miles</li>
-                    <li onClick={this.updatefilters('radi')} className="radi-option" value="10">10 miles</li>
-                    <li onClick={this.updatefilters('radi')} className="radi-option" value="20">20 miles</li>
-                    <li onClick={this.updatefilters('radi')} className="radi-option" value="50">50 miles</li>
-                    <li onClick={this.updatefilters('radi')} className="radi-option" value="100">100 miles</li>
-                    <li onClick={this.updatefilters('radi')} className="radi-option" value="12455">any distance</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option clickable" value="2">2 miles</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option clickable" value="5">5 miles</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option clickable" value="10">10 miles</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option clickable" value="20">20 miles</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option clickable" value="50">50 miles</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option clickable" value="100">100 miles</li>
+                    <li onClick={this.updatefilters('radi')} className="radi-option clickable" value="12455">any distance</li>
                   </ul>
                 </ul>
                   of
-                <span onClick={this.updateReferenceLocation} className="search-city location-inputs">New York, Bronx
+                <span onClick={this.updateReferenceLocation} className="search-city location-inputs clickable">New York, Bronx
                 </span>
               </div>
             </div>

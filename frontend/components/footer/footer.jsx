@@ -32,9 +32,6 @@ const Footer = () => {
         <p className="footer-notes">
           © 2018 Meetin  Meetin is a wholly owned subsidiary of App Academy.
         </p>
-        <p className="footer-notes">
-          Privacy Terms
-        </p>
         </div>
       </div>
     </div>

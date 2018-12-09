@@ -10,7 +10,7 @@ class SessionForm extends React.Component {
   }
 
   componentWillUnmount(){
-    
+
     this.props.errors.session = [];
   }
   update(field){
@@ -74,11 +74,11 @@ class SessionForm extends React.Component {
           <ul>
             {this.displayErrors()}
           </ul>
-          <input className="submit-button-login" type="submit" value="Log in"/>
+          <input className="submit-button-login clickable" type="submit" value="Log in"/>
         </form>
         <div className="alternative-auth">
           <h2 className="or">OR</h2>
-          <button onClick={() => this.demoLogin()} className="demo-login" type="submit">Demo Sign In</button>
+          <button onClick={() => this.demoLogin()} className="demo-login clickable" type="submit">Demo Sign In</button>
         </div>
       </div>
     );

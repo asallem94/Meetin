@@ -8,7 +8,7 @@ const GenInfo = ({group, users, currUserId}) => {
   if (currUserId === group.organizer_id) {
     createEvent = (
       <Link to={`/events/${group.id}/new`}>
-        <button className="create-event-button">
+        <button className="create-event-button clickable">
           Create New Event
         </button>
       </Link>

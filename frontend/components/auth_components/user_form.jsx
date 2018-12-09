@@ -47,7 +47,7 @@ class UserForm extends React.Component {
       <div className="signout-form-layout">
         <form className="user-form" onSubmit={this.handleSubmit}>
           <h1 className="registering-form-title">Sign up</h1>
-          <button onClick={() => this.demoLogin()} className="demo-signup" type="submit">Demo Sign In</button>
+          <button onClick={() => this.demoLogin()} className="demo-signup clickable" type="submit">Demo Sign In</button>
           <section className="form-item">
             <label>
               Your name
@@ -83,15 +83,12 @@ class UserForm extends React.Component {
           </section>
           <div className="submitting-section">
             <p className="subtext begining-subtext">
-              Your name is public. We'll use your email address to send you updates, and your location to find Meetups near you
+              Your name is public. We'll use your email address to send you updates, and your location to find Meet-ins near you
             </p>
             <ul>
               {this.displayErrors()}
             </ul>
-            <input className="submit-button-signup" type="submit" value="Sign Up"/>
-            <p className="subtext ending-subtext">
-              When you "Continue", you agree to Meetup's Terms of Service. We will manage information about you as described in our Privacy Policy, and Cookie Policy.
-            </p>
+            <input className="submit-button-signup clickable" type="submit" value="Sign Up"/>
             <div className="already-user">
               Already a member? <Link className="auth-link" to="/login">Log in</Link>.
             </div>

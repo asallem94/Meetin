@@ -19,7 +19,7 @@ class GroupNavBar extends React.Component {
     if (!this.props.group){
       return null;
     }
-    
+
     let joined = false;
     if (this.props.currentUser.groups[this.props.group.id]) {
       joined = true;
@@ -31,7 +31,7 @@ class GroupNavBar extends React.Component {
           <Link to={`/groups/${this.props.group.id}/`}><li className="group-menu-item">About</li></Link>
           <Link to={`/groups/${this.props.group.id}/meetins`}><li className="group-menu-item">Meetins</li></Link>
           <Link to={`/groups/${this.props.group.id}/members`}><li className="group-menu-item">Members</li></Link>
-          <button className="join-unjoin-button" onClick={(joined ? this.handleUnjoin : this.handleJoin)}>{joined ? "Leave this group" : "Join this group"}</button>
+          <button className="join-unjoin-button clickable" onClick={(joined ? this.handleUnjoin : this.handleJoin)}>{joined ? "Leave this group" : "Join this group"}</button>
         </ul>
       </div>
     );

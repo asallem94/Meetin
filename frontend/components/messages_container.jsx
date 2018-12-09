@@ -73,7 +73,7 @@ class MessagesIndex extends React.Component {
         </div>
         <form className="message-controller" onSubmit={this.sendMessage}>
           <input id="message" className="message-editor" type="text" required placeholder="Send message"/>
-          <button className="message-sender" onClick={this.sendMessage}>
+          <button className="message-sender clickable" onClick={this.sendMessage}>
             <i className="fas fa-paper-plane">
             </i>
           </button>

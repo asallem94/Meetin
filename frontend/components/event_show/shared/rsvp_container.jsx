@@ -35,7 +35,7 @@ class RsvpButtons extends React.Component{
   displayAttendButton(attend_button, fetchType, replied){
     if (attend_button) {
       return (
-        <section className="rsvp_button" onClick={this.handleRSVP(fetchType, true)}>
+        <section className="rsvp_button clickable" onClick={this.handleRSVP(fetchType, true)}>
           {replied ? "ATTEND" : <i className="fas fa-check"></i>}
         </section>
       );
@@ -45,7 +45,7 @@ class RsvpButtons extends React.Component{
   displayDeclineButton(decline_button, fetchType, replied){
     if (decline_button) {
       return (
-        <section className="rsvp_button" onClick={this.handleRSVP(fetchType, false)}>
+        <section className="rsvp_button clickable" onClick={this.handleRSVP(fetchType, false)}>
           {replied ? "DECLINE" : <i className="fas fa-times"></i>}
         </section>
       );
@@ -63,7 +63,7 @@ class RsvpButtons extends React.Component{
 
   handleRSVP(fetchType, going){
     const sendRSVP = (e) => {
-      e.preventDefault()
+      e.preventDefault();
       if (fetchType === "update") {
         this.props.updateEventResponse({
           rsvp: going,

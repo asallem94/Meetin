@@ -93,7 +93,7 @@ class Calendar extends React.Component{
 
   renderWeek(week){
     return week.map((day, indx) => (
-        <li key={indx} onClick={this.setStartFilterDate(day)} value={day > -1 ? day : null} className={(this.state.filterStartDate.getDate()===day) ? "today-cell calendar-cell" : "calendar-cell"} >
+        <li key={indx} onClick={this.setStartFilterDate(day)} value={day > -1 ? day : null} className={(this.state.filterStartDate.getDate()===day) ? "today-cell calendar-cell" : (day > -1) ? "calendar-cell clickable" : "calendar-cell"} >
           {day > -1 ? day : ""}
         </li>
       )
@@ -143,8 +143,8 @@ class Calendar extends React.Component{
             <h4 className="calendar-title">{this.state.filterStartDate.getFullYear()}</h4>
           </div>
           <div>
-            <button onClick={this.changeMonth("prev")} className="calendar-buttons">&lang;</button>
-            <button onClick={this.changeMonth("next")} className="calendar-buttons">&rang;</button>
+            <button onClick={this.changeMonth("prev")} className="calendar-buttons clickable">&lang;</button>
+            <button onClick={this.changeMonth("next")} className="calendar-buttons clickable">&rang;</button>
           </div>
         </ul>
         <ul className="calendar-row daysOfWeek">
@@ -167,13 +167,13 @@ class Calendar extends React.Component{
   displayFilterTypeSelector() {
     return (
       <div className="filter-selector">
-        <div onClick={this.updateFilterType("All Meetins")} className={(this.state.eventFilterType==="All Meetins") ? "event-main-filter-item selected-event-filter" : "event-main-filter-item"}>
+        <div onClick={this.updateFilterType("All Meetins")} className={(this.state.eventFilterType==="All Meetins") ? "event-main-filter-item clickable selected-event-filter" : "event-main-filter-item clickable"}>
           All Meetins
         </div>
-        <div onClick={this.updateFilterType("My Meetins")} className={(this.state.eventFilterType==="My Meetins") ? "event-main-filter-item selected-event-filter" : "event-main-filter-item"}>
+        <div onClick={this.updateFilterType("My Meetins")} className={(this.state.eventFilterType==="My Meetins") ? "event-main-filter-item clickable selected-event-filter" : "event-main-filter-item clickable"}>
           My Meetins
         </div>
-        <div onClick={this.updateFilterType("I'm going")} className={(this.state.eventFilterType==="I'm going") ? "event-main-filter-item selected-event-filter" : "event-main-filter-item"}>
+        <div onClick={this.updateFilterType("I'm going")} className={(this.state.eventFilterType==="I'm going") ? "event-main-filter-item clickable selected-event-filter" : "event-main-filter-item clickable"}>
           I'm going
         </div>
       </div>

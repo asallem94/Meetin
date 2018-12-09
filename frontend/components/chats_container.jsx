@@ -36,7 +36,7 @@ class ChatsIndex extends React.Component {
   displayChats(){
     return this.props.chats.map((chat)=>{
       return (
-        <div key={chat.id} className="chat-index-item" onClick={this.selectChat(chat.id)}>
+        <div key={chat.id} className="chat-index-item clickable" onClick={this.selectChat(chat.id)}>
           <ActionCable
             channel={{ channel: 'MessagesChannel', id: chat.id}}
             onReceived={this.props.recieveMessage}
@@ -74,7 +74,7 @@ class ChatsIndex extends React.Component {
           <div className="chat-index">
             {this.displayChats()}
           </div>
-          <button className="create-chat" onClick={this.displayChatsModal}>
+          <button className="create-chat clickable" onClick={this.displayChatsModal}>
             New chat
           </button>
         </section>

@@ -43,10 +43,10 @@ class NewChatForm extends React.Component {
             />
           </section>
           <section className="form-submit-section">
-            <button className="chat-button" onClick={this.closeModal}>
+            <button className="chat-button clickable" onClick={this.closeModal}>
               Cancel
             </button>
-            <button className="chat-button" onClick={this.createChat}>
+            <button className="chat-button clickable" onClick={this.createChat}>
               Create Chat
             </button>
 

@@ -29,7 +29,7 @@ class Navigation extends React.Component {
         <Link to="/messaging" className="auth-item">Messages</Link>
         <ul className="dropdown" tabIndex="123">
 
-          <img className="profile-circle" src={user.profile_img_url}></img>
+          <img className="profile-circle clickable" src={user.profile_img_url}></img>
           <div className="dropdown-container">
             <ul className="myGroups-dropdown">
             </ul>
