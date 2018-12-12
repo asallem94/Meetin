@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAllMyChats, createChat, fetchChat, recieveMessage } from './../actions/messaging_actions';
+import { fetchAllMyChats, fetchChat, recieveMessage } from './../actions/messaging_actions';
 import MessagesContainer from './messages_container';
 import { ActionCable } from 'react-actioncable-provider';
-import NewChatForm from './create_chat_modal'
+import ChatsFormContainer from './create_chat_modal'
 
 class ChatsIndex extends React.Component {
   constructor(props){
@@ -69,7 +69,7 @@ class ChatsIndex extends React.Component {
 
     return (
       <div className="chat-container">
-        <NewChatForm/>
+        <ChatsFormContainer/>
         <section className="chats-section">
           <div className="chat-index">
             {this.displayChats()}
@@ -91,16 +91,15 @@ const msp = (state) => {
   return {
     currUserId: currUserId,
     chats: Object.values(state.entities.chats),
-    messages: state.entities.messages,
     users: state.entities.users
   };
 };
+// messages: state.entities.messages,
 
 
 const mdp = (dispatch) => {
   return {
     fetchAllMyChats: () => dispatch(fetchAllMyChats()),
-    createChat: (chat) => dispatch(createChat(chat)),
     fetchChat: (id) => dispatch(fetchChat(id)),
     recieveMessage: (id) => dispatch(recieveMessage(id)),
   };

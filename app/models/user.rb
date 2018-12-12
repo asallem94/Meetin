@@ -81,9 +81,8 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: :Message
 
-  def self.users_by_filters(querySearch)
-    Users.where("name LIKE :querySearch OR email LIKE :querySearch", querySearch: "%#{querySearch}%")
-
+  def users_by_filters(querySearch)
+    self.aquaintances.distinct.where("name iLIKE :querySearch OR email iLIKE :querySearch", querySearch: "%#{querySearch}%")
   end
 
   # private

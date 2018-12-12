@@ -16,7 +16,7 @@ class Api::UsersController < ApplicationController
   end
 
   def index
-    @users = currentUser.aquaintances(params[:query])
+    @users = current_user.users_by_filters(params[:userFilter])
   end
 
   private

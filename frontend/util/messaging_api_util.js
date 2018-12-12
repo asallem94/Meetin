@@ -28,3 +28,11 @@ export const createMessage = (message) => {
     data: { message },
   });
 };
+
+export const fetchUsers = (userFilter) => {
+  return $.ajax({
+    url: `/api/users`,
+    method: "GET",
+    data: { userFilter },
+  });
+};

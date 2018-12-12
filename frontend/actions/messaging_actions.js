@@ -3,6 +3,7 @@ import * as MessagingAPIUtil from '../util/messaging_api_util';
 export const RECEIVE_ALL_CHATS = "RECEIVE_ALL_CHATS";
 export const RECEIVE_CHAT = "RECEIVE_CHAT";
 export const RECIEVE_MESSAGE = "RECIEVE_MESSAGE";
+export const RECIEVE_USERS = "RECIEVE_USERS";
 
 const receiveAllChats = ({chats}) => {
   return {
@@ -12,6 +13,7 @@ const receiveAllChats = ({chats}) => {
 };
 
 const receiveChat = ({chats, messages, users}) => {
+  debugger
   return {
     type: RECEIVE_CHAT,
     chats,
@@ -24,6 +26,13 @@ export const recieveMessage = ({message, chats}) => {
   return {
     type: RECIEVE_MESSAGE,
     message
+  };
+};
+
+const recieveUsers = (users) => {
+  return {
+    type: RECIEVE_USERS,
+    users
   };
 };
 
@@ -46,7 +55,7 @@ export const fetchChat = (id) => {
 export const createChat = (chat) => {
   return (dispatch) => {
     return MessagingAPIUtil.createChat(chat).then((response)=>{
-      return dispatch(recieveMessage(response));
+      return dispatch(receiveChat(response));
     });
   };
 };
@@ -55,6 +64,14 @@ export const createMessage = (message) => {
   return (dispatch) => {
     return MessagingAPIUtil.createMessage(message).then((response)=>{
       return dispatch(recieveMessage(response));
+    });
+  };
+};
+
+export const fetchUsers = (filter) => {
+  return (dispatch) => {
+    return MessagingAPIUtil.fetchUsers(filter).then((response)=>{
+      return dispatch(recieveUsers(response));
     });
   };
 };

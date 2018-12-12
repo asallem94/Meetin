@@ -5,7 +5,8 @@ class Api::ChatsController < ApplicationController
   end
 
   def create
-    @chat = Chat.new(params[:chat][:title])
+    # debugger
+    @chat = Chat.new(title: params[:chat][:title])
     if @chat.save
       params[:chat][:member_ids].each do |member_id|
         @chat.members << User.find(member_id)
@@ -18,7 +19,7 @@ class Api::ChatsController < ApplicationController
       # head :ok
 
     end
-    # render 'api/chats/show'
+    render 'api/chats/show'
   end
 
   def show

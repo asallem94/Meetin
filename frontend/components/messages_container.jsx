@@ -23,18 +23,21 @@ class MessagesIndex extends React.Component {
         this.props.fetchChat(this.props.chatId);
       }
     }
+    this.scrollToLastMessage();
   }
   scrollToLastMessage(){
-    const element = document.getElementById('message-index');
+    const element = document.getElementById('message-index-bottom');
     if (element){
-      element.scrollTop = element.scrollHeight;
+      element.scrollIntoView();
     }
   }
   sendMessage(e){
     const body = document.getElementById('message').value;
+    document.getElementById('message').value = "";
     e.preventDefault();
     this.props.createMessage({chat_id: this.props.chatId, author_id: this.props.currUserId, body: body});
     // scroll to the last message
+    this.scrollToLastMessage();
   }
 
   displayMessages(){
@@ -69,7 +72,8 @@ class MessagesIndex extends React.Component {
       <div className="message-container">
         <div id="message-index" className="message-index">
           {this.displayMessages()}
-
+          <div id="message-index-bottom">
+          </div>
         </div>
         <form className="message-controller" onSubmit={this.sendMessage}>
           <input id="message" className="message-editor" type="text" required placeholder="Send message"/>
