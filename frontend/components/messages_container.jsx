@@ -80,8 +80,10 @@ class MessagesIndex extends React.Component {
     return (
       <div className="message-container">
         <div>
-          <h1>{this.props.chats[this.props.chatId].title}</h1>
+          <h1 className="message-chat-title">{this.props.chats[this.props.chatId].title}</h1>
+          <div className="message-chat-members">
           {this.displayMembers()}
+          </div>
         </div>
         <div id="message-index" className="message-index">
           {this.displayMessages()}

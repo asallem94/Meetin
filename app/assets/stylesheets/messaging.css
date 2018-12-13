@@ -93,7 +93,7 @@
   padding: 10px;
   box-sizing: border-box;
   width: 95%;
-  height: 85%;
+  height: 75%;
   border-radius: 10px;
 }
 
@@ -146,4 +146,19 @@
   width: 90%;
   outline: none;
   padding: 5px;
+}
+
+.message-chat-title {
+  color: white;
+  width: max-content;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 5px auto;
+}
+
+.message-chat-members {
+  background-color: red;
+  min-width: 150px;
+  min-height: 20px;
+  overflow-x: scroll;
 }
