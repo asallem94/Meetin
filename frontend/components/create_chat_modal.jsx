@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createChat, fetchUsers } from './../actions/messaging_actions';
+import { uniq } from 'lodash'
 
 class NewChatForm extends React.Component {
   constructor(props){
@@ -10,7 +11,6 @@ class NewChatForm extends React.Component {
     this.updateChatUsers = this.updateChatUsers.bind(this);
     this.selectUser = this.selectUser.bind(this);
     this.displayChatUsers = this.displayChatUsers.bind(this);
-    this.uniq = this.uniq.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.createChat = this.createChat.bind(this);
   }
@@ -19,27 +19,25 @@ class NewChatForm extends React.Component {
     e.preventDefault();
     let chatMembers = this.state.member_ids;
     chatMembers.push(this.props.currUserId);
-    chatMembers = this.uniq(chatMembers);
+    chatMembers = _.uniq(chatMembers);
     const title = document.getElementById('chat-title').value;
     this.props.createChat({member_ids: chatMembers, title: title});
     this.closeModal();
   }
 
-  updateChatUsers(e){
-    e.preventDefault();
-    const currentChatUsers = e.target.value;
-    this.setState({newChatUsers: currentChatUsers});
+  resetDropdown(){
+    const currentChatUsers = this.state.newChatUsers;
     if (currentChatUsers.length > 1){
       this.props.fetchUsers(currentChatUsers);
       const searchResults = Object.values(this.props.users).filter(user => {
-        console.log(`${user.name}: ${(user.name.toLowerCase().includes(currentChatUsers.toLowerCase()) || (user.email ? user.email.toLowerCase().includes(currentChatUsers.toLowerCase()) : false))} and ${!this.state.member_ids.includes(user.id)}` );
-        console.log(`member_ids: ${this.state.member_ids} and userId: ${user.id}`);
-        // debugger
+        // console.log(`${user.name}: ${(user.name.toLowerCase().includes(currentChatUsers.toLowerCase()) || (user.email ? user.email.toLowerCase().includes(currentChatUsers.toLowerCase()) : false))} and ${!this.state.member_ids.includes(user.id)}` );
+        // console.log(`member_ids: ${this.state.member_ids} and userId: ${user.id} and currentUser: ${this.props.currUserId}`);
+        // console.log(`${typeof this.state.member_ids[0]}`)
         return (
           (user.name.toLowerCase().includes(currentChatUsers.toLowerCase()) ||
-          (user.email ? user.email.toLowerCase().includes(currentChatUsers.toLowerCase()) : false) &&
-          !this.state.member_ids.includes(user.id)
-          )
+          (user.email ? user.email.toLowerCase().includes(currentChatUsers.toLowerCase()) : false)) &&
+          !this.state.member_ids.includes(user.id) &&
+          user.id != (this.props.currUserId)
         );
       });
       this.setState({usersResults: searchResults});
@@ -48,20 +46,19 @@ class NewChatForm extends React.Component {
     }
   }
 
-  selectUser(e){
+  updateChatUsers(e){
     e.preventDefault();
-    const newMemberIds = this.state.member_ids;
-    newMemberIds.push(e.currentTarget.id);
-    const uniqMemberIds = this.uniq(newMemberIds);
-    this.setState({newChatUsers: "", member_ids: uniqMemberIds });
+    const currentChatUsers = e.target.value;
+    this.setState({newChatUsers: currentChatUsers}, this.resetDropdown.bind(this));
+
   }
 
-  uniq(array){
-    let obj = {};
-    for (let i = 0; i < array.length; i++) {
-      obj[array[i]] = 1;
-    }
-    return Object.keys(obj);
+  selectUser(e){
+    e.preventDefault();
+    const newMemberIds = _.uniq(this.state.member_ids.concat(parseInt(e.currentTarget.id)));
+    // const uniqMemberIds = newMemberIds);
+    debugger
+    this.setState({newChatUsers: "", member_ids: newMemberIds });
   }
 
   displayDropdownResults(){
@@ -84,7 +81,7 @@ class NewChatForm extends React.Component {
 
   displayChatUsers(){
 
-    const newChatUsers = this.state.member_ids//this.uniq() //uniq elements
+    const newChatUsers = this.state.member_ids//_.uniq() //uniq elements
 
     return newChatUsers.map((userId) => {
       return (
