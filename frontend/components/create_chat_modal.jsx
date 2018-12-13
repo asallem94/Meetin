@@ -56,8 +56,6 @@ class NewChatForm extends React.Component {
   selectUser(e){
     e.preventDefault();
     const newMemberIds = _.uniq(this.state.member_ids.concat(parseInt(e.currentTarget.id)));
-    // const uniqMemberIds = newMemberIds);
-    debugger
     this.setState({newChatUsers: "", member_ids: newMemberIds });
   }
 

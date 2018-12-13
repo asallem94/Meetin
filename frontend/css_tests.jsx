@@ -18,13 +18,7 @@ class CssTests extends React.Component {
   }
 
   resetBubble(){
-    // debugger
-    // return ()=> {
-      debugger
-      document.getElementById(`${i}`).classList.toggle("bubbles-top");
-      // document.getElementById(`${i}`).addEventListener("transitionend", this.resetBubble);
-    // };
-
+    document.getElementById(`${i}`).classList.toggle("bubbles-top");
   }
 
   componentDidMount(){

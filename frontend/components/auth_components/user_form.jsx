@@ -30,7 +30,8 @@ class UserForm extends React.Component {
     this.props.signup(this.state);
   }
 
-  demoLogin(){
+  demoLogin(e){
+    e.preventDefault()
     this.props.login({email: 'test4@gmail.com', password: '123123'});
   }
 
@@ -47,7 +48,7 @@ class UserForm extends React.Component {
       <div className="signout-form-layout">
         <form className="user-form" onSubmit={this.handleSubmit}>
           <h1 className="registering-form-title">Sign up</h1>
-          <button onClick={() => this.demoLogin()} className="demo-signup clickable" type="submit">Demo Sign In</button>
+          <button onClick={this.demoLogin} className="demo-signup clickable" type="submit">Demo Sign In</button>
           <section className="form-item">
             <label>
               Your name

@@ -8,6 +8,7 @@ class MessagesIndex extends React.Component {
   constructor(props){
     super(props);
     this.sendMessage = this.sendMessage.bind(this);
+    this.displayMembers = this.displayMembers.bind(this);
     this.displayMessages = this.displayMessages.bind(this);
     this.scrollToLastMessage = this.scrollToLastMessage.bind(this);
   }
@@ -40,6 +41,14 @@ class MessagesIndex extends React.Component {
     this.scrollToLastMessage();
   }
 
+  displayMembers(){
+    this.props.chats[this.props.chatId].member_ids.map(userId => {
+      return (
+        <img className="attendees-img-circle" key={userId} src={this.props.users[userId].profile_img_url}/>
+      );
+    });
+  }
+
   displayMessages(){
     return this.props.chats[this.props.chatId].messages_ids.map((messageId)=>{
       if (this.props.currUserId === this.props.messages[messageId].author_id) {
@@ -70,6 +79,10 @@ class MessagesIndex extends React.Component {
 
     return (
       <div className="message-container">
+        <div>
+          <h1>{this.props.chats[this.props.chatId].title}</h1>
+          {this.displayMembers()}
+        </div>
         <div id="message-index" className="message-index">
           {this.displayMessages()}
           <div id="message-index-bottom">

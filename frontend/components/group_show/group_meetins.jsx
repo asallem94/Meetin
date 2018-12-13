@@ -2,8 +2,8 @@ import React from 'react';
 import EventShowItem from './../event_show/event_show_item';
 
 class GroupMeetins extends React.Component{
-  constructor ({group, events, users}){
-    super({group, events, users});
+  constructor (props){//{group, events, users}
+    super(props);
     this.displayEvents = this.displayEvents.bind(this);
     this.filterEvents = this.filterEvents.bind(this);
     this.state = {pastUpcomingController: "Upcoming"};

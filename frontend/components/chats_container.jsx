@@ -47,12 +47,6 @@ class ChatsIndex extends React.Component {
     });
   }
 
-  createChat(){
-
-    debugger
-    // this.props.createChat(chat);
-  }
-
   displayChatsModal(e){
     e.preventDefault();
     this.openModal();

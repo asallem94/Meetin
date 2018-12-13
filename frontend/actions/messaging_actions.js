@@ -13,7 +13,6 @@ const receiveAllChats = ({chats}) => {
 };
 
 const receiveChat = ({chats, messages, users}) => {
-  debugger
   return {
     type: RECEIVE_CHAT,
     chats,

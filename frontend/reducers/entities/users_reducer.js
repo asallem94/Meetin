@@ -19,7 +19,7 @@ const usersReducer = ( state = {}, action ) => {
     case RECEIVE_EVENT:
       return merge({}, state, action.users);
     case RECEIVE_MEMBERSHIP:
-      merge(defaultState[action.membership.user_id].groups, {[action.membership.group_id]:action.membership.id});
+      merge(defaultState[action.membership.user_id], {groups:{[action.membership.group_id]: action.membership.id}});
       return defaultState;
     case REMOVE_MEMBERSHIP:
       delete defaultState[action.membership.user_id].groups[action.membership.group_id];
