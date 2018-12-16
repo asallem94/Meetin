@@ -51,5 +51,13 @@ class Event < ApplicationRecord
 
   end
 
+  has_many :event_interest_relationships,
+    foreign_key: :event_id,
+    class_name: :EventInterestRelationship
+
+  has_many :interests,
+    through: :event_interest_relationships,
+    source: :interest
+
 
 end

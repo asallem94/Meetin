@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'moment';
 
-const Step1 = ({unhideStep, city, dateTime, update}) => {
+const Step1 = ({unhideStep, handleChangeLocaiton, city, dateTime, update}) => {
 
   return (
     <div id="1" className="step-container">
@@ -10,7 +10,7 @@ const Step1 = ({unhideStep, city, dateTime, update}) => {
         <h3 className="step-label">STEP 1 OF 4</h3>
         <h1 className="step-action">Where will you meet-in?</h1>
         <article className="inline">
-          <div id="city" className="city">{city}</div><span>(</span><span className="selector">change location</span><span>)</span>
+          <div id="city" className="city">{city}</div><span>(</span><span className="selector clickable" onClick={handleChangeLocaiton}>change location</span><span>)</span>
         </article>
         <label className="dt-label">Address
           <input id="address" className="dt-input-field" required type="text" placeholder="123 apple st. NY, 100937"/>

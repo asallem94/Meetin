@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Step1 = ({unhideStep, city}) => {
+const Step1 = ({unhideStep, handleChangeLocaiton, city}) => {
 
   return (
     <div id="1" className="step-container">
@@ -9,7 +9,7 @@ const Step1 = ({unhideStep, city}) => {
         <h3 className="step-label">STEP 1 OF 4</h3>
         <h1 className="step-action">What's your new Meetup Group's hometown?</h1>
         <article className="inline">
-          <div id="city" className="city">{city}</div><span>(</span><span className="selector">change location</span><span>)</span>
+          <div id="city" className="city">{city}</div><span>(</span><span className="selector clickable" onClick={handleChangeLocaiton}>change location</span><span>)</span>
         </article>
         <button onClick={(e)=>unhideStep('2', e)} className="continue-button">Next</button>
       </div>

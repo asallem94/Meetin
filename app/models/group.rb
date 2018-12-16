@@ -47,5 +47,11 @@ class Group < ApplicationRecord
 
   end
 
+  has_many :group_interest_relationships,
+    foreign_key: :group_id,
+    class_name: :GroupInterestRelationship
 
+  has_many :interests,
+    through: :group_interest_relationships,
+    source: :interest
 end

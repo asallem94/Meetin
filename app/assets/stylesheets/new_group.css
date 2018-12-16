@@ -94,6 +94,10 @@
   margin: 10px 0;
 }
 
+.continue-button:hover {
+  cursor: pointer;
+}
+
 .hidden-step {
   display: none
 }

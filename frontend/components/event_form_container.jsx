@@ -27,13 +27,18 @@ class EventForm extends React.Component {
   }
 
   handleChangeLocaiton(){
-    const handleCoords = (location) => this.location ={
-      lat: location.coords.latitude,
-      lng: location.coords.longitude
+    const handleCoords = (location) => {
+      this.setState({
+        lat: location.coords.latitude,
+        lng: location.coords.longitude
+      }, this.handleCoordinates);
     };
     navigator.geolocation.getCurrentPosition(handleCoords);
   }
-  handleCoordinates(lat, lng){
+
+  handleCoordinates(){
+    const lat = this.state.lat;
+    const lng = this.state.lng;
     const api_key = "APPID=6c47a97e3a341c6c6752d2304c925f5d";
     const api_url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&${api_key}`;
 
@@ -104,7 +109,7 @@ class EventForm extends React.Component {
     return (
       <div className="events-form-page">
         <FormHeader/>
-        <Step1 unhideStep={this.unhideStep} city={this.state.city} dateTime={dateTime} update={this.update}/>
+        <Step1 unhideStep={this.unhideStep} handleChangeLocaiton={this.handleChangeLocaiton} city={this.state.city} dateTime={dateTime} update={this.update}/>
         <Step2 unhideStep={this.unhideStep} interests={this.props.interests}/>
         <Step3 unhideStep={this.unhideStep}/>
         <Step4 handleSubmit={this.handleSubmit} loggedIn={this.props.loggedIn}/>

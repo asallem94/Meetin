@@ -70,17 +70,19 @@ class ChatsIndex extends React.Component {
     }
 
     return (
-      <div className="chat-container">
-        <ChatsFormContainer/>
-        <section className="chats-section">
-          <div className="chat-index">
-            {this.displayChats()}
-          </div>
-          <button className="create-chat clickable" onClick={this.displayChatsModal}>
-            New chat
-          </button>
-        </section>
-        <MessagesContainer chatId={this.state.selectedChat} />
+      <div className="background-container">
+        <div className="chat-container">
+          <ChatsFormContainer/>
+          <section className="chats-section">
+            <div className="chat-index">
+              {this.displayChats()}
+            </div>
+            <button className="create-chat clickable" onClick={this.displayChatsModal}>
+              New chat
+            </button>
+          </section>
+          <MessagesContainer chatId={this.state.selectedChat} />
+        </div>
       </div>
     );
 
