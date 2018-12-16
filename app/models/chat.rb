@@ -13,4 +13,7 @@ class Chat < ApplicationRecord
     foreign_key: :chat_id,
     class_name: :Message
 
+  def lastMessage
+    self.messages.order(created_at: :desc).limit(1)[0]
+  end
 end

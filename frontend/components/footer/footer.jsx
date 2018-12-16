@@ -15,7 +15,7 @@ const Footer = () => {
           </Link>
         </div>
         <ul className="footer-topics">
-          <li className="footer-topic">About us</li>
+          <a href="https://asallem94.github.io/"><li className="footer-topic">About the developer</li></a>
           <a href="https://www.meetup.com/"><li className="footer-topic">Meetup Original</li></a>
         </ul>
         <div className="footer-followers">
@@ -23,14 +23,16 @@ const Footer = () => {
             Follow us
           </p>
           <ul className="follow-icons">
-            <li className="follow-icon"><i className="fas fa-globe-americas"></i></li>
+            <a href="https://asallem94.github.io/"><li className="follow-icon"><i className="fas fa-globe-americas"></i></li></a>
+            <a href="https://www.linkedin.com/in/sallem-ahmed-44404596/"><li className="follow-icon"><i className="fab fa-linkedin"></i></li></a>
+            <a href="https://angel.co/sallem-ahmed"><li className="follow-icon"><i className="fab fa-angellist"></i></li></a>
             <a href="https://github.com/asallem94/Meetin"><li className="follow-icon"><i className="fab fa-github"></i></li></a>
           </ul>
           <LanguageSelector/>
         </div>
         <div className="footer-corperate">
         <p className="footer-notes">
-          © 2018 Meetin  Meetin is a wholly owned subsidiary of App Academy.
+          © 2018 Meetin is a wholly owned subsidiary of App Academy.
         </p>
         </div>
       </div>

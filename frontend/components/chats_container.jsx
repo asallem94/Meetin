@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { fetchAllMyChats, fetchChat, recieveMessage } from './../actions/messaging_actions';
 import MessagesContainer from './messages_container';
 import { ActionCable } from 'react-actioncable-provider';
-import ChatsFormContainer from './create_chat_modal'
+import ChatsFormContainer from './create_chat_modal';
+import Moment from 'moment';
 
 class ChatsIndex extends React.Component {
   constructor(props){
@@ -16,7 +17,9 @@ class ChatsIndex extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchAllMyChats();
+    this.props.fetchAllMyChats().then((res) => {
+      this.setState({selectedChat: Object.values(res.chats)[0].id});
+    });
   }
 
   selectChat(id){
@@ -41,7 +44,12 @@ class ChatsIndex extends React.Component {
             channel={{ channel: 'MessagesChannel', id: chat.id}}
             onReceived={this.props.recieveMessage}
           />
-          {chat.title}
+          <section className="message-text-header">
+            <h3>{chat.title}</h3>
+            <h3>{chat.lastMessageId ? Moment(this.props.messages[chat.lastMessageId].created_at).fromNow() : ""}</h3>
+          </section>
+
+          <h3 className="ellipsis">{chat.lastMessageId ? this.props.messages[chat.lastMessageId].body : "" }</h3>
         </div>
       );
     });
@@ -85,7 +93,8 @@ const msp = (state) => {
   return {
     currUserId: currUserId,
     chats: Object.values(state.entities.chats),
-    users: state.entities.users
+    users: state.entities.users,
+    messages: state.entities.messages,
   };
 };
 // messages: state.entities.messages,

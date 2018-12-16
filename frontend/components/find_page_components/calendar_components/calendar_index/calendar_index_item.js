@@ -14,7 +14,7 @@ const CalendarIndexItem = ({event}) => {
           <h4 className="events-group-title">{event.title}</h4>
           <h3 className="events-group-count">{`${event.attendees_count} Members going`}</h3>
         </div>
-        <h3 className="time-until">{Moment(event.start_date).startOf('day').fromNow()}</h3>
+        <h3 className="time-until">{Moment(event.start_date).fromNow()}</h3>
       </Link>
     </div>
   );

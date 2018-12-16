@@ -60,7 +60,7 @@ class GroupForm extends React.Component {
     stepContainer.classList.add('unhidden-step');
     stepContainer.classList.remove('hidden-step');
     window.setTimeout(()=>{
-      window.scroll(0, [stepContainer.offsetTop]);
+      window.scrollTo({left: 0, top: stepContainer.offsetTop, behavior: 'smooth'});
     }, 5);
     e.target.style.display = "none";
   }

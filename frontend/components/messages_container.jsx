@@ -26,10 +26,36 @@ class MessagesIndex extends React.Component {
     }
     this.scrollToLastMessage();
   }
+  checkLastMessage(){
+    const bottomIndex = document.getElementById('message-index-bottom');
+    if (bottomIndex) {
+      if (bottomIndex.lastChild) {
+        // debugger
+        if (bottomIndex.lastChild.previousSibling) {
+          // debugger
+          console.log(bottomIndex.lastChild.previousSibling.key);
+        }
+      }
+    }
+  }
+
+  isAtLastMessage() {
+    const scrollDiv = document.getElementById('message-index-bottom').getBoundingClientRect();
+    return (
+      scrollDiv.top >= 0 &&
+      scrollDiv.left >= 0 &&
+      scrollDiv.bottom <= (window.innerHeight || document. documentElement.clientHeight) &&
+      scrollDiv.right <= (window.innerWidth || document. documentElement.clientWidth)
+    );
+  }
+
   scrollToLastMessage(){
-    const element = document.getElementById('message-index-bottom');
-    if (element){
-      element.scrollIntoView();
+    const messageIndex = document.getElementById('message-index');
+    // const messageIndexBottom = document.getElementById('message-index-bottom');
+    if (messageIndex){
+      // debugger
+      messageIndex.scrollTo({left: 0, top: messageIndex.scrollHeight, behavior: 'smooth'});
+      // element.scrollIntoView();
     }
   }
   sendMessage(e){
@@ -38,11 +64,10 @@ class MessagesIndex extends React.Component {
     e.preventDefault();
     this.props.createMessage({chat_id: this.props.chatId, author_id: this.props.currUserId, body: body});
     // scroll to the last message
-    this.scrollToLastMessage();
   }
 
   displayMembers(){
-    this.props.chats[this.props.chatId].member_ids.map(userId => {
+    return this.props.chats[this.props.chatId].member_ids.map(userId => {
       return (
         <img className="attendees-img-circle" key={userId} src={this.props.users[userId].profile_img_url}/>
       );
@@ -50,7 +75,16 @@ class MessagesIndex extends React.Component {
   }
 
   displayMessages(){
-    return this.props.chats[this.props.chatId].messages_ids.map((messageId)=>{
+    const messageIds = this.props.chats[this.props.chatId].messages_ids;
+    if (messageIds.length < 1){
+      return (
+        <div className="new-message">
+          <h1 className="new-message-text">Say hi to {this.props.chats[this.props.chatId].title}</h1>
+          <img className="new-message-icon" src="https://cdn.emojidex.com/emoji/seal/wave%28p%29.png?1426438608"/>
+        </div>
+      );
+    }
+    return messageIds.map((messageId)=>{
       if (this.props.currUserId === this.props.messages[messageId].author_id) {
         return (
           <div key={messageId} className="message-index-item message-right">
@@ -87,21 +121,20 @@ class MessagesIndex extends React.Component {
         </div>
         <div id="message-index" className="message-index">
           {this.displayMessages()}
-          <div id="message-index-bottom">
-          </div>
         </div>
         <form className="message-controller" onSubmit={this.sendMessage}>
           <input id="message" className="message-editor" type="text" required placeholder="Send message"/>
-          <button className="message-sender clickable" onClick={this.sendMessage}>
-            <i className="fas fa-paper-plane">
+          <section className="message-sender clickable" onClick={this.sendMessage}>
+            <i className="fas fa-paper-plane send-icon">
             </i>
-          </button>
+          </section>
         </form>
       </div>
     );
 
   }
 }
+// <div id="message-index-bottom"></div>
 
 const msp = (state) => {
   const currUserId = state.session.currentUserId;

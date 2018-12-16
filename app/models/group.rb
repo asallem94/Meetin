@@ -43,7 +43,7 @@ class Group < ApplicationRecord
       # }
 
       Group.where("((lng - :lng) * (lng - :lng)) + ((lat - :lat) * (lat - :lat)) < :r * :r", {lng: lng, lat:lat, r: r})
-        .where("title LIKE :querySearch OR description LIKE :querySearch", querySearch: "%#{querySearch}%")
+        .where("title iLIKE :querySearch OR description iLIKE :querySearch", querySearch: "%#{querySearch}%")
 
   end
 

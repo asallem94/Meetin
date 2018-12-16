@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createChat, fetchUsers } from './../actions/messaging_actions';
-import { uniq } from 'lodash'
+import { uniq } from 'lodash';
 
 class NewChatForm extends React.Component {
   constructor(props){
@@ -26,18 +26,15 @@ class NewChatForm extends React.Component {
   }
 
   resetDropdown(){
-    const currentChatUsers = this.state.newChatUsers;
-    if (currentChatUsers.length > 1){
-      this.props.fetchUsers(currentChatUsers);
+    const searchChatUsers = this.state.newChatUsers;
+    if (searchChatUsers.length > 1){
+      this.props.fetchUsers(searchChatUsers);
       const searchResults = Object.values(this.props.users).filter(user => {
-        // console.log(`${user.name}: ${(user.name.toLowerCase().includes(currentChatUsers.toLowerCase()) || (user.email ? user.email.toLowerCase().includes(currentChatUsers.toLowerCase()) : false))} and ${!this.state.member_ids.includes(user.id)}` );
-        // console.log(`member_ids: ${this.state.member_ids} and userId: ${user.id} and currentUser: ${this.props.currUserId}`);
-        // console.log(`${typeof this.state.member_ids[0]}`)
         return (
-          (user.name.toLowerCase().includes(currentChatUsers.toLowerCase()) ||
-          (user.email ? user.email.toLowerCase().includes(currentChatUsers.toLowerCase()) : false)) &&
+          user.id != (this.props.currUserId) &&
           !this.state.member_ids.includes(user.id) &&
-          user.id != (this.props.currUserId)
+          (user.name.toLowerCase().includes(searchChatUsers.toLowerCase()) ||
+          (user.email ? user.email.toLowerCase().includes(searchChatUsers.toLowerCase()) : false))
         );
       });
       this.setState({usersResults: searchResults});
@@ -56,7 +53,7 @@ class NewChatForm extends React.Component {
   selectUser(e){
     e.preventDefault();
     const newMemberIds = _.uniq(this.state.member_ids.concat(parseInt(e.currentTarget.id)));
-    this.setState({newChatUsers: "", member_ids: newMemberIds });
+    this.setState({newChatUsers: "", member_ids: newMemberIds }, this.resetDropdown);
   }
 
   displayDropdownResults(){
@@ -125,6 +122,7 @@ class NewChatForm extends React.Component {
                 className="chat-input-field"
                 type="text"
                 onChange={this.updateChatUsers}
+                value={this.state.newChatUsers}
               />
             </div>
               <div className="dropdown-results">

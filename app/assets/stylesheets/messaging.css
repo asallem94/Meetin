@@ -42,7 +42,8 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  min-width: 30%;
+  width: 30%;
+  max-width: 30%;
   margin: 0 10px;
 }
 
@@ -54,7 +55,17 @@
   color: white;
   border-radius: 10px;
 }
+.message-text-header {
+  display: flex;
+  justify-content: space-between;
+}
 
+.ellipsis {
+  text-overflow: ellipsis;
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
 .chat-index {
   min-width: 100%;
   height: 90%;
@@ -62,6 +73,7 @@
   background-color: darkgray;
   border-radius: 10px;
   box-sizing: border-box;
+  overflow-y: scroll;
 }
 
 .chat-index-item {
@@ -95,6 +107,7 @@
   width: 95%;
   height: 75%;
   border-radius: 10px;
+  transition: 1s;
 }
 
 .message-index-item {
@@ -157,8 +170,43 @@
 }
 
 .message-chat-members {
-  background-color: red;
-  min-width: 150px;
-  min-height: 20px;
+  margin: 0 auto;
+
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  height: 40px;
+  width: max-content;
   overflow-x: scroll;
+}
+
+.message-sender {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: max-content;
+}
+.message-sender:hover {
+  color: #009fcb;
+}
+
+
+.new-message {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+.new-message {
+  width: max-content;
+}
+.new-message-icon {
+  margin: 10px auto;
+  width: 5vw;
+  height: 5vw;
+  object-fit: contain;
 }

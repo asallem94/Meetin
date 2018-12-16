@@ -40,22 +40,35 @@ class Calendar extends React.Component{
   }
 
   changeMonth(direction){
-
     const that = this;
     return (e) => {
       e.preventDefault();
-      const newDate = new Date(that.state.filterStartDate);
-      let d;
-      if (direction === "next") {
-
-        newDate.setMonth(newDate.getMonth()+1);
-        console.log(d);
-        // this.setState({month: this.state.month+1});
+      let newDate;
+      if (direction === "today"){
+        newDate = new Date();
       } else {
-        newDate.setMonth(newDate.getMonth()-1);
-        // this.setState({month: this.state.month-1});
+        newDate = new Date(that.state.filterStartDate);
       }
-      this.setState( {filterStartDate: this.getFirstDay(newDate), filterEndDate: this.getLastDay(newDate)} );
+      // debugger
+      if (direction === "next") {
+        newDate.setMonth(newDate.getMonth()+1);
+      }
+      if (direction === "prev") {
+        newDate.setMonth(newDate.getMonth()-1);
+      }
+      console.log(this);
+      this.setState( {filterStartDate: (direction === "today") ? newDate : this.getFirstDay(newDate), filterEndDate: this.getLastDay(newDate)},
+        () => {
+          this.props.fetchFindableEvents(merge({}, this.props.filters,
+            {filterStartDate: Moment(this.state.filterStartDate).format("L"),
+            filterEndDate: Moment(this.state.filterEndDate).format("L")})
+          );
+        }
+      );
+      // this.props.updateFilters.bind(this.state)
+      // this.props.updateFilters(this.state);
+      // debugger
+
     };
   }
 
@@ -137,14 +150,15 @@ class Calendar extends React.Component{
 
     return (
       <div className="calendar">
+      <button onClick={this.changeMonth("today")} className="calendar-buttons clickable">Today</button>
         <ul className="calendar-row calendar-header">
           <div className="calendar-title">
             <h4 className="calendar-title">{months[this.state.filterStartDate.getMonth()]} </h4>
             <h4 className="calendar-title">{this.state.filterStartDate.getFullYear()}</h4>
           </div>
-          <div>
-            <button onClick={this.changeMonth("prev")} className="calendar-buttons clickable">&lang;</button>
-            <button onClick={this.changeMonth("next")} className="calendar-buttons clickable">&rang;</button>
+          <div className="calendar-button-direction">
+            <button onClick={this.changeMonth("prev")} className="calendar-buttons clickable">&lang; </button>
+            <button onClick={this.changeMonth("next")} className="calendar-buttons clickable"> &rang;</button>
           </div>
         </ul>
         <ul className="calendar-row daysOfWeek">
