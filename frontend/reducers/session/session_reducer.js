@@ -9,8 +9,8 @@ const sessionReducer = ( state = {}, action ) => {
       return {currentUserId: action.user.id};
     case REMOVE_CURRENT_USER:
       return defaultState;
-    case RECEIVE_ERRORS:
-      return action.errors;
+    // case RECEIVE_ERRORS:
+    //   return action.errors;
     default:
       return state;
   }

@@ -5,6 +5,7 @@ json.group do
   json.member_ids sampled_group_members.ids
   json.count @group.members_count
   json.event_ids @group.events.ids
+  json.interestIds @group.interests.ids
 end
 
 sampled_users = []

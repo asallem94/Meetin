@@ -15,10 +15,10 @@ class Step2 extends React.Component{
   displayInterests (){
     const filteredIterest = this.props.interests.filter( interest => {return interest.topic_titles.toLowerCase().includes(this.state.interestFilter.toLowerCase());});
     return filteredIterest.map((interest) => (
-        <label key={interest.id} className="interest-label"> {interest.topic_titles}
-        <input type="checkbox" key={interest.id} className="interest-checkbox" value={interest.topic_titles}/>
-        <i className="far fa-heart heart-hollow"></i>
-        <i className="fas fa-heart heart-solid"></i>
+        <label key={interest.id}  className="interest-label"> {interest.topic_titles}
+          <input type="checkbox" id={interest.id} className="interest-checkbox" value={interest.topic_titles}/>
+          <i className="far fa-heart heart-hollow"></i>
+          <i className="fas fa-heart heart-solid"></i>
         </label>
       ));
   }

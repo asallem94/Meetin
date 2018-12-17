@@ -73,7 +73,7 @@ class GroupForm extends React.Component {
 
     const interestNodeList = document.querySelectorAll("input.interest-checkbox:checked");
     const interestIds = [];
-    for (var i = 0; i < interestNodeList.length; i++) {
+    for (let i = 0; i < interestNodeList.length; i++) {
       interestIds.push(interestNodeList[i].id);
     }
     // debugger

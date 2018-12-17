@@ -16,6 +16,11 @@ class UserForm extends React.Component {
       this.setState({[field]: event.currentTarget.value});
     };
   }
+
+  componentWillMount(){
+    this.props.clearErrors([]);
+  }
+
   componentDidMount(){
     navigator.geolocation.getCurrentPosition(this.handleCoords);
   }
@@ -31,7 +36,7 @@ class UserForm extends React.Component {
   }
 
   demoLogin(e){
-    e.preventDefault()
+    e.preventDefault();
     this.props.login({email: 'test4@gmail.com', password: '123123'});
   }
 

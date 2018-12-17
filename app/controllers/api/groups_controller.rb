@@ -17,6 +17,8 @@ class Api::GroupsController < ApplicationController
     @group.organizer_id = current_user.id
     @group.img_url = "http://www.clutterfairyhouston.com/wp/wp-content/uploads/2014/10/Depositphotos_12802359_s-Golden-Abstract-Bokeh-Background-Gold-Dust-over-Black-cropped-719x321.jpg"
     if @group.save
+      @group.members = [current_user]
+      @group.interests = params[:group][:interestIds].map{|interest_id| Interest.find(interest_id)}
       render :show
     else
       render json: @group.errors.full_messages, status: 422

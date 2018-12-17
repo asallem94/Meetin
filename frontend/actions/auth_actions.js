@@ -24,11 +24,21 @@ export const receiveErrors = (errors) => {
   };
 };
 
+// export const clearSessionErrors = () => {
+//   return (dispatch) => {
+//     return APIUtil.login(user).then(
+//       (res) => dispatch(receiveCurrentUser(res)),
+//       (err) => dispatch(receiveErrors(err))
+//     );
+//   };
+// };
+
+
 export const login = (user) => {
   return (dispatch) => {
     return APIUtil.login(user).then(
       (res) => dispatch(receiveCurrentUser(res)),
-      (err) => dispatch(receiveErrors(err))
+      (err) => dispatch(receiveErrors(err.responseJSON))
     );
   };
 };
@@ -37,7 +47,7 @@ export const logout = () => {
   return (dispatch) => {
     return APIUtil.logout().then(
       (res) => dispatch(logoutCurrentUser(res)),
-      (err) => dispatch(receiveErrors(err))
+      (err) => dispatch(receiveErrors(err.responseJSON))
     );
   };
 };
@@ -46,7 +56,7 @@ export const signup = (user) => {
   return (dispatch) => {
     return APIUtil.signup(user).then(
       (res) => dispatch(receiveCurrentUser(res)),
-      (err) => dispatch(receiveErrors(err))
+      (err) => dispatch(receiveErrors(err.responseJSON))
     );
   };
 };

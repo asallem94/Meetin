@@ -5,6 +5,7 @@ json.event do
   json.attendees_ids sampled_event_attendees.ids
   json.count @event.attendees_count
   json.group_name @event.group.title
+  json.interestIds @event.interests.ids
 end
 
 json.users do

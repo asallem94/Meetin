@@ -87,6 +87,13 @@ class EventForm extends React.Component {
     const endTimeInputed = document.getElementById('end-time').value;
     const startDate = Date(startDateInputed + " " + startTimeInputed);
     const endDate = Date(endDateInputed + " " + endTimeInputed);
+
+    const interestNodeList = document.querySelectorAll("input.interest-checkbox:checked");
+    const interestIds = [];
+    for (let i = 0; i < interestNodeList.length; i++) {
+      interestIds.push(interestNodeList[i].id);
+    }
+    debugger
     const event = {
       lng: this.state.lng || this.props.currentUser.lng,
       lat: this.state.lat || this.props.currentUser.lat,
@@ -96,7 +103,8 @@ class EventForm extends React.Component {
       city: this.state.city,
       start_date: startDate,
       end_date: endDate,
-      groupId: this.props.match.params.groupId
+      groupId: this.props.match.params.groupId,
+      interestIds: interestIds
     };
     this.props.createEvent(event).then(res => {
       return this.props.history.push(`/events/${res.event.id}`);
