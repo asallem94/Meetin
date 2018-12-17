@@ -22,7 +22,7 @@
 .calendar-title {
   display: flex;
   flex-direction: row;
-  font-weight: 300;
+  font-weight: 600;
   margin: 5px;
 }
 .calendar-button-direction {
@@ -41,7 +41,7 @@
   border-radius: 5px;
   margin: 5px 0;
   text-align: center;
-  font-weight: 200;
+  font-weight: 600;
   font-size: 15px;
 }
 

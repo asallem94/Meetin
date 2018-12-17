@@ -157,8 +157,8 @@ class Calendar extends React.Component{
             <h4 className="calendar-title">{this.state.filterStartDate.getFullYear()}</h4>
           </div>
           <div className="calendar-button-direction">
-            <button onClick={this.changeMonth("prev")} className="calendar-buttons clickable">&lang; </button>
-            <button onClick={this.changeMonth("next")} className="calendar-buttons clickable"> &rang;</button>
+            <button onClick={this.changeMonth("prev")} className="calendar-buttons clickable"><i className="fas fa-less-than"></i></button>
+            <button onClick={this.changeMonth("next")} className="calendar-buttons clickable"><i className="fas fa-greater-than"></i></button>
           </div>
         </ul>
         <ul className="calendar-row daysOfWeek">
