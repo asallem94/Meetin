@@ -14,7 +14,7 @@ const receiveAllChats = ({chats, messages}) => {
   };
 };
 
-const receiveChat = ({chats, messages, users}) => {
+export const receiveChat = ({chats, messages, users}) => {
   return {
     type: RECEIVE_CHAT,
     chats,

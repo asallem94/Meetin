@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAllMyChats, fetchChat, recieveMessage } from './../actions/messaging_actions';
+import { fetchAllMyChats, fetchChat, recieveMessage, receiveChat } from './../actions/messaging_actions';
 import MessagesContainer from './messages_container';
 import { ActionCable } from 'react-actioncable-provider';
 import ChatsFormContainer from './create_chat_modal';
@@ -57,6 +57,7 @@ class ChatsIndex extends React.Component {
       const chat = this.props.chats[chatId];
       return (
         <div key={chat.id} className="chat-index-item clickable" onClick={this.selectChat(chat.id)}>
+
           <ActionCable
             channel={{ channel: 'MessagesChannel', id: chat.id}}
             onReceived={this.props.recieveMessage}
@@ -92,6 +93,10 @@ class ChatsIndex extends React.Component {
           <ChatsFormContainer/>
           <section className="chats-section">
             <div className="chat-index">
+              <ActionCable
+                channel={{ channel: 'ChatsChannel' }}
+                onReceived={this.props.recieveChat}
+              />
               {this.displayChats()}
             </div>
             <button className="create-chat clickable" onClick={this.displayChatsModal}>
@@ -118,12 +123,12 @@ const msp = (state) => {
 };
 // messages: state.entities.messages,
 
-
 const mdp = (dispatch) => {
   return {
     fetchAllMyChats: () => dispatch(fetchAllMyChats()),
     fetchChat: (id) => dispatch(fetchChat(id)),
     recieveMessage: (id) => dispatch(recieveMessage(id)),
+    recieveChat: (id) => dispatch(receiveChat(id)),
   };
 };
 

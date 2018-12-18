@@ -11,15 +11,16 @@ class Api::ChatsController < ApplicationController
       params[:chat][:member_ids].each do |member_id|
         @chat.members << User.find(member_id)
       end
-
-      # serialized_data = ActiveModelSerializers::Adapter::Json.new(
-      #   ChatSerializer.new(chat)
-      # ).serializable_hash
-      # ActionCable.server.broadcast 'chats_channel', serialized_data
-      # head :ok
+      # debugger
+      serialized_data = ActiveModelSerializers::Adapter::Json.new(
+        ChatSerializer.new(@chat)
+      ).serializable_hash
+      # debugger
+      ActionCable.server.broadcast 'chats_channel', serialized_data
+      head :ok
 
     end
-    render 'api/chats/show'
+    # render 'api/chats/show'
   end
 
   def show

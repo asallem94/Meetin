@@ -27,7 +27,8 @@ class Api::EventsController < ApplicationController
     @event.group_id = params[:group_id]
     @event.event_img_url = "https://www.pixelstalk.net/wp-content/uploads/2016/11/Color-explosion-wallpaper-2560x1600.jpg"
     if @event.save
-      debugger
+      # debugger
+      @event.attendees = [current_user]
       @event.interests = params[:event][:interestIds].map{|interest_id| Interest.find(interest_id)}
       render :show
     else

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {logout} from './../actions/auth_actions';
@@ -11,13 +11,13 @@ class Navigation extends React.Component {
 
 
   myGroups(){
-     const myGroups = this.props.groups
+    const myGroups = this.props.groups
       .filter((group)=>currentUser.groups[group.id])
       .map((group) => {
         <li className="myGroup" key="group_id">
           {group.title}
         </li>
-    })
+      })
 
   }
 

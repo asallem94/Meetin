@@ -92,6 +92,8 @@ class NewChatForm extends React.Component {
   }
 
   closeModal(){
+    this.setState({newChatUsers: "", usersResults:[], member_ids: []});
+    document.getElementById('chat-title').value = "";
     document.getElementById('create-chat-modal').style.display = "none";
   }
 
