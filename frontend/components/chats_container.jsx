@@ -18,7 +18,9 @@ class ChatsIndex extends React.Component {
 
   componentDidMount(){
     this.props.fetchAllMyChats().then((res) => {
-      this.setState({selectedChat: Object.values(res.chats)[0].id});
+      if (res.chats){
+        this.setState({selectedChat: Object.values(res.chats)[0].id});
+      }
     });
   }
 
