@@ -39,7 +39,22 @@ class ChatsIndex extends React.Component {
   }
 
   displayChats(){
-    return this.props.chats.map((chat)=>{
+    const currUser = this.props.users[this.props.currUserId];
+    if (this.props.users[this.props.currUserId].chatIds.length < 1){
+      return null;
+    }
+    if (!this.props.chats[currUser.chatIds[0]]){
+      return null;
+    }
+    // .chatIds.sort(
+    //   (id1, id2)=>{
+    //     const chat1 = this.props.chats[id1];
+    //     const chat2 = this.props.chats[id2];
+    //     return chat1
+    //   }
+    // )
+    return currUser.chatIds.map((chatId)=>{
+      const chat = this.props.chats[chatId];
       return (
         <div key={chat.id} className="chat-index-item clickable" onClick={this.selectChat(chat.id)}>
           <ActionCable
@@ -96,7 +111,7 @@ const msp = (state) => {
   const currentUser = state.entities.users[currUserId];
   return {
     currUserId: currUserId,
-    chats: Object.values(state.entities.chats),
+    chats: state.entities.chats,
     users: state.entities.users,
     messages: state.entities.messages,
   };
