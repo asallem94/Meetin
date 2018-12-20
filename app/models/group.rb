@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id           :bigint(8)        not null, primary key
+#  organizer_id :integer          not null
+#  title        :string           not null
+#  img_url      :string
+#  city         :string           not null
+#  description  :text             not null
+#  lng          :float            not null
+#  lat          :float            not null
+#  private      :boolean          default(FALSE)
+#
+
 class Group < ApplicationRecord
   validates :title, :city, :description, :lng, :lat, presence: true
 

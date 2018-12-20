@@ -1,15 +1,17 @@
 import { RECEIVE_FINDABLE_EVENTS, RECEIVE_EVENT } from '../../actions/event_actions';
 import { RECEIVE_GROUP } from '../../actions/meetin_actions';
 import { RECEIVE_RSVP } from '../../actions/rsvp_actions';
+import { RECEIVE_USER } from '../../actions/auth_actions';
 
 import { merge, remove } from 'lodash';
 
 const eventsReducer = ( state = {}, action ) => {
   Object.freeze(state);
   let defaultState = merge({}, state);
-
-
   switch(action.type){
+    case RECEIVE_USER:
+    // debugger
+      return merge({}, state, action.events);
     case RECEIVE_FINDABLE_EVENTS:
       return action.events || {};
     case RECEIVE_EVENT:

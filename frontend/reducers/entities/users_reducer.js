@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS} from '../../actions/auth_actions';
+import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS, RECEIVE_USER} from '../../actions/auth_actions';
 import { RECEIVE_GROUP } from '../../actions/meetin_actions';
 import { RECEIVE_EVENT } from '../../actions/event_actions';
 import { RECEIVE_RSVP } from '../../actions/rsvp_actions';
@@ -11,6 +11,8 @@ const usersReducer = ( state = {}, action ) => {
   Object.freeze(state);
   let defaultState = merge({}, state);
   switch(action.type){
+    case RECEIVE_USER:
+      return merge({}, state, action.users);
     case RECEIVE_CURRENT_USER:
       defaultState[action.user.id] = action.user;
       return defaultState;

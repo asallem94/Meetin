@@ -1,27 +1,29 @@
 import React from 'react';
-import EventTimeLocation from './event_time_location'
+import EventTimeLocation from './event_time_location';
+import { Link } from 'react-router-dom';
+
 const EventDetail = (props) => {
 
   if (!props.event){
     return null;
   }
 
-  const showattentdee = (id) => {
+  const showAttentdee = (id) => {
     const user = props.users[id];
     return (
-      <div key={id} className="event-member-content hovered-content">
+      <Link to={`/users/${id}`} key={id} className="event-member-content hovered-content">
         <img className="show-member-circle" src={props.users[id].profile_img_url}/>
         <section className="event-organizer-textinfo">
           <li className="member-type">{id === props.event.host_id ? "Host" : "Member"}</li>
           <li className="member-name">{props.users[id].name}</li>
         </section>
-      </div>
+      </Link >
     );
   };
 
   const attendees = props.event.attendees_ids.map((id)=>{
     return (
-      showattentdee(id)
+      showAttentdee(id)
     );
   });
 

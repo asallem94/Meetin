@@ -28,15 +28,16 @@ class Navigation extends React.Component {
         <Link to="/find" className="auth-item">Explore</Link>
         <Link to="/messaging" className="auth-item">Messages</Link>
         <ul className="dropdown" tabIndex="123">
-
           <img className="profile-circle clickable" src={user.profile_img_url}></img>
           <div className="dropdown-container">
             <ul className="myGroups-dropdown">
             </ul>
             <ul className="account-actions-dropdown">
-              <li className="account-actions">
-                Profile
-              </li>
+              <Link to={`/users/${user.id}`}>
+                <li className="account-actions">
+                  Profile
+                </li>
+              </Link>
               <li className="account-actions nav-center-item">
                 Settings
               </li>

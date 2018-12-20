@@ -1,5 +1,6 @@
 import React from 'react';
 import EventShowItemSummarized from './../event_show/event_show_item_summarized';
+import { Link } from 'react-router-dom';
 
 const GroupDetail = (props) => {
   const displayGroupEvents = (event_ids, events) => {
@@ -11,13 +12,13 @@ const GroupDetail = (props) => {
   const showMember = (id, organizer) => {
     const user = props.users[id];
     return (
-      <div key={id} className={(organizer ? "group-organizer-content hovered-content" : "group-member-content hovered-content")}>
+      <Link to={`/users/${id}`} key={id} className={(organizer ? "group-organizer-content hovered-content" : "group-member-content hovered-content")}>
         <img className="show-member-circle" src={props.users[id].profile_img_url}/>
         <section className="group-organizer-textinfo">
           <li className="member-type">{organizer ? "Organized by" : "Member"}</li>
           <li className="member-name">{props.users[id].name}</li>
         </section>
-      </div>
+      </Link>
     );
   };
 

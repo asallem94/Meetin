@@ -1,5 +1,6 @@
 import { RECEIVE_FINDABLE_GROUPS, RECEIVE_GROUP } from '../../actions/meetin_actions';
 import { RECEIVE_MEMBERSHIP, REMOVE_MEMBERSHIP } from '../../actions/membership_actions';
+import { RECEIVE_USER } from '../../actions/auth_actions';
 
 import { merge, remove } from 'lodash';
 
@@ -8,6 +9,8 @@ const groupsReducer = ( state = {}, action ) => {
   let defaultState = merge({}, state);
 
   switch(action.type){
+    case RECEIVE_USER:
+      return merge({}, state, action.groups);
     case RECEIVE_FINDABLE_GROUPS:
       return action.groups;
     case RECEIVE_GROUP:

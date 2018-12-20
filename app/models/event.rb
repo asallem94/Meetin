@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id            :bigint(8)        not null, primary key
+#  host_id       :integer          not null
+#  group_id      :integer          not null
+#  title         :string           not null
+#  event_img_url :string
+#  address       :string           not null
+#  city          :string           not null
+#  detail        :string           not null
+#  lng           :float            not null
+#  lat           :float            not null
+#  start_date    :datetime         not null
+#  end_date      :datetime         not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  private       :boolean          default(FALSE)
+#  price         :float            default(0.0)
+#
+
 class Event < ApplicationRecord
   validates :title, :city, :address, :detail, :lng, :lat, :start_date, :end_date, presence: true
 

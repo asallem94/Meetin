@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint(8)        not null, primary key
+#  email           :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  name            :string           not null
+#  profile_img_url :string
+#  bio             :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  lng             :float            not null
+#  lat             :float            not null
+#
+
 class User < ApplicationRecord
   validates :name, :email, :password_digest, :session_token, presence: true
   validates :email, :session_token, uniqueness: true
@@ -84,6 +101,15 @@ class User < ApplicationRecord
   def users_by_filters(querySearch)
     self.aquaintances.distinct.where("name iLIKE :querySearch OR email iLIKE :querySearch", querySearch: "%#{querySearch}%")
   end
+
+
+  has_many :user_interest_relationships,
+    foreign_key: :user_id,
+    class_name: :UserInterestRelationship
+
+  has_many :interests,
+    through: :user_interest_relationships,
+    source: :interest
 
   # private
   def generate_session_token!

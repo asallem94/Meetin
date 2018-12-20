@@ -13,7 +13,8 @@ import EventsShowContainer from './components/events_show_container';
 import GroupFormContainer from './components/group_form_container';
 import EventFormContainer from './components/event_form_container';
 import ChatsContainer from './components/chats_container';
-import CssTests from './css_tests';
+import ProfileContainer from './components/profile_container';
+// import CssTests from './css_tests';
 
 const App = () => {
   return (
@@ -29,13 +30,14 @@ const App = () => {
         <AuthEventCreatorRoute exact path="/events/:groupId/new" component={EventFormContainer}/>
         <ProtectedRoute exact path="/events/:eventId" component={EventsShowContainer}/>
         <ProtectedRoute exact path="/create" component={GroupFormContainer}/>
+        <ProtectedRoute exact path="/users/:userId" component={ProfileContainer}/>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
-        <Route exact path="/trials" component={CssTests} />
       </Switch>
       <Footer/>
     </div>
   );
+  // <Route exact path="/trials" component={CssTests} />
 };
 
 export default App;
