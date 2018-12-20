@@ -13,15 +13,28 @@ class ProfileShow extends React.Component {
   componentDidMount(){
     this.props.fetchUser(this.props.match.params.userId);
   }
+
   componentDidUpdate(prevProps){
     if (this.props.match.params.userId !== prevProps.match.params.userId ){
       this.props.fetchUser(this.props.match.params.userId);
     }
   }
+  displayNavBar(){
+    return (
+      <nav className="profile-nav">
+        <div className="nav-container">
+          <a className="nav-item" href="#about">About</a>
+          <a className="nav-item" href="#groups">Groups</a>
+          <a className="nav-item" href="#Events">Events</a>
+          <a className="nav-item" href="#Memories">Memories</a>
+        </div>
+      </nav>
+    );
+  }
 
   displayHeader(){
     return (
-        <div className="row profile-header">
+        <div id="about" className="row profile-header">
           <div className="container2">
             <div className="profile-header-main">
               <img className="profile-img" src={this.props.showUser.profile_img_url} />
@@ -68,7 +81,7 @@ class ProfileShow extends React.Component {
     const groups = groupIds.map((groupId)=>{
       const group = this.props.groups[groupId];
       return (
-        <Link to={`/groups/${groupId}`} key={groupId} className="clickable profile-item">
+        <Link id="groups" to={`/groups/${groupId}`} key={groupId} className="clickable profile-item">
           <h2 className="tl-pos title-overlay">{group.title}</h2>
           <img className="image-on-profile" src={group.img_url}/>
         </Link>
@@ -88,7 +101,7 @@ class ProfileShow extends React.Component {
     const events = eventIds.map((eventId)=>{
       const event = this.props.events[eventId];
       return (
-        <Link to={`/events/${eventId}`} key={eventId} className="clickable profile-item">
+        <Link id={type==="Upcoming Events" ? "Events" : type} to={`/events/${eventId}`} key={eventId} className="clickable profile-item">
           <div className="tl-pos">
             <EventDatePost start_date={event.start_date}/>
             <h2 className="title-overlay">{event.title}</h2>
@@ -134,7 +147,7 @@ class ProfileShow extends React.Component {
     }
     return (
       <div>
-      {upcomingEvents.length > 0 ? this.displayEventsByType(upcomingEvents, "Ucoming Events") : null}
+      {upcomingEvents.length > 0 ? this.displayEventsByType(upcomingEvents, "Upcoming Events") : null}
       {memories.length > 0 ? this.displayEventsByType(memories, "Memories") : null}
       </div>
     );
@@ -145,6 +158,7 @@ class ProfileShow extends React.Component {
     }
     return (
       <div className="content-container">
+        {this.displayNavBar()}
         {this.displayHeader()}
         {this.displayGroups()}
         {this.displayEvents()}
