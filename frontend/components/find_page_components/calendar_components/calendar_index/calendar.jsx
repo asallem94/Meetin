@@ -49,7 +49,7 @@ class Calendar extends React.Component{
       } else {
         newDate = new Date(that.state.filterStartDate);
       }
-      // debugger
+      
       if (direction === "next") {
         newDate.setMonth(newDate.getMonth()+1);
       }
@@ -67,7 +67,7 @@ class Calendar extends React.Component{
       );
       // this.props.updateFilters.bind(this.state)
       // this.props.updateFilters(this.state);
-      // debugger
+      
 
     };
   }

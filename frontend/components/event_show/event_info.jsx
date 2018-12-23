@@ -16,7 +16,7 @@ const EventInfo = ({event, users, currentUserId}) => {
             {event.title}
           </h1>
           <div className="event-organizer-info">
-            <img className="show-organizer-circle" src={users[event.host_id].profile_img_url}/>
+            <img className="show-organizer-circle" src={users[event.host_id].imgUrl}/>
             <section className="event-organizer-textinfo">
               <li className="organizer-name">Hosted by {users[event.host_id].name}</li>
               <li className="organizer-name">From <Link to={`/groups/${event.group_id}`}>{event.group_name}</Link></li>

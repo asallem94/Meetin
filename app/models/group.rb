@@ -5,7 +5,6 @@
 #  id           :bigint(8)        not null, primary key
 #  organizer_id :integer          not null
 #  title        :string           not null
-#  img_url      :string
 #  city         :string           not null
 #  description  :text             not null
 #  lng          :float            not null
@@ -15,6 +14,8 @@
 
 class Group < ApplicationRecord
   validates :title, :city, :description, :lng, :lat, presence: true
+
+  has_one_attached :img
 
   belongs_to :organizer,
     foreign_key: :organizer_id,

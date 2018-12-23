@@ -60,7 +60,7 @@ class NewChatForm extends React.Component {
     return this.state.usersResults.map(user => {
       return (
         <section key={user.id} id={user.id} className="chat-dropdown-item" onClick={this.selectUser}>
-          <img src={this.props.users[user.id].profile_img_url} className="chat-img-circle"/>
+          <img src={this.props.users[user.id].imgUrl} className="chat-img-circle"/>
           <div className="">
             <h5 className="chat-member-name">
               {user.name}
@@ -82,7 +82,7 @@ class NewChatForm extends React.Component {
       return (
         <section key={userId} className="selectUser-arg">
           <section className="selected-user">
-            <img src={this.props.users[userId].profile_img_url} className="chat-img-circle-selected"/>
+            <img src={this.props.users[userId].imgUrl} className="chat-img-circle-selected"/>
             {this.props.users[userId].name}
           </section>
           <span>; </span>

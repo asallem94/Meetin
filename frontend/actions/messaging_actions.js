@@ -6,7 +6,7 @@ export const RECIEVE_MESSAGE = "RECIEVE_MESSAGE";
 export const RECIEVE_USERS = "RECIEVE_USERS";
 
 const receiveAllChats = ({chats, messages}) => {
-  // debugger
+  
   return {
     type: RECEIVE_ALL_CHATS,
     chats,

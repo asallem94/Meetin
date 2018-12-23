@@ -93,7 +93,6 @@ class EventForm extends React.Component {
     for (let i = 0; i < interestNodeList.length; i++) {
       interestIds.push(interestNodeList[i].id);
     }
-    debugger
     const event = {
       lng: this.state.lng || this.props.currentUser.lng,
       lat: this.state.lat || this.props.currentUser.lat,

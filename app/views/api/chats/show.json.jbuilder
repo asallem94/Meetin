@@ -17,7 +17,8 @@ end
 json.users do
   @chat.members.each do |user|
     json.set! user.id do
-      json.extract! user, :id, :name, :profile_img_url
+      json.extract! user, :id, :name
+      json.imgUrl url_for(user.profile_img)
     end
   end
 end

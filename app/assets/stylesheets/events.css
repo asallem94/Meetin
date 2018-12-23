@@ -247,10 +247,10 @@
 
 .fixed-location-date-container {
    position: sticky;
+
    top: 5rem;
 }
 .detail-banner {
-  /* position: relative; */
 }
 
 .link {

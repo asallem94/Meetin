@@ -76,7 +76,7 @@ class GroupForm extends React.Component {
     for (let i = 0; i < interestNodeList.length; i++) {
       interestIds.push(interestNodeList[i].id);
     }
-    // debugger
+    
 
     const group = {
       lng: this.state.lng || this.props.currentUser.lng,

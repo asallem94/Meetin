@@ -16,7 +16,7 @@ const GenInfo = ({group, users, currUserId}) => {
   }
   return (
     <header className="group-show-header">
-      <img className="group-show-img" src={group.img_url}/>
+      <img className="group-show-img" src={group.imgUrl}/>
       <div className="group-show-info">
         <h1 className="group-show-title">
           {group.title}
@@ -29,7 +29,7 @@ const GenInfo = ({group, users, currUserId}) => {
           <li>{(group.private) ? "Private" : "Public"} group</li>
         </div>
         <div className="group-organizer-info">
-          <img className="show-organizer-circle" src={users[group.organizer_id].profile_img_url}/>
+          <img className="show-organizer-circle" src={users[group.organizer_id].imgUrl}/>
           <section className="group-organizer-textinfo">
             <li>Organized by</li>
             <li className="organizer-name">{users[group.organizer_id].name}</li>

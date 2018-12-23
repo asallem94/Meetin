@@ -7,7 +7,7 @@ import GetFullDateTime from './shared/get_full_date_time';
 const displayAttendees = ( event , users ) => {
   return event.attendees_ids.map((attendeeId) => {
     return (
-      <img className="attendees-img-circle" key={attendeeId} src={users[attendeeId].profile_img_url}/>
+      <img className="attendees-img-circle" key={attendeeId} src={users[attendeeId].imgUrl}/>
     );
   });
 };
@@ -25,7 +25,7 @@ const EventShowItemSummarized = ({event, users}) => {
           </div>
         </div>
         <div className="host-info">
-          <img className="show-organizer-circle" src={users[event.host_id].profile_img_url}/>
+          <img className="show-organizer-circle" src={users[event.host_id].imgUrl}/>
           <p className="host-name">hosted by {users[event.host_id].name}</p>
         </div>
 

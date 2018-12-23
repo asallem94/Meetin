@@ -12,7 +12,7 @@ const EventDetail = (props) => {
     const user = props.users[id];
     return (
       <Link to={`/users/${id}`} key={id} className="event-member-content hovered-content">
-        <img className="show-member-circle" src={props.users[id].profile_img_url}/>
+        <img className="show-member-circle" src={props.users[id].imgUrl}/>
         <section className="event-organizer-textinfo">
           <li className="member-type">{id === props.event.host_id ? "Host" : "Member"}</li>
           <li className="member-name">{props.users[id].name}</li>
@@ -31,7 +31,7 @@ const EventDetail = (props) => {
     <div className="background">
       <div className="about-us-content">
         <div className="main-detail-content">
-          <img className="event-img" src={props.event.event_img_url}/>
+          <img className="event-img" src={props.event.imgUrl}/>
           <div className="about-us">
             <h1 className="event-headings">Details</h1>
             <article className="event-description">

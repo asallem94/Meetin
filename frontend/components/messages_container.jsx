@@ -30,9 +30,9 @@ class MessagesIndex extends React.Component {
     const bottomIndex = document.getElementById('message-index-bottom');
     if (bottomIndex) {
       if (bottomIndex.lastChild) {
-        // debugger
+        
         if (bottomIndex.lastChild.previousSibling) {
-          // debugger
+          
           console.log(bottomIndex.lastChild.previousSibling.key);
         }
       }
@@ -53,7 +53,7 @@ class MessagesIndex extends React.Component {
     const messageIndex = document.getElementById('message-index');
     // const messageIndexBottom = document.getElementById('message-index-bottom');
     if (messageIndex){
-      // debugger
+      
       messageIndex.scrollTo({left: 0, top: messageIndex.scrollHeight, behavior: 'smooth'});
       // element.scrollIntoView();
     }
@@ -69,7 +69,7 @@ class MessagesIndex extends React.Component {
   displayMembers(){
     return this.props.chats[this.props.chatId].member_ids.map(userId => {
       return (
-        <img className="attendees-img-circle" key={userId} src={this.props.users[userId].profile_img_url}/>
+        <img className="attendees-img-circle" key={userId} src={this.props.users[userId].imgUrl}/>
       );
     });
   }
@@ -95,7 +95,7 @@ class MessagesIndex extends React.Component {
       } else {
         return (
           <div key={messageId} className="message-index-item message-left">
-            <img className="user-chat-img" src={this.props.users[this.props.messages[messageId].author_id].profile_img_url}/>
+            <img className="user-chat-img" src={this.props.users[this.props.messages[messageId].author_id].imgUrl}/>
             <h6 className="message-text">{this.props.messages[messageId].body}</h6>
           </div>
         );

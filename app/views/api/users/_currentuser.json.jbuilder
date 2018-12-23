@@ -1,6 +1,5 @@
-
-
-json.extract! user,:id, :name, :profile_img_url, :lat, :lng, :bio, :lng, :lat
+json.extract! user,:id, :name, :lat, :lng, :bio, :lng, :lat
+json.imgUrl url_for(user.profile_img)
 json.set! :groups_count, user.group_memberships.count
 json.set! :organized_groups, user.organized_groups.ids
 json.chatIds user.chats.ids

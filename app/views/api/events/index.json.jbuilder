@@ -5,8 +5,9 @@ users = []
   # sample_attendees = event.sample_attendees(5)
   json.events do
     json.set! event.id do
-      json.extract! event, :id, :title, :event_img_url, :lat, :lng, :start_date, :end_date, :city, :detail, :private, :attendees_count, :group_id
+      json.extract! event, :id, :title, :lat, :lng, :start_date, :end_date, :city, :detail, :private, :attendees_count, :group_id
       # json.attendees sample_attendees.ids
+      json.imgUrl url_for(event.img)
       json.group_name event.group.title
     end
   end

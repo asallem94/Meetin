@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_16_065443) do
+ActiveRecord::Schema.define(version: 2018_12_22_013656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 2018_12_16_065443) do
     t.integer "host_id", null: false
     t.integer "group_id", null: false
     t.string "title", null: false
-    t.string "event_img_url"
     t.string "address", null: false
     t.string "city", null: false
     t.string "detail", null: false
@@ -98,7 +97,6 @@ ActiveRecord::Schema.define(version: 2018_12_16_065443) do
   create_table "groups", force: :cascade do |t|
     t.integer "organizer_id", null: false
     t.string "title", null: false
-    t.string "img_url"
     t.string "city", null: false
     t.text "description", null: false
     t.float "lng", null: false
@@ -134,7 +132,6 @@ ActiveRecord::Schema.define(version: 2018_12_16_065443) do
     t.string "password_digest", null: false
     t.string "session_token", null: false
     t.string "name", null: false
-    t.string "profile_img_url"
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

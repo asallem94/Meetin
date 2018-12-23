@@ -31,14 +31,16 @@ end
 json.events do
   @user.attending_events.each do |event|
     json.set! event.id do
-      json.extract! event, :id, :title, :event_img_url, :start_date, :end_date
+      json.extract! event, :id, :title, :start_date, :end_date
+      json.imgUrl url_for(event.img)
     end
   end
 end
 json.groups do
   @user.groups.each do |group|
     json.set! group.id do
-      json.extract! group, :id, :title, :img_url
+      json.extract! group, :id, :title
+      json.imgUrl url_for(group.img)
       json.members_count group.members_count
     end
   end

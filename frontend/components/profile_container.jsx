@@ -19,14 +19,22 @@ class ProfileShow extends React.Component {
       this.props.fetchUser(this.props.match.params.userId);
     }
   }
+
+  scrollToSection(selector){
+    return () => {
+      const el = document.getElementById(selector);
+      window.scrollTo({left: 0, top: el.offsetTop-140, behavior: 'smooth'});
+    };
+  }
+
   displayNavBar(){
     return (
       <nav className="profile-nav">
         <div className="nav-container">
-          <a className="nav-item" href="#about">About</a>
-          <a className="nav-item" href="#groups">Groups</a>
-          <a className="nav-item" href="#Events">Events</a>
-          <a className="nav-item" href="#Memories">Memories</a>
+          <a className="nav-item" onClick={this.scrollToSection("about")}>About</a>
+          <a className="nav-item" onClick={this.scrollToSection("groups")}>Groups</a>
+          <a className="nav-item" onClick={this.scrollToSection("events")}>Events</a>
+          <a className="nav-item" onClick={this.scrollToSection("memories")}>Memories</a>
         </div>
       </nav>
     );
@@ -37,7 +45,7 @@ class ProfileShow extends React.Component {
         <div id="about" className="row profile-header">
           <div className="container2">
             <div className="profile-header-main">
-              <img className="profile-img" src={this.props.showUser.profile_img_url} />
+              <img className="profile-img" src={this.props.showUser.imgUrl} />
               <h2>{this.props.showUser.name}</h2>
             </div>
             {this.displayInterests()}
@@ -77,13 +85,13 @@ class ProfileShow extends React.Component {
     if (groupIds.length < 1 || !this.props.groups[groupIds[0]]){
       return null;
     }
-    // debugger
+    
     const groups = groupIds.map((groupId)=>{
       const group = this.props.groups[groupId];
       return (
         <Link id="groups" to={`/groups/${groupId}`} key={groupId} className="clickable profile-item">
           <h2 className="tl-pos title-overlay">{group.title}</h2>
-          <img className="image-on-profile" src={group.img_url}/>
+          <img className="image-on-profile" src={group.imgUrl}/>
         </Link>
       );
     });
@@ -101,12 +109,12 @@ class ProfileShow extends React.Component {
     const events = eventIds.map((eventId)=>{
       const event = this.props.events[eventId];
       return (
-        <Link id={type==="Upcoming Events" ? "Events" : type} to={`/events/${eventId}`} key={eventId} className="clickable profile-item">
+        <Link id={type==="Upcoming Events" ? "events" : "memories"} to={`/events/${eventId}`} key={eventId} className="clickable profile-item">
           <div className="tl-pos">
             <EventDatePost start_date={event.start_date}/>
             <h2 className="title-overlay">{event.title}</h2>
           </div>
-          <img className="image-on-profile" src={event.event_img_url}/>
+          <img className="image-on-profile" src={event.imgUrl}/>
         </Link>
       );
     });

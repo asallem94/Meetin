@@ -13,7 +13,7 @@ const GroupDetail = (props) => {
     const user = props.users[id];
     return (
       <Link to={`/users/${id}`} key={id} className={(organizer ? "group-organizer-content hovered-content" : "group-member-content hovered-content")}>
-        <img className="show-member-circle" src={props.users[id].profile_img_url}/>
+        <img className="show-member-circle" src={props.users[id].imgUrl}/>
         <section className="group-organizer-textinfo">
           <li className="member-type">{organizer ? "Organized by" : "Member"}</li>
           <li className="member-name">{props.users[id].name}</li>

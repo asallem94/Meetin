@@ -7,7 +7,6 @@
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  name            :string           not null
-#  profile_img_url :string
 #  bio             :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -48,6 +47,8 @@ class User < ApplicationRecord
   def ensure_session_token
     self.session_token ||= self.generate_session_token!
   end
+
+  has_one_attached :profile_img
 
   has_many :organized_groups,
     foreign_key: :organizer_id,

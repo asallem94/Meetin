@@ -10,7 +10,7 @@ const eventsReducer = ( state = {}, action ) => {
   let defaultState = merge({}, state);
   switch(action.type){
     case RECEIVE_USER:
-    // debugger
+    
       return merge({}, state, action.events);
     case RECEIVE_FINDABLE_EVENTS:
       return action.events || {};

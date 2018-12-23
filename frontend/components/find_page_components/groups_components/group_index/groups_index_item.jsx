@@ -13,7 +13,7 @@ const GroupsIndexItem = ({group}) => {
             {group.members_count} members
           </section>
         </div>
-        <img className="Groups-Image" src={group.img_url}/>
+        <img className="Groups-Image" src={group.imgUrl} />
       </li>
     </Link>
   );

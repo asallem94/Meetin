@@ -1,7 +1,8 @@
 sampled_group_members = @group.sample_members(10)
 
 json.group do
-  json.extract! @group, :id, :title, :img_url, :members_count, :organizer_id, :city, :description, :lng, :lat, :private
+  json.extract! @group, :id, :title, :members_count, :organizer_id, :city, :description, :lng, :lat, :private
+  json.imgUrl url_for(@group.img)
   json.member_ids sampled_group_members.ids
   json.count @group.members_count
   json.event_ids @group.events.ids
