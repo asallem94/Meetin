@@ -32,7 +32,6 @@ class Api::GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update_attributes(group_params)
-      debugger
       render :show
     else
       render json: @group.errors.full_messages, status: 422

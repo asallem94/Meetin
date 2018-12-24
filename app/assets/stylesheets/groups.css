@@ -153,7 +153,7 @@
 
 .group-show-img {
   height: 350px;
-  width: 600px;
+  width: inherit;
   object-fit: cover;
   border-radius: 10px;
 }

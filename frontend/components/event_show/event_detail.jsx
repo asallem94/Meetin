@@ -1,6 +1,7 @@
 import React from 'react';
 import EventTimeLocation from './event_time_location';
 import { Link } from 'react-router-dom';
+import EditEventImageContainer from '../edit_event_img_container';
 
 const EventDetail = (props) => {
 
@@ -31,7 +32,10 @@ const EventDetail = (props) => {
     <div className="background">
       <div className="about-us-content">
         <div className="main-detail-content">
-          <img className="event-img" src={props.event.imgUrl}/>
+          <div className="img-container">
+            <img className="event-img" src={props.event.imgUrl}/>
+            <EditEventImageContainer leaderId={props.event.host_id} entityId={props.event.id} entity ="event"/>
+          </div>
           <div className="about-us">
             <h1 className="event-headings">Details</h1>
             <article className="event-description">

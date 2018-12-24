@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { updateGroup } from '../actions/meetin_actions';
 
 class EditImage extends React.Component{
   constructor(props){
@@ -8,8 +6,11 @@ class EditImage extends React.Component{
     this.state = {photoFile: null, photoUrl: null};
     this.upload = this.upload.bind(this);
   }
-  showForm(e){
-    e.preventDefault();
+  clearForm(){
+    this.setState({photoFile: null, photoUrl: null});
+  }
+  toggleForm(e){
+    e ? e.preventDefault() : null;
     document.getElementById('update-photo-form').classList.toggle('hide');
     document.getElementById('display-update-photo-form').classList.toggle('hide');
   }
@@ -26,33 +27,33 @@ class EditImage extends React.Component{
   upload(e){
     e.preventDefault();
     let formData = new FormData();
-    console.log(this.state);
     formData.append(this.props.entity+'[id]', this.props.entityId);
     formData.append(this.props.entity+'[img]', this.state.photoFile);
     // debugger
-    this.props.updateEntity(formData);
+    this.props.updateEntity({[this.props.entity]:{formData: formData, id: this.props.entityId}});
+    this.clearForm();
+    this.toggleForm();
   }
   render(){
-    console.log(this.state);
-    const preview = this.state.photoUrl;
     if (this.props.currUserId === this.props.leaderId){
+      const preview = this.state.photoUrl;
       return (
         <div className="edit-image-background">
           <form id="update-photo-form" className="hide">
             <input type="file" onChange={this.handleFile.bind(this)}/>
             <img className="img-preview" src={preview}/>
             <div className="action-icons">
-              <div className="action-icon-item" onClick={this.showForm}>
+              <div className="action-icon-item" onClick={this.toggleForm}>
                 <i className="fas fa-times updating-icon"></i>
                 <h6 className="photo-label">Cancel</h6>
               </div>
-              <div className="action-icon-item" onClick={this.upload.bind(this)}>
+              <div className="action-icon-item" onClick={this.upload}>
                 <i className="fas fa-upload updating-icon"></i>
                 <h6 className="photo-label">Upload Photo</h6>
               </div>
             </div>
           </form>
-          <div id="display-update-photo-form" className="action-icon-item" onClick={this.showForm}>
+          <div id="display-update-photo-form" className="action-icon-item" onClick={this.toggleForm}>
             <i className="fas fa-camera updating-icon"></i>
             <h6 className="photo-label">New Photo</h6>
           </div>
@@ -64,21 +65,4 @@ class EditImage extends React.Component{
   }
 }
 
-const msp = (state, ownProps) => {
-  const currUserId = state.session.currentUserId;
-
-  return {
-    currUserId: currUserId,
-  };
-};
-
-
-const mdp = (dispatch) => {
-  return {
-    // createEvent: (event) => dispatch(createEvent(event))
-    updateEntity: (group) => dispatch(updateGroup(group))
-  };
-};
-
-const EditImageContainer = connect(msp, mdp)(EditImage);
-export default EditImageContainer;
+export default EditImage;

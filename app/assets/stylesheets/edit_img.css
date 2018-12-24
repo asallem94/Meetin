@@ -41,14 +41,15 @@
 }
 .img-container {
   max-height: 350px;
-  width: max-content;
+
+  width: 100%;
   position: relative;
 }
 
 .photo-label {
   margin: 2px 0;
   font-size: 8px;
-  color: white
+  color: white;
 }
 
 .action-icons {
@@ -66,6 +67,7 @@
   margin: 0 5px;
   cursor: pointer;
 }
+
 
 .hide {
   /* display: none; */

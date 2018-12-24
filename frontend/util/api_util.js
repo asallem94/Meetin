@@ -28,12 +28,11 @@ export const createGroup = (group) => {
   });
 };
 
-export const updateGroup = (group) => {
-  debugger
+export const updateGroup = ({group}) => {
   return $.ajax({
     url: `api/groups/${group.id}`,
     method: "PATCH",
-    data: { group },
+    data: group.formData,
     contentType: false,
     processData: false
   });

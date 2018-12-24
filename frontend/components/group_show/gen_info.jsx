@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import EditImageContainer from '../edit_img_container'
+import EditGroupImageContainer from '../edit_group_img_container';
 
 const GenInfo = ({group, users, currUserId}) => {
 
@@ -19,7 +19,7 @@ const GenInfo = ({group, users, currUserId}) => {
     <header className="group-show-header">
       <div className="img-container">
         <img className="group-show-img" src={group.imgUrl}/>
-        <EditImageContainer leaderId={group.organizer_id} entityId={group.id} entity ="group"/>
+        <EditGroupImageContainer leaderId={group.organizer_id} entityId={group.id} entity ="group"/>
       </div>
       <div className="group-show-info">
         <h1 className="group-show-title">

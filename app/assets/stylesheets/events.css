@@ -79,9 +79,13 @@
 }
 
 .event-img {
-  margin: 20px 0;
+  /* margin: 20px 0; */
   border-radius: 5px;
+  height: 350px;
+  width: inherit;
+  object-fit: cover;
 }
+
 
 .detail-banner {
   padding: 10px;

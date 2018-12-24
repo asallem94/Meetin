@@ -45,3 +45,11 @@ export const createEvent = (event) => {
     });
   };
 };
+
+export const updateEvent = (event) => {
+  return (dispatch) => {
+    return EventAPIUtil.updateEvent(event).then((response)=>{
+      return dispatch(receiveEvent(response));
+    });
+  };
+};
