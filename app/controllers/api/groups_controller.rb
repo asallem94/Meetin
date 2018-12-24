@@ -15,7 +15,7 @@ class Api::GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.organizer_id = current_user.id
-    @group.img_url = "http://www.clutterfairyhouston.com/wp/wp-content/uploads/2014/10/Depositphotos_12802359_s-Golden-Abstract-Bokeh-Background-Gold-Dust-over-Black-cropped-719x321.jpg"
+    @group.img.attach(io: "app/assets/images/default/group1.jpg", filename: 'group1.jpg')
     if @group.save
       @group.members = [current_user]
       @group.interests = params[:group][:interestIds].map{|interest_id| Interest.find(interest_id)}
@@ -32,6 +32,7 @@ class Api::GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update_attributes(group_params)
+      debugger
       render :show
     else
       render json: @group.errors.full_messages, status: 422
@@ -39,7 +40,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:title, :city, :description, :lng, :lat)
+    params.require(:group).permit(:title, :city, :description, :lng, :lat, :img)
   end
 
 end

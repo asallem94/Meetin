@@ -4,8 +4,6 @@ export const RECEIVE_ALL_INTERESTS = "RECEIVE_ALL_INTERESTS";
 export const RECEIVE_FINDABLE_GROUPS = "RECEIVE_FINDABLE_GROUPS";
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
 
-
-
 const receiveFindableGroups = (groups) => {
   return {
     type: RECEIVE_FINDABLE_GROUPS,
@@ -39,15 +37,27 @@ export const fetchFindableGroups = (filters) => {
 
 export const fetchGroup = (id) => {
   return (dispatch) => {
-    return APIUtil.fetchGroup(id).then((response)=>{
-      return dispatch(receiveGroup(response));
-    });
+    return APIUtil.fetchGroup(id).then(
+      (response)=>{
+        return dispatch(receiveGroup(response));
+      }
+    );
   };
 };
 
 export const createGroup = (group) => {
   return (dispatch) => {
-    return APIUtil.createGroup(group).then((response)=>{
+    return APIUtil.createGroup(group).then(
+      (response)=>{
+        return dispatch(receiveGroup(response));
+      }
+    );
+  };
+};
+
+export const updateGroup = (group) => {
+  return (dispatch) => {
+    return APIUtil.updateGroup(group).then((response)=>{
       return dispatch(receiveGroup(response));
     });
   };

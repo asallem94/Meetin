@@ -29,9 +29,12 @@ export const createGroup = (group) => {
 };
 
 export const updateGroup = (group) => {
+  debugger
   return $.ajax({
     url: `api/groups/${group.id}`,
     method: "PATCH",
     data: { group },
+    contentType: false,
+    processData: false
   });
 };
