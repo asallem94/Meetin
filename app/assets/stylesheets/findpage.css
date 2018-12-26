@@ -6,11 +6,13 @@
 .find-page-header-component {
   width: 100%;
   background-color: #eb2040;
+  min-width: 1000px;
 }
 
 .find-page-header {
   margin: 0px auto;
   width: 400px;
+
   height: 200px;
   display: flex;
   flex-direction: column;

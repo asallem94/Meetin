@@ -29,12 +29,14 @@ class GroupNavBar extends React.Component {
 
     return (
       <div className="group-menu-bar-div">
-        <ul className="group-menu-bar">
-          <Link to={`/groups/${this.props.group.id}/`}><li className="group-menu-item">About</li></Link>
-          <Link to={`/groups/${this.props.group.id}/meetins`}><li className="group-menu-item">Meetins</li></Link>
-          <Link to={`/groups/${this.props.group.id}/discussions`}><li className="group-menu-item">Discussions</li></Link>
-          <button className="join-unjoin-button clickable" onClick={(joined ? this.handleUnjoin : this.handleJoin)}>{joined ? "Leave this group" : "Join this group"}</button>
-        </ul>
+        <div className="row">
+          <ul className="group-menu-bar">
+            <Link to={`/groups/${this.props.group.id}/`}><li className="group-menu-item">About</li></Link>
+            <Link to={`/groups/${this.props.group.id}/meetins`}><li className="group-menu-item">Meetins</li></Link>
+            <Link to={`/groups/${this.props.group.id}/discussions`}><li className="group-menu-item">Discussions</li></Link>
+            <button className="join-unjoin-button clickable" onClick={(joined ? this.handleUnjoin : this.handleJoin)}>{joined ? "Leave this group" : "Join this group"}</button>
+          </ul>
+        </div>
       </div>
     );
   }
