@@ -70,4 +70,8 @@ class Group < ApplicationRecord
   has_many :interests,
     through: :group_interest_relationships,
     source: :interest
+
+  has_many :discussions,
+    foreign_key: :group_id,
+    class_name: :Discussion
 end

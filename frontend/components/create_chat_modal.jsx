@@ -76,7 +76,7 @@ class NewChatForm extends React.Component {
 
   displayChatUsers(){
 
-    const newChatUsers = this.state.member_ids//_.uniq() //uniq elements
+    const newChatUsers = this.state.member_ids;//_.uniq() //uniq elements
 
     return newChatUsers.map((userId) => {
       return (
@@ -94,12 +94,12 @@ class NewChatForm extends React.Component {
   closeModal(){
     this.setState({newChatUsers: "", usersResults:[], member_ids: []});
     document.getElementById('chat-title').value = "";
-    document.getElementById('create-chat-modal').style.display = "none";
+    document.getElementById('create-form-modal').style.display = "none";
   }
 
   render(){
     return (
-      <div id="create-chat-modal">
+      <div id="create-form-modal">
         <form className="create-chat-form" onSubmit={this.createChat}>
           <h1>New Chat</h1>
           <section className="form-item">

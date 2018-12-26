@@ -27,7 +27,7 @@ const GenInfo = ({group, users, currUserId}) => {
         </h1>
         <div className="group-show-subinfo">
           <li>{group.city}</li>
-          <li className="dot"> </li>
+          <li className="dot"></li>
           <li>{group.members_count} members</li>
           <li className="dot"></li>
           <li>{(group.private) ? "Private" : "Public"} group</li>

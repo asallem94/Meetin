@@ -20,5 +20,8 @@ json.users do
       json.extract! user, :id, :name
       json.imgUrl url_for(user.profile_img)
     end
+    json.set! current_user.id do
+      json.chatIds current_user.chats.ids
+    end
   end
 end

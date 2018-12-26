@@ -11,13 +11,22 @@ class Navigation extends React.Component {
 
 
   myGroups(){
-    const myGroups = this.props.groups
-      .filter((group)=>currentUser.groups[group.id])
-      .map((group) => {
-        <li className="myGroup" key="group_id">
-          {group.title}
-        </li>
-      })
+    // if (!currentUser){
+    //   return null;
+    // }
+    // debugger
+    const myGroups = Object.keys(this.props.currentUser.groups).slice(0,3)
+      .map((groupId, ind) => {
+        return (
+          <Link to={`/groups/${groupId}`} key={groupId} className="nonlink">
+            <li className={(ind === 1) ? "account-actions nav-center-item" : "account-actions"} >
+              <img className="profile-circle" src={this.props.groups[groupId].imgUrl}/>
+              {this.props.groups[groupId].title}
+            </li>
+          </Link>
+        )
+      });
+    return myGroups;
 
   }
 
@@ -30,10 +39,11 @@ class Navigation extends React.Component {
         <ul className="dropdown" tabIndex="123">
           <img className="profile-circle clickable" src={user.imgUrl}></img>
           <div className="dropdown-container">
-            <ul className="myGroups-dropdown">
-            </ul>
+            <div className="my-groups-dropdown">
+              {this.myGroups()}
+            </div>
             <ul className="account-actions-dropdown">
-              <Link to={`/users/${user.id}`}>
+              <Link to={`/users/${user.id}`} className="nonlink">
                 <li className="account-actions">
                   Profile
                 </li>

@@ -2,10 +2,10 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.profile_img_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIFSqtFBX1VvqWmYgkIMcyyumxjffeiECt1m63GgWnY7TAkdE7"
     if @user.save
+      @user.img.attach(io: 'app/assets/images/default/profile_img.png', filename: 'profile_img.png')
       log_in!(@user)
-      render :show
+      render( "api/users/currentuser.json.jbuilder")
     else
       render json: @user.errors.full_messages, status: 422
     end

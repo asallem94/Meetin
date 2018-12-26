@@ -5,10 +5,11 @@ export const REMOVE_CURRENT_USER = "REMOVE_CURRENT_USER";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const RECEIVE_USER = "RECEIVE_USER";
 
-export const receiveCurrentUser = (user) => {
+export const receiveCurrentUser = ({user, groups}) => {
   return {
     type: RECEIVE_CURRENT_USER,
-    user
+    user,
+    groups,
   };
 };
 

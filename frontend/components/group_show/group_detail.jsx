@@ -1,6 +1,7 @@
 import React from 'react';
 import EventShowItemSummarized from './../event_show/event_show_item_summarized';
 import { Link } from 'react-router-dom';
+import NoDiscussions from './no_discussions'
 
 const GroupDetail = (props) => {
   const displayGroupEvents = (event_ids, events) => {
@@ -47,13 +48,8 @@ const GroupDetail = (props) => {
               {members}
             </ul>
           </div>
-          <div className="no-discusions-content">
-            <h1 className="group-headings">Discussions (0)</h1>
-            <div className="empty-discussions">
-              <i className="fas fa-comments"></i>
-              <p className="discussions">No discussions yet</p>
-            </div>
-          </div>
+          <NoDiscussions/>
+          
         </div>
         <div className="detail-banner">
           {displayGroupEvents(props.group.event_ids, props.events)}

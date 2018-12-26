@@ -10,8 +10,12 @@ Rails.application.routes.draw do
     resources :groups, only: [:index, :show, :create, :new, :update] do
       resources :groups_memberships, only: [:create]
       resources :events, only: [:create]
+      resources :discussions, only: [:create, :index]
     end
+
     resources :groups_memberships, only: [:destroy]
+
+    resources :discussions, only: [:show, :index]
 
     resources :events, only: [:index, :show, :new, :update] do
       resources :events_rsvps, only: [:create, :update]

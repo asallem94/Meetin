@@ -5,16 +5,17 @@ export const RECEIVE_CHAT = "RECEIVE_CHAT";
 export const RECIEVE_MESSAGE = "RECIEVE_MESSAGE";
 export const RECIEVE_USERS = "RECIEVE_USERS";
 
-const receiveAllChats = ({chats, messages}) => {
-  
+export const receiveAllChats = ({chats, messages}) => {
+  // debugger
   return {
     type: RECEIVE_ALL_CHATS,
-    chats,
-    messages
+    chats: chats,
+    messages: messages
   };
 };
 
 export const receiveChat = ({chats, messages, users}) => {
+  // debugger
   return {
     type: RECEIVE_CHAT,
     chats,
@@ -24,6 +25,7 @@ export const receiveChat = ({chats, messages, users}) => {
 };
 
 export const recieveMessage = ({message, chats}) => {
+  debugger
   return {
     type: RECIEVE_MESSAGE,
     message
@@ -55,7 +57,10 @@ export const fetchChat = (id) => {
 
 export const createChat = (chat) => {
   return (dispatch) => {
+    debugger
     return MessagingAPIUtil.createChat(chat).then((response)=>{
+      debugger
+      console.log(response);
       return dispatch(receiveChat(response));
     });
   };

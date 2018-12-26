@@ -23,6 +23,10 @@ class ChatsIndex extends React.Component {
       }
     });
   }
+  // componentDidUpdate(prevProps){
+  //   // debugger
+  //   // this.props.users[this.props.currUserId].chats.length()
+  // }
 
   selectChat(id){
     return (e) => {
@@ -79,7 +83,7 @@ class ChatsIndex extends React.Component {
   }
 
   openModal(){
-    document.getElementById('create-chat-modal').style.display = "flex";
+    document.getElementById('create-form-modal').style.display = "flex";
   }
 
   render(){
@@ -87,19 +91,19 @@ class ChatsIndex extends React.Component {
       return null;
     }
 
+    // <ActionCable
+    //   channel={{ channel: 'ChatsChannel' }}
+    //   onReceived={this.props.receiveChat}
+    // />
     return (
       <div className="background-container">
         <div className="chat-container">
           <ChatsFormContainer/>
           <section className="chats-section">
             <div className="chat-index">
-              <ActionCable
-                channel={{ channel: 'ChatsChannel' }}
-                onReceived={this.props.recieveChat}
-              />
               {this.displayChats()}
             </div>
-            <button className="create-chat clickable" onClick={this.displayChatsModal}>
+            <button className="create-form clickable" onClick={this.displayChatsModal}>
               New chat
             </button>
           </section>

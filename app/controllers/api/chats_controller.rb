@@ -15,9 +15,9 @@ class Api::ChatsController < ApplicationController
       # serialized_data = ActiveModelSerializers::Adapter::Json.new(
       #   ChatSerializer.new(@chat)
       # ).serializable_hash
-      # debugger
-      ActionCable.server.broadcast 'chats_channel', serialized_data
-      head :ok
+      # # debugger
+      # ActionCable.server.broadcast 'chats_channel', serialized_data
+      # head :ok
 
     end
     render 'api/chats/show'

@@ -4,6 +4,7 @@ import { fetchGroup } from './../actions/meetin_actions';
 import GenInfo from './group_show/gen_info';
 import GroupDetail from './group_show/group_detail';
 import GroupMeetins from './group_show/group_meetins';
+import DiscussionsContainer from './discussions_container';
 import GroupNavBarContainer from './group_show/group_nav_bar_container';
 import { Route, Switch } from 'react-router';
 
@@ -36,7 +37,6 @@ class GroupShow extends React.Component {
         <GroupNavBarContainer group={this.props.group} currentUser={this.props.users[this.props.currUserId]}/>
 
         <Switch>
-
           <Route path="/groups/:groupId/meetins" render={
             () => <GroupMeetins {...passedProps}/>
           } />
@@ -45,8 +45,8 @@ class GroupShow extends React.Component {
             () => <GroupDetail {...passedProps}/>
           } />
 
-          <Route path="/groups/:groupId/members" render={
-            () => <GroupMeetins {...passedProps}/>
+          <Route path="/groups/:groupId/discussions" render={
+            () => <DiscussionsContainer {...passedProps}/>
           } />
         </Switch>
       </div>

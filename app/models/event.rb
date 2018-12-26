@@ -82,5 +82,6 @@ class Event < ApplicationRecord
     through: :event_interest_relationships,
     source: :interest
 
+  # has_many :comments, :as => commentable
 
 end
