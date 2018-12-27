@@ -59,6 +59,17 @@ class DiscussionsIndex extends React.Component {
     document.getElementById('create-form-modal').style.display = "flex";
   }
 
+  creatableDiscussion(){
+    return (
+      <div className="row">
+        <DiscussionsFormContainer groupId={this.props.group.id}/>
+        <button className="create-chat top-space clickable" onClick={this.displayDiscussionsModal}>
+          New Discussion
+        </button>
+      </div>
+    );
+  }
+
   render(){
     if (!this.props.discussions) {
       return null;
@@ -70,13 +81,10 @@ class DiscussionsIndex extends React.Component {
     // />
     return (
       <div className="background-container">
-        <DiscussionsFormContainer groupId={this.props.group.id}/>
         <div className="row">
           <section className="discussions-section">
+          {this.creatableDiscussion()}
             {this.props.group.discussionIds && this.props.group.discussionIds.length > 0 ? null : <NoDiscussions/>}
-            <button className="create-chat clickable" onClick={this.displayDiscussionsModal}>
-              New Discussion
-            </button>
             <div className="discussion-index">
               {this.displayDiscussions()}
             </div>

@@ -5,3 +5,6 @@
 .discussion-index {
   box-sizing: border-box;
 }
+.top-space {
+  margin-top: 20px;
+}

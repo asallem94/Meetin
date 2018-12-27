@@ -17,6 +17,12 @@ class Api::DiscussionsController < ApplicationController
 
   def show
     @discussion = Discussion.find(params[:id])
+    if params[:discussion][:offset]
+      offset = params[:discussion][:offset]
+    else
+      offset = 0
+    end
+    @recent_comments = @discussion.recent_comments(offset)
   end
 
   def index
