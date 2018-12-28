@@ -91,7 +91,7 @@ class SearchBar extends React.Component {
   }
   displayContent(){
     if (this.state.queryType === "groups") {
-      return (<GroupsIndex className="groupsIndex" groups={this.props.groups}/>);
+      return (<GroupsIndex className="groupsIndex" groups={this.props.groups} filters={this.props.filters}/>);
     } else {
       return (<EventSearchContainer/>);
     }
