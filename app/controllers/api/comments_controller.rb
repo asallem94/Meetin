@@ -18,8 +18,11 @@ class Api::CommentsController < ApplicationController
       # ).serializable_hash
       # DiscussionsChannel.broadcast_to chat, serialized_data
       # head :ok
+      render 'api/comments/comment.json.jbuilder'
     end
-    render :show
   end
 
+  def show
+    @comment = Comment.find(params[:id])
+  end
 end

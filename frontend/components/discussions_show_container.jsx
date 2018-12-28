@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchDiscussion } from './../actions/discussion_actions';
-import { createComment } from './../actions/comment_actions';
+import { createComment, fetchComment } from './../actions/comment_actions';
 import Moment from 'moment';
 
 class DiscussionShow extends React.Component{
@@ -18,9 +18,9 @@ class DiscussionShow extends React.Component{
   commentActions(commentId){
     return (
       <div className="basic-row top-spaced-item">
-        <li className="spaced-item">reply</li>
-        <li className="spaced-item">{this.props.comments[commentId].comment_count} replies</li>
-        <li className="spaced-item">{Moment(new Date(this.props.comments[commentId].created_at)).fromNow()}</li>
+        <li className="spaced-item clickable" onClick={this.selectReply("comments", commentId)}>reply</li>
+        <li className="spaced-item clickable" onClick={this.viewMoreComments(commentId)}>{this.props.comments[commentId].comment_count} replies</li>
+        <li className="spaced-item clickable">{Moment(new Date(this.props.comments[commentId].created_at)).fromNow()}</li>
       </div>
     );
   }
@@ -29,19 +29,36 @@ class DiscussionShow extends React.Component{
     if (!item.commentIds){
       return null;
     }
+    // debugger
     return item.commentIds.map((commentId)=>{
+      const ids = this.props.comments[commentId].commentIds;
+      console.log(ids);
+      console.log(ids.length > 0);
+      console.log(!!this.props.comments[ids[0]]);
       return (
-
         <div className="basic-row" key={commentId}>
           <img className="profile-circle" src={this.props.comments[commentId].author_img}/>
           <div className="basic-column left-spaced-item">
             <h3>{this.props.comments[commentId].body}</h3>
             {this.commentActions(commentId)}
-            {this.state.type === "comment" && this.state.typeId === commentId ? this.addCommentForm("comment", commentId) : null}
+            {ids.length > 0 && !!this.props.comments[ids[0]] ? this.displayComments(this.props.comments[commentId]) : null}
+            {this.state.type === "comments" && this.state.typeId === commentId ? this.addCommentForm("comments", commentId) : null}
           </div>
         </div>
       );
     });
+  }
+
+  selectReply(type, typeId){
+    return (e) => {
+      e.preventDefault();
+      this.setState({type: type, typeId: typeId});
+    };
+  }
+  viewMoreComments(commentId){
+    return (e) => {
+      this.props.fetchComment(commentId);
+    };
   }
 
   submitComment(e){
@@ -51,8 +68,12 @@ class DiscussionShow extends React.Component{
   }
 
   addCommentForm(type, typeId){
+    if (!this.props.currentUser) {
+      return null;
+    }
     return (
       <form className="add-comment-form " onSubmit={this.submitComment}>
+        <img className="profile-circle" src={this.props.currentUser.imgUrl}/>
         <input id="comment" className="message-editor" type="text" required placeholder="Write a Comment"/>
         <section className="message-sender clickable" onClick={this.submitComment}>
           <i className="fas fa-paper-plane send-icon"></i>
@@ -76,7 +97,7 @@ class DiscussionShow extends React.Component{
           <ul>
             {this.displayComments(this.props.discussions[this.props.match.params.discussionId])}
           </ul>
-          {this.addCommentForm("discussion", this.props.match.params.discussionId)}
+          {this.addCommentForm("discussions", this.props.match.params.discussionId)}
         </div>
       </div>
     );
@@ -88,6 +109,7 @@ const msp = (state) => {
   const currentUser = state.entities.users[currUserId];
   return {
     currUserId: currUserId,
+    currentUser: currentUser,
     discussions: state.entities.discussions,
     comments: state.entities.comments
   };
@@ -97,7 +119,8 @@ const msp = (state) => {
 const mdp = (dispatch) => {
   return {
     fetchDiscussion: (id, offset) => dispatch(fetchDiscussion(id, offset)),
-    createComment: (comment) => dispatch(createComment(comment))
+    createComment: (comment) => dispatch(createComment(comment)),
+    fetchComment: (id) => dispatch(fetchComment(id))
   };
 };
 const DiscussionShowContainer = connect(msp, mdp)(DiscussionShow);

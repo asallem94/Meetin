@@ -10,12 +10,12 @@
 }
 .background {
   padding: 30px;
-
 }
 
 .basic-row {
   display: flex;
   flex-direction: row;
+  margin-bottom: 10px;
 }
 
 .basic-column {

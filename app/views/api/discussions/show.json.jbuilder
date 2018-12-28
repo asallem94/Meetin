@@ -14,6 +14,7 @@ json.comments do
     @recent_comments.each do |comment|
       json.set! comment.id do
         json.extract! comment, :id, :body, :created_at, :comment_count, :commentable_type, :commentable_id
+        json.commentIds comment.comments.ids
         json.author_img url_for(comment.author.profile_img)
       end
     end

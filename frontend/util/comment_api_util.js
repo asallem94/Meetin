@@ -5,3 +5,10 @@ export const createComment = (comment) => {
     data: { comment },
   });
 };
+
+export const fetchComment = (id) => {
+  return $.ajax({
+    url: `/api/comments/${id}`,
+    method: "GET",
+  });
+};

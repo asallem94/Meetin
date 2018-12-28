@@ -16,7 +16,6 @@ const discussionsReducer = ( state = {}, action ) => {
       if (action.comment.commentable_type === "Discussion"){
         defaultState[action.comment.commentable_id].commentIds.push(action.comment.id);
       }
-      debugger
       return merge({}, state, defaultState);
     default:
       return state;

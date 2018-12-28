@@ -21,6 +21,10 @@ class Comment < ApplicationRecord
 
   has_many :comments, as: :commentable
 
+  def comments_sorted
+    self.comments.order(:created_at)
+  end
+
   def comment_count
     self.comments.count
   end

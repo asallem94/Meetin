@@ -29,6 +29,10 @@ Rails.application.routes.draw do
       resources :messages, only: [:create, :show]
     end
 
+    resources :comments, only: [:show] do
+      resources :comments, only: [:create]
+    end
+
     resources :chat_user_relationships, only: [:destroy]
 
     resource :session, only: [:create, :destroy]
