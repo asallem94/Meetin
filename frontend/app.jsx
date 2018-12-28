@@ -9,6 +9,7 @@ import Homepage from './components/homepage';
 import Footer from './components/footer/footer';
 import Findpage from './components/findpage';
 import GroupShowContainer from './components/groups_show_container';
+import DiscussionShowContainer from './components/discussions_show_container';
 import EventsShowContainer from './components/events_show_container';
 import GroupFormContainer from './components/group_form_container';
 import EventFormContainer from './components/event_form_container';
@@ -29,6 +30,7 @@ const App = () => {
         <ProtectedRoute exact path="/messaging" component={ChatsContainer}/>
         <AuthEventCreatorRoute exact path="/events/:groupId/new" component={EventFormContainer}/>
         <ProtectedRoute exact path="/events/:eventId" component={EventsShowContainer}/>
+        <ProtectedRoute exact path="/discussions/:discussionId" component={DiscussionShowContainer}/>
         <ProtectedRoute exact path="/create" component={GroupFormContainer}/>
         <ProtectedRoute exact path="/users/:userId" component={ProfileContainer}/>
         <AuthRoute exact path="/login" component={LoginFormContainer}/>

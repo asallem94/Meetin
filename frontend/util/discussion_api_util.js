@@ -5,10 +5,11 @@ export const fetchDiscussions = (groupId) => {
   });
 };
 
-export const fetchDiscussion = (id) => {
+export const fetchDiscussion = (id, offset) => {
   return $.ajax({
     url: `api/discussions/${id}`,
     method: "GET",
+    data: { offset }
   });
 };
 

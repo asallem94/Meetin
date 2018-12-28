@@ -30,9 +30,9 @@ class MessagesIndex extends React.Component {
     const bottomIndex = document.getElementById('message-index-bottom');
     if (bottomIndex) {
       if (bottomIndex.lastChild) {
-        
+
         if (bottomIndex.lastChild.previousSibling) {
-          
+
           console.log(bottomIndex.lastChild.previousSibling.key);
         }
       }
@@ -53,7 +53,7 @@ class MessagesIndex extends React.Component {
     const messageIndex = document.getElementById('message-index');
     // const messageIndexBottom = document.getElementById('message-index-bottom');
     if (messageIndex){
-      
+
       messageIndex.scrollTo({left: 0, top: messageIndex.scrollHeight, behavior: 'smooth'});
       // element.scrollIntoView();
     }

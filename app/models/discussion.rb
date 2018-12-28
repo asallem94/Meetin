@@ -24,6 +24,10 @@ class Discussion < ApplicationRecord
   has_many :comments, as: :commentable
 
   def recent_comments(offset)
-    self.comments.offset(offset).order(created_at: :desc).limit(20)
+    self.comments.offset(offset).order(:created_at).limit(20)
+  end
+
+  def comment_count
+    self.comments.count
   end
 end

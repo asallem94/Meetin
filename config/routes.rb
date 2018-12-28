@@ -15,10 +15,13 @@ Rails.application.routes.draw do
 
     resources :groups_memberships, only: [:destroy]
 
-    resources :discussions, only: [:show, :index]
+    resources :discussions, only: [:show, :index] do
+      resources :comments, only: [:create]
+    end
 
     resources :events, only: [:index, :show, :new, :update] do
       resources :events_rsvps, only: [:create, :update]
+      resources :comments, only: [:create]
     end
 
     resources :chats, only: [:create, :show, :index] do

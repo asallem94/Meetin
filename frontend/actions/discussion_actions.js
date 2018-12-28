@@ -2,7 +2,7 @@ import * as DiscussionAPIUtil from '../util/discussion_api_util';
 
 export const RECEIVE_DISCUSSIONS = "RECEIVE_DISCUSSIONS";
 export const RECEIVE_DISCUSSION = "RECEIVE_DISCUSSION";
-export const RECIEVE_COMENT = "RECIEVE_COMENT";
+export const RECIEVE_COMMENT = "RECIEVE_COMMENT";
 
 const receiveDiscussions = ({discussions, comments}) => {
   return {
@@ -12,18 +12,11 @@ const receiveDiscussions = ({discussions, comments}) => {
   };
 };
 
-const receiveDiscussion = ({discussions, comments, users}) => {
+const receiveDiscussion = ({discussions, comments}) => {
   return {
     type: RECEIVE_DISCUSSION,
     discussions,
     comments,
-  };
-};
-
-const recieveDiscussion = ({comment, discussions}) => {
-  return {
-    type: RECIEVE_COMENT,
-    comment
   };
 };
 
@@ -36,9 +29,9 @@ export const fetchDiscussions = (groupId) => {
   };
 };
 
-export const fetchDiscussion = (id) => {
+export const fetchDiscussion = (id, offset) => {
   return (dispatch) => {
-    return DiscussionAPIUtil.fetchDiscussion(id).then((response)=>{
+    return DiscussionAPIUtil.fetchDiscussion(id, offset).then((response)=>{
       return dispatch(receiveDiscussion(response));
     });
   };

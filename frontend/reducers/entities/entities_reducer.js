@@ -6,6 +6,7 @@ import eventsReducer from './events_reducer';
 import chatsReducer from './chats_reducer';
 import messagesReducer from './messages_reducer';
 import discussionsReducer from './discussions_reducer';
+import commentsReducer from './comments_reducer';
 
 const entitiesReducer = combineReducers( {
   users: usersReducer,
@@ -15,6 +16,7 @@ const entitiesReducer = combineReducers( {
   chats: chatsReducer,
   messages: messagesReducer,
   discussions: discussionsReducer,
+  comments: commentsReducer,
 });
 
 export default entitiesReducer;

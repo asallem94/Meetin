@@ -17,8 +17,8 @@ class Api::DiscussionsController < ApplicationController
 
   def show
     @discussion = Discussion.find(params[:id])
-    if params[:discussion][:offset]
-      offset = params[:discussion][:offset]
+    if params[:offset]
+      offset = params[:offset]
     else
       offset = 0
     end

@@ -22,7 +22,7 @@ class DiscussionsIndex extends React.Component {
   // }
   displayDiscussions(){
     const discussionIds = this.props.group.discussionIds;
-    if (!discussionIds[0] || !this.props.discussions[discussionIds[0]]){
+    if (!discussionIds[discussionIds.length-1] || !discussionIds[0] || !this.props.discussions[discussionIds[0]] || !this.props.discussions[discussionIds[discussionIds.length-1]]){
       return null;
     }
     const sortedDiscussionIds = discussionIds.sort(
@@ -36,11 +36,11 @@ class DiscussionsIndex extends React.Component {
     return sortedDiscussionIds.map((discussionId)=>{
       const discussion = this.props.discussions[discussionId];
       return (
-        <Link to={`discussion/${discussionId}`} key={discussion.id} className="nonlink">
+        <Link to={`/discussions/${discussionId}`} key={discussion.id} className="nonlink">
           <div className="discussion-index-item hovered-content">
             <section className="message-text-header">
               <h3 className="ellipsis">{discussion.topic}</h3>
-              <h3>{Moment(discussion.created_at).fromNow()}</h3>
+              <h3>{Moment(new Date(discussion.created_at)).fromNow()}</h3>
             </section>
 
             <h3 className="ellipsis">{discussion.lastMessageId ? this.props.messages[discussion.lastMessageId].body : "" }</h3>

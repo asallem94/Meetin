@@ -1,8 +1,16 @@
 class Api::CommentsController < ApplicationController
 
   def create
-    @comment = Discussion.new(comment_params)
-    # chat = Chat.find(params[:chat_id])
+    @comment = Comment.new(body: params[:comment][:body])
+    case params[:comment][:type]
+    when "discussions"
+      @discussion = Discussion.find(params[:comment][:typeId])
+      @comment.commentable = @discussion
+    when "events"
+      @comment.commentable = Event.find(params[:comment][:typeId])
+    when "comments"
+      @comment.commentable = Comment.find(params[:comment][:typeId])
+    end
     @comment.author = current_user
     if @comment.save
       # serialized_data = ActiveModelSerializers::Adapter::Json.new(
@@ -12,10 +20,6 @@ class Api::CommentsController < ApplicationController
       # head :ok
     end
     render :show
-  end
-
-  def comment_params
-    params.require(:comment).permit( :body, :author_id )
   end
 
 end

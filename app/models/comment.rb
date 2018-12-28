@@ -19,10 +19,9 @@ class Comment < ApplicationRecord
     foreign_key: :author_id,
     class_name: :User
 
-  belongs_to :discussion,
-    foreign_key: :chat_id,
-    class_name: :Discussion
-
   has_many :comments, as: :commentable
 
+  def comment_count
+    self.comments.count
+  end
 end
