@@ -33,7 +33,7 @@ class MessagesIndex extends React.Component {
 
         if (bottomIndex.lastChild.previousSibling) {
 
-          console.log(bottomIndex.lastChild.previousSibling.key);
+          // console.log(bottomIndex.lastChild.previousSibling.key);
         }
       }
     }

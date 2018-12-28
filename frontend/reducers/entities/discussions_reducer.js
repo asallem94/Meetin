@@ -11,7 +11,7 @@ const discussionsReducer = ( state = {}, action ) => {
     case RECEIVE_DISCUSSIONS:
       return merge({}, state, action.discussions);
     case RECEIVE_DISCUSSION:
-      return merge({}, state, action.discussions);
+      return merge({}, state, {[action.discussion.id]: action.discussion});
     case RECEIVE_COMMENT:
       if (action.comment.commentable_type === "Discussion"){
         defaultState[action.comment.commentable_id].commentIds.push(action.comment.id);

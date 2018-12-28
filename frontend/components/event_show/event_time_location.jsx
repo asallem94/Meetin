@@ -15,8 +15,6 @@ class EventTimeLocation extends React.Component{
     };
 
     this.map = new google.maps.Map(this.mapNode, mapOptions);
-    console.log("Mount 1 MAP");
-    console.log(this.props.events);
 
     const marker = new google.maps.Marker({
       position: {lat: this.props.event.lat || 40.729253, lng: this.props.event.lng || -74.011589},

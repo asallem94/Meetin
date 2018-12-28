@@ -47,11 +47,8 @@ class GroupMeetinsCalendar extends React.Component{
       if (direction === "next") {
 
         newDate.setMonth(newDate.getMonth()+1);
-        console.log(d);
-        // this.setState({month: this.state.month+1});
       } else {
         newDate.setMonth(newDate.getMonth()-1);
-        // this.setState({month: this.state.month-1});
       }
       this.setState( {filterStartDate: this.getFirstDay(newDate), filterEndDate: this.getLastDay(newDate)} );
       this.props.updateFilters(this.state);
@@ -104,7 +101,6 @@ class GroupMeetinsCalendar extends React.Component{
 
   setStartFilterDate(day){
     return (e) => {
-      console.log(this);
       if (e.currentTarget.value){
         const newStartDate = new Date(this.state.filterStartDate);
         newStartDate.setDate(e.currentTarget.value);

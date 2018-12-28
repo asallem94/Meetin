@@ -17,10 +17,10 @@ class DiscussionShow extends React.Component{
 
   commentActions(commentId){
     return (
-      <div className="basic-row top-spaced-item">
-        <li className="spaced-item clickable" onClick={this.selectReply("comments", commentId)}>reply</li>
-        <li className="spaced-item clickable" onClick={this.viewMoreComments(commentId)}>{this.props.comments[commentId].comment_count} replies</li>
-        <li className="spaced-item clickable">{Moment(new Date(this.props.comments[commentId].created_at)).fromNow()}</li>
+      <div className="basic-row upper-spaced-item">
+        <li className="comment-action-item" onClick={this.selectReply("comments", commentId)}>reply</li>
+        <li className="comment-action-item" onClick={this.viewMoreComments(commentId)}>{this.props.comments[commentId].comment_count} replies</li>
+        <li className="comment-item">{Moment(new Date(this.props.comments[commentId].created_at)).fromNow()}</li>
       </div>
     );
   }
@@ -32,9 +32,6 @@ class DiscussionShow extends React.Component{
     // debugger
     return item.commentIds.map((commentId)=>{
       const ids = this.props.comments[commentId].commentIds;
-      console.log(ids);
-      console.log(ids.length > 0);
-      console.log(!!this.props.comments[ids[0]]);
       return (
         <div className="basic-row" key={commentId}>
           <img className="profile-circle" src={this.props.comments[commentId].author_img}/>
@@ -52,7 +49,11 @@ class DiscussionShow extends React.Component{
   selectReply(type, typeId){
     return (e) => {
       e.preventDefault();
-      this.setState({type: type, typeId: typeId});
+      this.props.fetchComment(typeId).then(
+        ()=>{
+          this.setState({type: type, typeId: typeId});
+        }
+      );
     };
   }
   viewMoreComments(commentId){
@@ -65,6 +66,7 @@ class DiscussionShow extends React.Component{
     e.preventDefault();
     const body = document.getElementById('comment').value;
     this.props.createComment({body, type: this.state.type, typeId: this.state.typeId});
+    document.getElementById('comment').value = "";
   }
 
   addCommentForm(type, typeId){

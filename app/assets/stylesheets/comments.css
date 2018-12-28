@@ -35,6 +35,21 @@
   margin-top: 20px;
 }
 
+.upper-spaced-item {
+  margin-top: 5px;
+}
+.comment-item {
+  font-size: 10px;
+  color: darkgray;
+}
+.comment-action-item {
+  font-size: 10px;
+  color: blue;
+  margin-right: 10px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .add-comment-form {
   border-top: 1px solid lightgray;
   padding-top: 10px;

@@ -49,14 +49,13 @@ class Calendar extends React.Component{
       } else {
         newDate = new Date(that.state.filterStartDate);
       }
-      
+
       if (direction === "next") {
         newDate.setMonth(newDate.getMonth()+1);
       }
       if (direction === "prev") {
         newDate.setMonth(newDate.getMonth()-1);
       }
-      console.log(this);
       this.setState( {filterStartDate: (direction === "today") ? newDate : this.getFirstDay(newDate), filterEndDate: this.getLastDay(newDate)},
         () => {
           this.props.fetchFindableEvents(merge({}, this.props.filters,
@@ -67,7 +66,7 @@ class Calendar extends React.Component{
       );
       // this.props.updateFilters.bind(this.state)
       // this.props.updateFilters(this.state);
-      
+
 
     };
   }
@@ -115,7 +114,6 @@ class Calendar extends React.Component{
 
   setStartFilterDate(day){
     return (e) => {
-      console.log(this);
       if (e.currentTarget.value){
         const newStartDate = new Date(this.state.filterStartDate);
         newStartDate.setDate(e.currentTarget.value);

@@ -1,11 +1,9 @@
-json.discussions do
-  json.set! @discussion.id do
-    json.extract! @discussion, :id, :topic, :author_id, :group_id, :comment_count, :created_at
-    if @recent_comments
-      json.commentIds @recent_comments.ids
-    else
-      json.commentIds []
-    end
+json.discussion do
+  json.extract! @discussion, :id, :topic, :author_id, :group_id, :comment_count, :created_at
+  if @recent_comments
+    json.commentIds @recent_comments.ids
+  else
+    json.commentIds []
   end
 end
 

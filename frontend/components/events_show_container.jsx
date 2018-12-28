@@ -21,7 +21,10 @@ class EventShow extends React.Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
   handleScroll(event){
-    document.getElementById("movable").classList.add('fixed-location-date-container');
+    const movable = document.getElementById("movable");
+    if (movable){
+      movable.classList.add('fixed-location-date-container');
+    }
 
   }
 

@@ -12,10 +12,10 @@ const receiveDiscussions = ({discussions, comments}) => {
   };
 };
 
-const receiveDiscussion = ({discussions, comments}) => {
+const receiveDiscussion = ({discussion, comments}) => {
   return {
     type: RECEIVE_DISCUSSION,
-    discussions,
+    discussion,
     comments,
   };
 };

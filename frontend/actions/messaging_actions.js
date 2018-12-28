@@ -55,7 +55,6 @@ export const fetchChat = (id) => {
 export const createChat = (chat) => {
   return (dispatch) => {
     return MessagingAPIUtil.createChat(chat).then((response)=>{
-      console.log(response);
       return dispatch(receiveChat(response));
     });
   };

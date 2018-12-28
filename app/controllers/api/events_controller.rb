@@ -25,7 +25,7 @@ class Api::EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.host_id = current_user.id
     @event.group_id = params[:group_id]
-    @event.event_img_url = "https://www.pixelstalk.net/wp-content/uploads/2016/11/Color-explosion-wallpaper-2560x1600.jpg"
+    @event.img.attach(io: File.open("app/assets/images/default/event1.jpg"), filename: 'event1.jpg')
     if @event.save
       @event.attendees = [current_user]
       @event.interests = params[:event][:interestIds].map{|interest_id| Interest.find(interest_id)}

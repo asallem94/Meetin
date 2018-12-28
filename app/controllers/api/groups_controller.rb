@@ -15,7 +15,7 @@ class Api::GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.organizer_id = current_user.id
-    @group.img.attach(io: "app/assets/images/default/group1.jpg", filename: 'group1.jpg')
+    @group.img.attach(io: File.open("app/assets/images/default/group1.jpg"), filename: 'group1.jpg')
     if @group.save
       @group.members = [current_user]
       @group.interests = params[:group][:interestIds].map{|interest_id| Interest.find(interest_id)}
