@@ -12,10 +12,23 @@ Some features include searching for events and groups. When you search for group
 * querysearch: which will select the groups by commonality in the group title and description.
 * radial location: can find the nearest groups to you.
 
+below is a snippet of code for groups postgreSQL query using active record:
+
+```ruby
+  Group.where("((lng - :lng) * (lng - :lng)) + ((lat - :lat) * (lat - :lat)) < :r * :r", {lng: lng, lat:lat, r: r}).where("title iLIKE :querySearch OR description iLIKE :querySearch", querySearch: "%#{querySearch}%")
+```
+
+
 ![alt text](app/assets/images/feature_ads/group_search.png)
 
 Event Search includes the same search features as the groups and also:
 * date search: find events you can attend that do not conflict with your schedule.
+
+below is a snippet of code for groups postgreSQL query using active record:
+
+```ruby
+  Event.where("((lng - :lng) * (lng - :lng)) + ((lat - :lat) * (lat - :lat)) < :r * :r", {lng: lng, lat:lat, r: r}).where("title iLIKE :querySearch OR detail iLIKE :querySearch", querySearch: "%#{querySearch}%").where("start_date between :start_date AND :end_date", {start_date: start_date, end_date: end_date})
+```
 
 ![alt text](app/assets/images/feature_ads/event_search.png)
 
