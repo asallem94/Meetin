@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 // action cable additions
 import { ActionCableProvider } from 'react-actioncable-provider';
-import { API_WS_ROOT } from './constants/main'
+import { API_WS_ROOT } from './constants/main';
 
 
 import * as actions from './actions/membership_actions';
@@ -15,7 +15,7 @@ window.actions = actions;
 const Main = ({store}) => {
   return (
     <Provider store={store}>
-      <ActionCableProvider url={'/cable'}>
+      <ActionCableProvider url={API_WS_ROOT}>
         <HashRouter>
           <App/>
         </HashRouter>
