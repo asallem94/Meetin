@@ -15,7 +15,7 @@ window.actions = actions;
 const Main = ({store}) => {
   return (
     <Provider store={store}>
-      <ActionCableProvider url={API_WS_ROOT}>
+      <ActionCableProvider url={'/cable'}>
         <HashRouter>
           <App/>
         </HashRouter>

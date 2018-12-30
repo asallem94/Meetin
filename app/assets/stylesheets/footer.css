@@ -8,9 +8,9 @@
 }
 
 .footer-content {
-  width: 900px;
+  width: 1000px;
+  max-width: 1000px;
   margin: auto;
-
 }
 
 .upper-footer-content {
