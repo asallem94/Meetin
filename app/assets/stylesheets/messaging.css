@@ -195,6 +195,7 @@
   align-items: center;
   align-self: center;
   width: max-content;
+  border: 0px solid gray;
 }
 .message-sender:hover {
   color: #009fcb;

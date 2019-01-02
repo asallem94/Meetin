@@ -8,7 +8,7 @@ import Moment from 'moment';
 class DiscussionShow extends React.Component{
   constructor(props){
     super(props);
-    this.state = {offset: 0, addingCommentId: `discussion-${this.props.match.params.discussionId}`, type: "discussions", typeId: this.props.match.params.discussionId};
+    this.state = {offset: 0, type: "discussions", typeId: this.props.match.params.discussionId};
     this.submitComment = this.submitComment.bind(this);
   }
   componentDidMount(){
@@ -45,6 +45,12 @@ class DiscussionShow extends React.Component{
     });
   }
 
+  replyToDiscussion(type, typeId){
+    return (e)=>{
+      this.setState({type: type, typeId: typeId});
+    };
+  }
+
   selectReply(type, typeId){
     return (e) => {
       e.preventDefault();
@@ -68,12 +74,12 @@ class DiscussionShow extends React.Component{
     document.getElementById('comment').value = "";
   }
 
-  addCommentForm(type, typeId){
+  addCommentForm(type){
     if (!this.props.currentUser) {
       return null;
     }
     return (
-      <form className="add-comment-form " onSubmit={this.submitComment}>
+      <form className="add-comment-form " onSubmit={this.submitComment} onClick={type==="discussions" ? this.replyToDiscussion( "discussions", this.props.match.params.discussionId) : null}>
         <img className="profile-circle" src={this.props.currentUser.imgUrl}/>
         <input id="comment" className="message-editor" type="text" required placeholder="Write a Comment"/>
         <section className="message-sender clickable" onClick={this.submitComment}>
@@ -85,6 +91,7 @@ class DiscussionShow extends React.Component{
 
 
   render(){
+    console.log(this.state)
     if (!this.props.discussions[this.props.match.params.discussionId]){
       return null;
     }
@@ -98,7 +105,7 @@ class DiscussionShow extends React.Component{
           <ul>
             {this.displayComments(this.props.discussions[this.props.match.params.discussionId])}
           </ul>
-          {this.addCommentForm("discussions", this.props.match.params.discussionId)}
+          {this.addCommentForm("discussions")}
         </div>
       </div>
     );

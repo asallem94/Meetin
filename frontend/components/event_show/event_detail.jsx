@@ -50,13 +50,6 @@ const EventDetail = (props) => {
               {attendees}
             </ul>
           </div>
-          <div className="no-discusions-content">
-            <h1 className="event-headings">Discussions (0)</h1>
-            <div className="empty-discussions">
-              <i className="fas fa-comments"></i>
-              <p className="discussions">No discussions yet</p>
-            </div>
-          </div>
         </div>
         <div className="detail-banner">
           <EventTimeLocation event={props.event} className="fixed-location-date-container" />

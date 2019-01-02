@@ -48,8 +48,7 @@ const GroupDetail = (props) => {
               {members}
             </ul>
           </div>
-          <NoDiscussions/>
-          
+
         </div>
         <div className="detail-banner">
           {displayGroupEvents(props.group.event_ids, props.events)}
