@@ -1,4 +1,4 @@
-import { RECEIVE_DISCUSSION, RECIEVE_COMMENTS } from '../../actions/discussion_actions';
+import { RECEIVE_DISCUSSION } from '../../actions/discussion_actions';
 import { RECEIVE_COMMENT, RECEIVE_COMMENTS } from '../../actions/comment_actions';
 import { RECEIVE_USER } from '../../actions/auth_actions';
 
@@ -13,6 +13,7 @@ const commentsReducer = ( state = {}, action ) => {
     case RECEIVE_COMMENT:
       if (action.comment.commentable_type === "Comment"){
         defaultState[action.comment.commentable_id].commentIds.push(action.comment.id);
+        defaultState[action.comment.commentable_id].comment_count = action.comment.parent_count
       }
       const ds = merge({}, state, defaultState);
       return merge({}, ds, {[action.comment.id]: action.comment});

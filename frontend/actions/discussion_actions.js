@@ -2,7 +2,6 @@ import * as DiscussionAPIUtil from '../util/discussion_api_util';
 
 export const RECEIVE_DISCUSSIONS = "RECEIVE_DISCUSSIONS";
 export const RECEIVE_DISCUSSION = "RECEIVE_DISCUSSION";
-export const RECIEVE_COMMENT = "RECIEVE_COMMENT";
 
 const receiveDiscussions = ({discussions, comments}) => {
   return {
