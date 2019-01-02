@@ -19,7 +19,7 @@ const groupsReducer = ( state = {}, action ) => {
     case RECEIVE_GROUP:
       return merge({}, state, { [action.group.id]: action.group });
     case RECEIVE_DISCUSSION:
-      if (defaultState[action.discussion.group_id].discussionIds){
+      if (defaultState[action.discussion.group_id] && defaultState[action.discussion.group_id].discussionIds){
         defaultState[action.discussion.group_id].discussionIds.push(action.discussion.id);
       }
       return defaultState;
