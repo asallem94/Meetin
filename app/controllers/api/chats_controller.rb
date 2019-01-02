@@ -5,17 +5,14 @@ class Api::ChatsController < ApplicationController
   end
 
   def create
-    # debugger
     @chat = Chat.new(title: params[:chat][:title])
     if @chat.save
       params[:chat][:member_ids].each do |member_id|
         @chat.members << User.find(member_id)
       end
-      # debugger
       # serialized_data = ActiveModelSerializers::Adapter::Json.new(
       #   ChatSerializer.new(@chat)
       # ).serializable_hash
-      # # debugger
       # ActionCable.server.broadcast 'chats_channel', serialized_data
       # head :ok
 

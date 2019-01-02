@@ -11,10 +11,6 @@ class Navigation extends React.Component {
 
 
   myGroups(){
-    // if (!currentUser){
-    //   return null;
-    // }
-    // debugger
     const myGroups = Object.keys(this.props.currentUser.groups).slice(0,3)
       .map((groupId, ind) => {
         return (

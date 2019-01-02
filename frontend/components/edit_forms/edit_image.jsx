@@ -29,7 +29,6 @@ class EditImage extends React.Component{
     let formData = new FormData();
     formData.append(this.props.entity+'[id]', this.props.entityId);
     formData.append(this.props.entity+'[img]', this.state.photoFile);
-    // debugger
     this.props.updateEntity({[this.props.entity]:{formData: formData, id: this.props.entityId}});
     this.clearForm();
     this.toggleForm();

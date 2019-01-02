@@ -30,10 +30,7 @@ class MessagesIndex extends React.Component {
     const bottomIndex = document.getElementById('message-index-bottom');
     if (bottomIndex) {
       if (bottomIndex.lastChild) {
-
         if (bottomIndex.lastChild.previousSibling) {
-
-          // console.log(bottomIndex.lastChild.previousSibling.key);
         }
       }
     }

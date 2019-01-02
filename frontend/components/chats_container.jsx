@@ -23,10 +23,6 @@ class ChatsIndex extends React.Component {
       }
     });
   }
-  // componentDidUpdate(prevProps){
-  //   // debugger
-  //   // this.props.users[this.props.currUserId].chats.length()
-  // }
 
   selectChat(id){
     return (e) => {

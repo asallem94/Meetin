@@ -16,10 +16,7 @@ class DiscussionsIndex extends React.Component {
   componentDidMount(){
     this.props.fetchDiscussions(this.props.group.id);
   }
-  // componentDidUpdate(prevProps){
-  //   // debugger
-  //   // this.props.users[this.props.currUserId].discussions.length()
-  // }
+
   displayDiscussions(){
     const discussionIds = this.props.group.discussionIds;
     if (!discussionIds[discussionIds.length-1] || !discussionIds[0] || !this.props.discussions[discussionIds[0]] || !this.props.discussions[discussionIds[discussionIds.length-1]]){

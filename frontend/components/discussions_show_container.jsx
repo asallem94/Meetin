@@ -29,7 +29,6 @@ class DiscussionShow extends React.Component{
     if (!item.commentIds){
       return null;
     }
-    // debugger
     return item.commentIds.map((commentId)=>{
       const ids = this.props.comments[commentId].commentIds;
       return (
