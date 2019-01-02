@@ -8,7 +8,7 @@ const FormHeader = () => {
 
       <section className="groupform-header-content">
         <h1 className="group-header-title">
-        Start a new Meetup
+        Start a new Meetin
         </h1>
         <h4 className="group-header-subtitle">
         We'll help you find the right people to make it happen.

@@ -22,7 +22,11 @@ class EventForm extends React.Component {
   }
 
   componentDidMount(){
-    this.handleCoordinates( this.props.currentUser.lat, this.props.currentUser.lng );
+    if (this.state.lng && this.state.lat){
+      this.handleCoordinates();
+    }else{
+      this.handleChangeLocaiton();
+    }
     this.props.fetchInterests();
   }
 
@@ -40,7 +44,7 @@ class EventForm extends React.Component {
     const lat = this.state.lat;
     const lng = this.state.lng;
     const api_key = "APPID=6c47a97e3a341c6c6752d2304c925f5d";
-    const api_url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&${api_key}`;
+    const api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&${api_key}`;
 
     let request = new XMLHttpRequest();
     const that = this;
