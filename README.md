@@ -7,8 +7,21 @@ Please click the link below to enjoy the cool features
 
 (https://meet-in.herokuapp.com)
 
+## Features
+Users can:
+* log in, sign up and sign out of Meet-in
+* join groups
+* attend Events
+* translate website to preferable language
+* message other users who share similar events
+* hosting images of their events and groups using AWS
+* search for groups within radius and by search query
+* search for events within radius and by search query and date.
+* create and update group information
+* create and update event information
+* view user profiles which displays groups, interests, and past and upcoming events
 
-Some features include searching for events and groups. When you search for groups you are able to filter by:
+The main feature includes searching for events and groups. When you search for groups you are able to filter by:
 * querysearch: which will select the groups by commonality in the group title and description.
 * radial location: can find the nearest groups to you.
 
