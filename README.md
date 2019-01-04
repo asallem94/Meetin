@@ -17,6 +17,9 @@ Users can:
 * hosting images of their events and groups using AWS
 * search for groups within radius and by search query
 * search for events within radius and by search query and date.
+* users are able to create discussions for their groups
+* users can comment on their discussions
+* users can reply to comments and replies
 * create and update group information
 * create and update event information
 * view user profiles which displays groups, interests, and past and upcoming events
