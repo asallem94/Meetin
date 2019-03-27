@@ -3,8 +3,6 @@ import * as EventAPIUtil from "../util/event_api_util";
 export const RECEIVE_FINDABLE_EVENTS = "RECEIVE_FINDABLE_EVENTS";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 
-
-
 const receiveFindableEvents = ({events, users}) => {
 
   return {

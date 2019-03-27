@@ -14,8 +14,6 @@ const FormHeader = () => {
         We'll help you find the right people to make it happen.
         </h4>
       </section>
-
-
     </div>
   );
 };
