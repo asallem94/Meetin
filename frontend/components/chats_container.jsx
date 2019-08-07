@@ -1,49 +1,49 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAllMyChats, fetchChat, recieveMessage, receiveChat } from './../actions/messaging_actions';
+import { fetchAllMyChats, fetchChat, recieveMessage, d } from './../actions/messaging_actions';
 import MessagesContainer from './messages_container';
 import { ActionCable } from 'react-actioncable-provider';
 import ChatsFormContainer from './create_chat_modal';
 import Moment from 'moment';
 
 class ChatsIndex extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = {selectedChat: null};
+    this.state = { selectedChat: null };
     this.selectChat = this.selectChat.bind(this);
     this.displayChats = this.displayChats.bind(this);
     this.scrollToLastMessage = this.scrollToLastMessage.bind(this);
     this.displayChatsModal = this.displayChatsModal.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchAllMyChats().then((res) => {
-      if (res.chats){
-        this.setState({selectedChat: Object.values(res.chats)[0].id});
+      if (res.chats) {
+        this.setState({ selectedChat: Object.values(res.chats)[0].id });
       }
     });
   }
 
-  selectChat(id){
+  selectChat(id) {
     return (e) => {
       e.preventDefault();
-      this.setState({selectedChat: id});
+      this.setState({ selectedChat: id });
     };
   }
 
-  scrollToLastMessage(){
+  scrollToLastMessage() {
     const element = document.getElementById('message-index');
-    if (element){
+    if (element) {
       element.scrollTop = element.scrollHeight;
     }
   }
 
-  displayChats(){
+  displayChats() {
     const currUser = this.props.users[this.props.currUserId];
-    if (this.props.users[this.props.currUserId].chatIds.length < 1){
+    if (this.props.users[this.props.currUserId].chatIds.length < 1) {
       return null;
     }
-    if (!this.props.chats[currUser.chatIds[0]]){
+    if (!this.props.chats[currUser.chatIds[0]]) {
       return null;
     }
     // .chatIds.sort(
@@ -53,13 +53,13 @@ class ChatsIndex extends React.Component {
     //     return chat1
     //   }
     // )
-    return currUser.chatIds.map((chatId)=>{
+    return currUser.chatIds.map((chatId) => {
       const chat = this.props.chats[chatId];
       return (
         <div key={chat.id} className="chat-index-item clickable" onClick={this.selectChat(chat.id)}>
 
           <ActionCable
-            channel={{ channel: 'MessagesChannel', id: chat.id}}
+            channel={{ channel: 'MessagesChannel', id: chat.id }}
             onReceived={this.props.recieveMessage}
           />
           <section className="message-text-header">
@@ -67,34 +67,30 @@ class ChatsIndex extends React.Component {
             <h3>{chat.lastMessageId ? Moment(this.props.messages[chat.lastMessageId].created_at).fromNow() : ""}</h3>
           </section>
 
-          <h3 className="ellipsis">{chat.lastMessageId ? this.props.messages[chat.lastMessageId].body : "" }</h3>
+          <h3 className="ellipsis">{chat.lastMessageId ? this.props.messages[chat.lastMessageId].body : ""}</h3>
         </div>
       );
     });
   }
 
-  displayChatsModal(e){
+  displayChatsModal(e) {
     e.preventDefault();
     this.openModal();
   }
 
-  openModal(){
+  openModal() {
     document.getElementById('create-form-modal').style.display = "flex";
   }
 
-  render(){
+  render() {
     if (!this.props.chats) {
       return null;
     }
 
-    // <ActionCable
-    //   channel={{ channel: 'ChatsChannel' }}
-    //   onReceived={this.props.receiveChat}
-    // />
     return (
       <div className="background-container">
         <div className="chat-container">
-          <ChatsFormContainer/>
+          <ChatsFormContainer />
           <section className="chats-section">
             <div className="chat-index">
               {this.displayChats()}
@@ -128,7 +124,6 @@ const mdp = (dispatch) => {
     fetchAllMyChats: () => dispatch(fetchAllMyChats()),
     fetchChat: (id) => dispatch(fetchChat(id)),
     recieveMessage: (id) => dispatch(recieveMessage(id)),
-    recieveChat: (id) => dispatch(receiveChat(id)),
   };
 };
 

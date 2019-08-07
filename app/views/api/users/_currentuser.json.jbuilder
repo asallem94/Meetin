@@ -1,5 +1,6 @@
+
 json.user do
-  json.extract! user, :id, :name, :lat, :lng, :bio,
+  json.extract! user, :id, :name, :lat, :lng, :bio
   json.imgUrl url_for(user.profile_img)
   json.set! :groups_count, user.group_memberships.count
   json.set! :organized_groups, user.organized_groups.ids
@@ -22,6 +23,7 @@ json.user do
     end
   end
 end
+
 json.groups do
   user.groups.each do |group|
     json.set! group.id do
