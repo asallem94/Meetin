@@ -62,7 +62,7 @@ class ProfileShow extends React.Component {
     const interests = interestIds.map((interestId)=>{
       const interest = this.props.interests[interestId];
       return (
-        <div key={interestId} className="clickable interest-item">
+        <div key={interestId} className="clickable profile-interest-item">
           <h2 className="title-overlay">{interest.topic_titles}</h2>
           <img className="interest-img" src={interest.picture_url}/>
         </div>

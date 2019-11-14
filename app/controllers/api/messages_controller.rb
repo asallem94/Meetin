@@ -2,6 +2,7 @@ class Api::MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    @message.author == current_user
     chat = Chat.find(params[:chat_id])
     if @message.save
       serialized_data = ActiveModelSerializers::Adapter::Json.new(
